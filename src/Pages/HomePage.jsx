@@ -6,6 +6,9 @@ import products from "../Products/Products.json";
 import pic1 from "../../src/Pages/images/pic1.avif";
 import pic2 from "../../src/Pages/images/pic2.jpg";
 import pic3 from "../../src/Pages/images/pic3.avif";
+import pic4 from "../../src/Pages/images/image111.jpg"
+import pic5 from "../../src/Pages/images/image112.jpg"
+import pic6 from "../../src/Pages/images/image113.jpg"
 import React, { useEffect, useState } from "react";
 import Footer from "../components/footer";
 //import { useState } from "react";
@@ -70,9 +73,9 @@ function HomePage() {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src={pic1}
+                src={pic4}
                 alt="First slide"
-                height={400}
+                height={500}
               />
               <Carousel.Caption>
                 <h3>Welcome to our Store</h3>
@@ -84,9 +87,9 @@ function HomePage() {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src={pic2}
+                src={pic5}
                 alt="Second slide"
-                height={400}
+                height={500}
               />
 
               <Carousel.Caption>
@@ -97,9 +100,9 @@ function HomePage() {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src={pic3}
+                src={pic6}
                 alt="Third slide"
-                height={400}
+                height={500}
               />
 
               <Carousel.Caption>
