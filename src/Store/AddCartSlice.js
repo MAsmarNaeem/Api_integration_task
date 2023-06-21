@@ -1,9 +1,8 @@
 import { createSlice, combineReducers } from "@reduxjs/toolkit";
-const item =
-  localStorage.getItem("itemadd") !== null
-    ? JSON.parse(localStorage.getItem("itemadd"))
-    : 0;
-console.log("my ddddddddd", item);
+
+
+const storedItem = localStorage.getItem("itemadd");
+const item = storedItem ? JSON.parse(storedItem) : [];
 
 const Todo = createSlice({
   name: "Todo",
@@ -15,7 +14,6 @@ const Todo = createSlice({
     },
     removeToCart: (state, action) => {
       const index = state.data.findIndex((item) => item === action.payload);
-      console.log("index is ", index);
       if (index !== -1) {
         state.data.splice(index, 1);
       }
