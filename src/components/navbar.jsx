@@ -13,7 +13,7 @@ const navbar = (props) => {
             <Navbar.Brand href="/">
               <h3>
                 <Link to="/" className="text-decoration-none text-white ms-5 ">
-                  My Shopping App
+                 My Shopping App
                 </Link>
               </h3>
             </Navbar.Brand>
@@ -37,8 +37,9 @@ const navbar = (props) => {
                 <Nav.Link>
                   <h3>
                     <Link
-                      className="text-decoration-none text-white"
+                      className="text-decoration-none text-white "
                       to="/login"
+
                     >
                       Login
                     </Link>

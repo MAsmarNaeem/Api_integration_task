@@ -2,10 +2,8 @@
 //import { BsCart } from "react-icons/bs";
 import "../App.css";
 import Navbar from "../components/navbar";
-import products from "../Products/Products.json";
-import pic1 from "../../src/Pages/images/pic1.avif";
-import pic2 from "../../src/Pages/images/pic2.jpg";
-import pic3 from "../../src/Pages/images/pic3.avif";
+
+
 import pic4 from "../../src/Pages/images/image111.jpg"
 import pic5 from "../../src/Pages/images/image112.jpg"
 import pic6 from "../../src/Pages/images/image113.jpg"
@@ -14,7 +12,7 @@ import Footer from "../components/footer";
 //import { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
 //import Sidebar from "../components/Sidebar";
 import { useDispatch } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
