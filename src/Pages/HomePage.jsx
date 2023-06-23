@@ -17,7 +17,7 @@ import { addToCart } from "../Store/AddCartSlice";
 function HomePage() {
   const [productData, setProductsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
 
   const dispatch = useDispatch();
 
@@ -102,7 +102,7 @@ function HomePage() {
                 className="d-block w-100"
                 src={pic4}
                 alt="First slide"
-                height={500}
+                height={700}
               />
               <Carousel.Caption>
                 <h3>Welcome to our Store</h3>
@@ -116,7 +116,7 @@ function HomePage() {
                 className="d-block w-100"
                 src={pic5}
                 alt="Second slide"
-                height={500}
+                height={700}
               />
 
               <Carousel.Caption>
@@ -129,7 +129,7 @@ function HomePage() {
                 className="d-block w-100"
                 src={pic6}
                 alt="Third slide"
-                height={500}
+                height={700}
               />
 
               <Carousel.Caption>
@@ -216,7 +216,7 @@ function HomePage() {
         pageCount={4}
         // previousLabel="< previous"
         renderOnZeroPageCount={null}
-        containerClassName={"pagination justify-content-center"}
+        containerClassName={"pagination justify-content-center pt-3"}
         pageClassName={"page-item"}
         pageLinkClassName={"page-link"}
         previousLinkClassName={"page-link"}
