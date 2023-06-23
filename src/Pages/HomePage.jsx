@@ -57,23 +57,70 @@ function HomePage() {
   };
   console.log("data is :", productData);
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const initialProducts = await fetchComments(currentPage);
+      setProductsData(initialProducts);
+    };
+    fetchData();
+  }, []);
+  
   const fetchComments = async (currentPage) => {
-    const res = await fetch(
-      // `https://dummyjson.com/products/?_page=${currentPage}limit=10&skip=10&select=title,price,thumbnail`
-      `https://dummyjson.com/products/?_page=${currentPage}&limit=10&skip=10&select=title,price,thumbnail`
-    );
-    //  const data=await res.json()
-    //  return data
-    const data = await res.json();
-    setProductsData(data);
-    console.log("data is ",productData);
+    try {
+      if(currentPage==1)
+      {
+        const response = await fetch(
+          `https://dummyjson.com/products/?_page=${currentPage}&limit=10&skip=0&select=title,price,thumbnail`
+        );
+  
+        const data = await response.json();
+        return data.products;
+      }
+      else if(currentPage==2)
+      {
+        const response = await fetch(
+          `https://dummyjson.com/products/?_page=${currentPage}&limit=10&skip=10&select=title,price,thumbnail`
+        );
+  
+        const data = await response.json();
+        return data.products;
+      }
+      else if(currentPage==3)
+      {
+        const response = await fetch(
+          `https://dummyjson.com/products/?_page=${currentPage}&limit=10&skip=20&select=title,price,thumbnail`
+        );
+  
+        const data = await response.json();
+        return data.products;
+      }
+      else if(currentPage==4)
+      {
+        const response = await fetch(
+          `https://dummyjson.com/products/?_page=${currentPage}&limit=10&skip=30&select=title,price,thumbnail`
+        );
+  
+        const data = await response.json();
+        return data.products;
+      }
+      
+     
+    } catch (error) {
+      console.log("Error fetching data:", error);
+      return [];
+    }
   };
+  
+  
+  
   // console.log("product data is;",productData);
   const handlePageClick = async (data) => {
     let currentPage = data.selected + 1;
     const commentForm = await fetchComments(currentPage);
     setProductsData(commentForm);
   };
+  
 
   return (
     <div className="container-fluid">
@@ -131,7 +178,7 @@ function HomePage() {
 
       <div className="row mt-3">
         <div className="col text-center">
-          <h3 className="text-white text-bold">Products</h3>
+       
         </div>
       </div>
       <div></div>
@@ -191,14 +238,15 @@ function HomePage() {
             </div>
           </div>
         ))}
+        
       </div>
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        // nextLabel="next >"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
-        pageCount={3}
-        previousLabel="< previous"
+        pageCount={4}
+        // previousLabel="< previous"
         renderOnZeroPageCount={null}
         containerClassName={"pagination justify-content-center"}
         pageClassName={"page-item"}
