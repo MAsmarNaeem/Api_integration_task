@@ -68,44 +68,12 @@ function HomePage() {
   
   const fetchComments = async (currentPage) => {
     try {
-      if(currentPage==1)
-      {
-        const response = await fetch(
-          `https://dummyjson.com/products/?_page=${currentPage}&limit=10&skip=0&select=title,price,thumbnail`
-        );
-  
-        const data = await response.json();
-        return data.products;
-      }
-      else if(currentPage==2)
-      {
-        const response = await fetch(
-          `https://dummyjson.com/products/?_page=${currentPage}&limit=10&skip=10&select=title,price,thumbnail`
-        );
-  
-        const data = await response.json();
-        return data.products;
-      }
-      else if(currentPage==3)
-      {
-        const response = await fetch(
-          `https://dummyjson.com/products/?_page=${currentPage}&limit=10&skip=20&select=title,price,thumbnail`
-        );
-  
-        const data = await response.json();
-        return data.products;
-      }
-      else if(currentPage==4)
-      {
-        const response = await fetch(
-          `https://dummyjson.com/products/?_page=${currentPage}&limit=10&skip=30&select=title,price,thumbnail`
-        );
-  
-        const data = await response.json();
-        return data.products;
-      }
-      
-     
+      let skip = (currentPage - 1) * itemsPerPage;
+      const response = await fetch(
+        `https://dummyjson.com/products/?_page=${currentPage}&limit=10&skip=${skip}&select=title,price,thumbnail`
+      );
+      const data = await response.json();
+      return data.products;
     } catch (error) {
       console.log("Error fetching data:", error);
       return [];
