@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { combineReducers } from "@reduxjs/toolkit";
 
-const Todo = createSlice({
+const createSlicecart = createSlice({
   name: "Todo",
    initialState: { todos: false },
 
@@ -23,8 +23,8 @@ const Todo = createSlice({
   },
 });
 
-export const {  addvalue } = Todo.actions;
+export const {  addvalue } = createSlicecart.actions;
 
 export default combineReducers({
-  Todo: Todo.reducer,
+  Todo: createSlicecart.reducer,
 });

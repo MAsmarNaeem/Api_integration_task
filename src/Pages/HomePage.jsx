@@ -1,65 +1,79 @@
-//import { AiOutlineUserAdd } from "react-icons/ai";
-//import { BsCart } from "react-icons/bs";
 import "../App.css";
 import Navbar from "../components/navbar";
 
-
-import pic4 from "../../src/Pages/images/image111.jpg"
-import pic5 from "../../src/Pages/images/image112.jpg"
-import pic6 from "../../src/Pages/images/image113.jpg"
+import pic4 from "../../src/Pages/images/image111.jpg";
+import pic5 from "../../src/Pages/images/image112.jpg";
+import pic6 from "../../src/Pages/images/image113.jpg";
 import React, { useEffect, useState } from "react";
 import Footer from "../components/footer";
 //import { useState } from "react";
+import ReactPaginate from "react-paginate";
 import Carousel from "react-bootstrap/Carousel";
 import { NavLink } from "react-router-dom";
-
-//import Sidebar from "../components/Sidebar";
 import { useDispatch } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
 import { addToCart } from "../Store/AddCartSlice";
 
 function HomePage() {
- 
-  const[productData,setProductsData]=useState([])
+  const [productData, setProductsData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(8);
+
   const dispatch = useDispatch();
 
-
   const addCartItem = (id) => {
-    const speech = new SpeechSynthesisUtterance('Item added into cart succeesfully'); // Replace with the desired text
+    const speech = new SpeechSynthesisUtterance(
+      "Item added into cart succeesfully"
+    ); // Replace with the desired text
 
     // Configure speech synthesis options
-    speech.lang = 'en-US';
+    speech.lang = "en-US";
     speech.volume = 5;
     speech.rate = 1;
     speech.pitch = 1;
-    speech.voice = speechSynthesis.getVoices().find((voice) => voice.name === 'Google US English'); // Specify the desired voice
+    speech.voice = speechSynthesis
+      .getVoices()
+      .find((voice) => voice.name === "Google US English"); // Specify the desired voice
     window.speechSynthesis.speak(speech);
-   
+
     dispatch(addToCart(id));
   };
   const opencart = () => {
     dispatch(addvalue(true));
   };
-  useEffect(()=>
-  {
-    getProducts()
-  },[])
-  const getProducts=async()=>
-  {
+  useEffect(() => {
+    getProducts();
+  }, []);
+  const getProducts = async () => {
     try {
-      const response=await fetch('//dummyjson.com/products')
-      const data=await response.json()
-      setProductsData(data.products)
-
-      
+      const response = await fetch(
+        "https://dummyjson.com/products/?limit=10&skip=10&select=title,price,thumbnail"
+      );
+      const data = await response.json();
+      setProductsData(data.products);
     } catch (error) {
-      console.log("error is :",error);
-      
+      console.log("error is :", error);
     }
+  };
+  console.log("data is :", productData);
 
-  }
-  console.log("data is :",productData);
-
+  const fetchComments = async (currentPage) => {
+    const res = await fetch(
+      // `https://dummyjson.com/products/?_page=${currentPage}limit=10&skip=10&select=title,price,thumbnail`
+      `https://dummyjson.com/products/?_page=${currentPage}&limit=10&skip=10&select=title,price,thumbnail`
+    );
+    //  const data=await res.json()
+    //  return data
+    const data = await res.json();
+    setProductsData(data);
+    console.log("data is ",productData);
+  };
+  // console.log("product data is;",productData);
+  const handlePageClick = async (data) => {
+    let currentPage = data.selected + 1;
+    const commentForm = await fetchComments(currentPage);
+    setProductsData(commentForm);
+  };
 
   return (
     <div className="container-fluid">
@@ -123,9 +137,8 @@ function HomePage() {
       <div></div>
 
       <div className="row">
-        {console.log("product is ",productData)}
+        {console.log("product is ", productData)}
         {productData.map((myproducts) => (
-       
           <div className="col-md-3" key={myproducts.id}>
             <div
               className="card mt-4 shadow"
@@ -157,29 +170,46 @@ function HomePage() {
                   <p className="card-text">{myproducts.description}</p>
                   <p className="card-text">Price: {myproducts.price}</p>
                 </div>
-              <button
-  className="btn btn-info text-white pb-2 px-4 py-2"
-  style={{
-    marginLeft: "30%",
-    marginRight: "5%",
-    marginBottom: "30px",
-    width: "40%",
-    maxWidth: "300px"
-  }}
-  type="button"
-  onClick={() => {
-    addCartItem(myproducts.id);
-    opencart();
-  }}
->
-  Add to Cart
-</button>
-
+                <button
+                  className="btn btn-info text-white pb-2 px-4 py-2"
+                  style={{
+                    marginLeft: "30%",
+                    marginRight: "5%",
+                    marginBottom: "30px",
+                    width: "40%",
+                    maxWidth: "300px",
+                  }}
+                  type="button"
+                  onClick={() => {
+                    addCartItem(myproducts.id);
+                    opencart();
+                  }}
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           </div>
         ))}
       </div>
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={3}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+        containerClassName={"pagination justify-content-center"}
+        pageClassName={"page-item"}
+        pageLinkClassName={"page-link"}
+        previousLinkClassName={"page-link"}
+        previousClassName={"page-item"}
+        nextClassName={"page-item"}
+        nextLinkClassName={"page-link"}
+        breakClassName={"page-item"}
+        breakLinkClassName={"page-link"}
+      />
 
       <Footer />
     </div>

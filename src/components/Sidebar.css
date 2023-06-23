@@ -26,10 +26,10 @@
 
 .sidebar-title {
   cursor: pointer;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 30px !important; 
+  /* font-weight: bold; */
   color: #333;
-  margin-bottom: 10px;
+  /* margin-bottom: 20px !important; */
 }
 
 .checkout-button {
