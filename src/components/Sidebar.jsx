@@ -7,13 +7,14 @@ import "./Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
 import { addToCart } from "../Store/AddCartSlice";
-import { removeToCart } from "../Store/AddCartSlice";
+import { removeFromCart } from "../Store/AddCartSlice";
 
 function Sidebar(props) {
   const store = useSelector((store) => store);
   const getStore = useSelector((store) => store);
   //console.log("get store :", getStore.myTodo.Todo.data);
   const [show, setShow] = useState(store.addvalue.Todo.todos);
+  
   const [cartItems, setCartItems] = useState([]);
   const [itemCounts, setItemCounts] = useState({});
   const[productData,setProductData]=useState([])
@@ -79,7 +80,7 @@ function Sidebar(props) {
       ...prevCounts,
       [itemId]: (prevCounts[itemId] || 0) - 1,
     }));
-    dispatch(removeToCart(itemId));
+    dispatch(removeFromCart(itemId));
   };
 
   const handleClose = () => {
