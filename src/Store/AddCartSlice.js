@@ -3,7 +3,7 @@ import { createSlice, combineReducers } from "@reduxjs/toolkit";
 
 const storedItem = localStorage.getItem("itemadd");
 const item = storedItem ? JSON.parse(storedItem) : [];
-
+//name
 const Todo = createSlice({
   name: "Add Cart Slice",
   initialState: { data: item },
