@@ -3,11 +3,16 @@ import Navbar from "../components/navbar";
 import { useParams } from "react-router-dom";
 import Footer from "../components/footer";
 import "../App.css";
+import { addToCart } from "../Store/AddCartSlice";
+import { useDispatch } from "react-redux";
+import { addvalue } from "../Store/CartSlice";
 
 const Productdetail = () => {
   const { paramid } = useParams();
   const [addcart, setaddcart] = useState([]);
   const [productData, setProductsData] = useState([]);
+
+
 
   useEffect(() => {
     getProducts();
@@ -23,20 +28,24 @@ const Productdetail = () => {
     }
   };
 
-  useEffect(() => {
-    const storedCart = localStorage.getItem("idkey");
-    if (storedCart) {
-      setaddcart(JSON.parse(storedCart));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const storedCart = localStorage.getItem("idkey");
+  //   if (storedCart) {
+  //     setaddcart(JSON.parse(storedCart));
+  //   }
+  // }, []);
 
+  const dispatch = useDispatch();
   const addCartItem = (id) => {
-    alert("Item Added Successfully");
-    setaddcart((prevCart) => {
-      const updatedCart = [...prevCart, id];
-      localStorage.setItem("idkey", JSON.stringify(updatedCart));
-      return updatedCart;
-    });
+    // alert("Item Added Successfully");
+    // setaddcart((prevCart) => {
+    //   const updatedCart = [...prevCart, id];
+    //   localStorage.setItem("idkey", JSON.stringify(updatedCart));
+    //   return updatedCart;
+    // });
+    
+    dispatch(addToCart(id));
+    dispatch(addvalue(true))
   };
 
   return (
