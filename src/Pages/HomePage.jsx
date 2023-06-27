@@ -1,9 +1,6 @@
-import "../App.css";
-import Navbar from "../components/navbar";
-import pic4 from "../../src/Pages/images/image111.jpg";
-import pic5 from "../../src/Pages/images/image112.jpg";
-import pic6 from "../../src/Pages/images/image113.jpg";
 import React, { useEffect, useState } from "react";
+import ProductCard from "../components/Products";
+import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import ReactPaginate from "react-paginate";
 import Carousel from "react-bootstrap/Carousel";
@@ -12,6 +9,9 @@ import { useDispatch } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
 import { addToCart } from "../Store/AddCartSlice";
 import { Audio } from "react-loader-spinner";
+import pic4 from "../../src/Pages/images/image111.jpg";
+import pic5 from "../../src/Pages/images/image112.jpg";
+import pic6 from "../../src/Pages/images/image113.jpg";
 
 function HomePage() {
   const [productData, setProductsData] = useState([]);
@@ -100,14 +100,14 @@ function HomePage() {
               <img className="d-block w-100" src={pic5} alt="Second slide" height={700} />
               <Carousel.Caption>
                 <h3 className="text-info">Best Services Available</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
               <img className="d-block w-100" src={pic6} alt="Third slide" height={700} />
               <Carousel.Caption>
-                <h3>Quality Products</h3>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <h3 className="text-info">Quality Products</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
@@ -115,63 +115,25 @@ function HomePage() {
       </div>
 
       <div className="row mt-3">
-        <div className="col text-center"></div>
+        {productData.length === 0 ? (
+          <div className="col-12 d-flex justify-content-center mt-5">
+            <Audio type="Oval" color="#00BFFF" height={100} width={100} />
+          </div>
+        ) : (
+          productData.map((myproducts) => (
+            <ProductCard
+              key={myproducts.id}
+              product={myproducts}
+              addCartItem={addCartItem}
+              opencart={opencart}
+            />
+          ))
+        )}
       </div>
 
       <div className="row">
-        {productData.map((myproducts) => (
-          <div className="col-md-3" key={myproducts.id}>
-            <div className="card mt-4 shadow" style={{ height: "500px", border: "none" }}>
-              <img
-                src={myproducts.thumbnail}
-                alt={myproducts.title}
-                className="card-img-top shadow"
-                height="250px"
-              />
-
-              <div
-                className="shadow rounded"
-                style={{
-                  height: "300px",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div className="card-body text-center mt-3">
-                  <NavLink
-                    to={`/Productdetail/${myproducts.id}`}
-                    className="text-decoration-none text-danger"
-                  >
-                    <h5 className="card-title text-info">{myproducts.title}</h5>
-                  </NavLink>
-                  <p className="card-text">{myproducts.description}</p>
-                  <p className="card-text">Price: {myproducts.price}</p>
-                </div>
-                <button
-                  className="btn btn-info text-white pb-2 px-4 py-2"
-                  style={{
-                    marginLeft: "30%",
-                    marginRight: "5%",
-                    marginBottom: "30px",
-                    width: "40%",
-                    maxWidth: "300px",
-                  }}
-                  type="button"
-                  onClick={() => {
-                    addCartItem(myproducts.id);
-                    opencart();
-                  }}
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <ReactPaginate
+        <div className="col d-flex justify-content-center mt-4">
+        <ReactPaginate
         breakLabel="..."
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
@@ -187,6 +149,8 @@ function HomePage() {
         breakClassName={"page-item"}
         breakLinkClassName={"page-link"}
       />
+        </div>
+      </div>
 
       <Footer />
     </div>

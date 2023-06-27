@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
 const navbar = (props) => {
+  const logoutFun=()=>
+  {
+    localStorage.clear()
+  }
   return (
     <div className="bg-info  row  justify-content-center">
       <div className="col-md-3"></div>
@@ -32,7 +36,18 @@ const navbar = (props) => {
                 </Nav.Link>
               </Nav>
               <Nav>
-             
+              <Nav.Link>
+                  <h3>
+                    <Link
+                      className="text-decoration-none text-white "
+                      onClick={logoutFun}
+                      to="/login"
+                      style={{ }}
+                    >
+                      Logout
+                    </Link>
+                  </h3>
+                </Nav.Link>
 
                 <Nav.Link>
                   <h3>
@@ -55,7 +70,10 @@ const navbar = (props) => {
                       Signup
                     </Link>
                   </h3>
+                
+                 
                 </Nav.Link>
+               
               </Nav>
             </Navbar.Collapse>
           </Container>
