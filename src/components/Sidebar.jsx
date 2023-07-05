@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
 import { addToCart } from "../Store/AddCartSlice";
 import { removeFromCart } from "../Store/AddCartSlice";
+import style from '../components/navbar.css'
 
 function Sidebar(props) {
   const store = useSelector((store) => store);
@@ -110,8 +111,8 @@ function Sidebar(props) {
     <>
       <>
         <span
-          className="ms-5 sidebar-title text-white"
-          style={{ fontSize: "25px" }}
+          className="ms-5 sidebar-title text-white name"
+         
           onClick={handleShow}
         >
           Cart

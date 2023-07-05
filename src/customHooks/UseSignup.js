@@ -9,6 +9,7 @@ function UseSignup() {
     password: "",
     confirmPassword: "",
   });
+  const[error,seterror]=useState({})
   const dompush=useNavigate()
   const[userData,setUserData]=useState([])
 
@@ -31,13 +32,17 @@ function UseSignup() {
    
 
     if (name === "") {
-      alert("name field is required");
+     // alert("name field is required");
+      seterror({name:"name field is required"})
     } else if (email === "") {
-      alert("email field is required");
+      seterror({email:"Email Field is required"})
+     // alert("email field is required");
     } else if (password === "") {
-      alert("password field is required");
+      seterror({password:"Password Field is required"})
+     // alert("password field is required");
     } else if (confirmPassword === "") {
-      alert("confirm Password field is required");
+      seterror({confirmPassword:"confirm password Field is required"})
+      //alert("confirm Password field is required");
     } else if (password !== confirmPassword) {
       alert("Password and confirm Password should be same");
     } else if (!email.includes("@")) {
@@ -58,6 +63,7 @@ function UseSignup() {
     signupInputs,
     setSignupInputs,
     addDataButton,
+    error
   };
 }
 

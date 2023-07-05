@@ -7,6 +7,7 @@ function UseLogin() {
     email: "",
     password: "",
   });
+  const[error,seterror]=useState({})
   const navigate = useNavigate();
 
  
@@ -26,11 +27,13 @@ function UseLogin() {
 
     const { email, password } = logindata;
     if (email === "") {
-      alert("Email field is required");
+      seterror({email:"Email Field is required"})
+     // alert("Email field is required");
     } else if (!email.includes("@")) {
       alert("Email is incorrect");
     } else if (password === "") {
-      alert("Password field is required");
+      seterror({password:"Password Field is required"})
+     // alert("Password field is required");
     } else {
       if (getUser && getUser.length) {
         const userdata = JSON.parse(getUser);
@@ -50,6 +53,7 @@ function UseLogin() {
   return {
     getdata,
     submitbutton,
+    error
   };
 }
 

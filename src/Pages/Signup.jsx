@@ -8,7 +8,7 @@ import Navbar from "../components/navbar";
 import "../App.css"
 
 function Signup() {
-  const { getUserData, addDataButton } = UseSignup();
+  const { getUserData, addDataButton,error } = UseSignup();
 
   return (
    <div >
@@ -17,7 +17,7 @@ function Signup() {
       <Row className="justify-content-center" >
         <Col md={6} className="mt-4">
           <h2 className="text-center mb-4">Create an Account</h2>
-          <Form>
+          <Form method="post" onSubmit={addDataButton}>
             <Form.Group controlId="formBasicName">
               <Form.Label>Name</Form.Label>
               <Form.Control
@@ -28,6 +28,10 @@ function Signup() {
                 onChange={ getUserData}
               />
             </Form.Group>
+            <Form.Text className="text-danger">
+                { error.name !== undefined && error.name && error.name}
+                </Form.Text>
+          
 
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
@@ -38,6 +42,10 @@ function Signup() {
                 required
                 onChange={ getUserData}
               />
+                <Form.Text className="text-danger">
+                { error.email !== undefined && error.email && error.email}
+                </Form.Text>
+                <br/>
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text>
@@ -53,6 +61,10 @@ function Signup() {
                 onChange={ getUserData}
               />
             </Form.Group>
+            <Form.Text className="text-danger">
+                { error.password !== undefined && error.password && error.password}
+                </Form.Text>
+            
 
             <Form.Group controlId="formBasicConfirmPassword">
               <Form.Label>Confirm Password</Form.Label>
@@ -65,12 +77,14 @@ function Signup() {
                 required
               />
             </Form.Group>
+            <Form.Text className="text-danger">
+                { error.confirmpassword !== undefined && error.confirmpassword && error.confirmpassword}
+                </Form.Text>
 
-            <Button variant="info" type="submit" className="w-100 mt-3" onClick={addDataButton}>
+            <Button variant="info" type="submit" className="w-100 mt-3" >
               Sign Up
             </Button>
-
-          </Form>
+             </Form>
           <p className="mt-4">Already have a account  <span><NavLink to="/Login">Login</NavLink></span></p>
          
         </Col>

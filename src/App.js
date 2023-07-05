@@ -4,6 +4,7 @@ import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
+import ProdctsPage from "./Pages/Products";
 
 
 import Productdetail from "./Pages/Productdetail";
@@ -16,7 +17,7 @@ function App() {
       <Routes>
        
         <Route path="/" element={<HomePage />} />
-        {/* <Route path="/ProductList" element={<ProductList />} /> */}
+       <Route path="/ProdctsPage" element={<ProdctsPage />} /> 
        
         <Route path="/Productdetail/:paramid" element={<Productdetail />} />
         <Route path="/CheckoutPage" element={<CheckoutPage />} />
