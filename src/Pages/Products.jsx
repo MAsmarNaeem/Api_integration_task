@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
 import { addToCart } from "../Store/AddCartSlice";
 import { Audio } from "react-loader-spinner";
+import PaginationComponent from "../components/pagination";
+
 
 
 function ProdctsPage() {
@@ -55,13 +57,13 @@ function ProdctsPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const initialProducts = await fetchComments(currentPage);
+      const initialProducts = await dataLimit(currentPage);
       setProductsData(initialProducts);
     };
     fetchData();
   }, [currentPage]);
 
-  const fetchComments = async (currentPage) => {
+  const dataLimit = async (currentPage) => {
     try {
       const skip = (currentPage - 1) * itemsPerPage;
       const response = await fetch(
@@ -103,26 +105,12 @@ function ProdctsPage() {
         )}
       </div>
 
-      <div className="row">
-        <div className="col d-flex justify-content-center mt-4">
-        <ReactPaginate
-        breakLabel="..."
+      <PaginationComponent
         onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
         pageCount={pageCount}
-        renderOnZeroPageCount={null}
-        containerClassName={"pagination justify-content-center pt-3"}
-        pageClassName={"page-item"}
-        pageLinkClassName={"page-link"}
-        previousLinkClassName={"page-link"}
-        previousClassName={"page-item"}
-        nextClassName={"page-item"}
-        nextLinkClassName={"page-link"}
-        breakClassName={"page-item"}
-        breakLinkClassName={"page-link"}
+        itemsPerPage={itemsPerPage}
       />
-        </div>
-      </div>
+      
 
       <Footer />
     </div>

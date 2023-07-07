@@ -64,8 +64,8 @@ const CheckoutPage = () => {
     } else {
       const getUser = localStorage.getItem("key");
       if (!getUser || getUser.length === 0) {
-        alert("Please log in first");
-        navigate("/Login");
+        alert("Please Sign in first");
+        navigate("/Signup");
       } else {
         alert("Order placed successfully");
       }
@@ -167,11 +167,12 @@ const CheckoutPage = () => {
 
         <div className="col-md-5">
           <div className="card " style={{border:"none"}}>
+            {console.log("hlo",filteredItems)}
           {filteredItems.map((itemId) => {
                   const product = products.find(
-                    (product) => product.id === itemId
+                    (product) => product.id == itemId
                   );
-
+                             console.log("products :",product);
                   if (product) {
                     return (
                       <div className="row ps-3 pt-2 text-center ps-4 ">

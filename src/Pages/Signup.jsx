@@ -45,7 +45,7 @@ function Signup() {
                 <Form.Text className="text-danger">
                 { error.email !== undefined && error.email && error.email}
                 </Form.Text>
-                <br/>
+               
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text>
