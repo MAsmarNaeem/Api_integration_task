@@ -16,7 +16,8 @@ import PaginationComponent from "../components/pagination";
 function HomePage() {
   const [productData, setProductsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  //const [itemsPerPage, setItemsPerPage] = useState(10);
+  const itemsPerPage=10
   const [pageCount, setPageCount] = useState(0);
   const [loader, setLoader] = useState(false); 
 
