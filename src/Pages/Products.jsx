@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../components/Products";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import ReactPaginate from "react-paginate";
 import Carousel from "react-bootstrap/Carousel";
-import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
 import { addToCart } from "../Store/AddCartSlice";
 import { Audio } from "react-loader-spinner";
+import pic4 from "../../src/Pages/images/image111.jpg";
+import pic5 from "../../src/Pages/images/image112.jpg";
+import pic6 from "../../src/Pages/images/image113.jpg";
 import PaginationComponent from "../components/pagination";
 
 
-
-function ProdctsPage() {
+function HomePage() {
   const [productData, setProductsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -22,13 +22,17 @@ function ProdctsPage() {
   const dispatch = useDispatch();
 
   const addCartItem = (id) => {
-    const speech = new SpeechSynthesisUtterance("Item added into cart successfully");
+    const speech = new SpeechSynthesisUtterance(
+      "Item added into cart successfully"
+    );
 
     speech.lang = "en-US";
     speech.volume = 5;
     speech.rate = 1;
     speech.pitch = 1;
-    speech.voice = speechSynthesis.getVoices().find((voice) => voice.name === "Google US English");
+    speech.voice = speechSynthesis
+      .getVoices()
+      .find((voice) => voice.name === "Google US English");
     window.speechSynthesis.speak(speech);
 
     dispatch(addToCart(id));
@@ -67,7 +71,7 @@ function ProdctsPage() {
     try {
       const skip = (currentPage - 1) * itemsPerPage;
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/products/?_page=${currentPage}&limit=10&skip=${skip}&select=title,price,thumbnail`
+        `${process.env.REACT_APP_API_URL}/products/?limit=10&skip=${skip}&select=title,price,thumbnail`
       );
       const data = await response.json();
       return data.products;
@@ -77,8 +81,7 @@ function ProdctsPage() {
     }
   };
 
-  const handlePageClick = async (data) => {
-    const selectedPage = data.selected + 1;
+  const handlePageChange = async (selectedPage) => {
     setCurrentPage(selectedPage);
   };
 
@@ -86,12 +89,23 @@ function ProdctsPage() {
     <div className="container-fluid">
       <Navbar color="bg-info" />
 
-     
+      <div className="row mt-2">
+        <div className="col">
+         
+        </div>
+      </div>
+
+      {/* {loader && <div className="col-12 d-flex justify-content-center mt-5">
+            <Audio type="Oval" color="#00BFFF" height={100} width={100} />
+          </div>} */}
 
       <div className="row mt-3">
         {productData.length === 0 ? (
           <div className="col-12 d-flex justify-content-center mt-5">
+           
             <Audio type="Oval" color="#00BFFF" height={100} width={100} />
+            Please Wait
+      
           </div>
         ) : (
           productData.map((myproducts) => (
@@ -106,16 +120,14 @@ function ProdctsPage() {
       </div>
 
       <PaginationComponent
-        onPageChange={handlePageClick}
+        onPageChange={handlePageChange}
         pageCount={pageCount}
         itemsPerPage={itemsPerPage}
       />
-      
 
       <Footer />
     </div>
   );
 }
 
-export default ProdctsPage;
-
+export default HomePage;
