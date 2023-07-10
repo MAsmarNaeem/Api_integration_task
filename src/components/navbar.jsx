@@ -53,7 +53,7 @@ const navbar = (props) => {
                   </h3>
                 </Nav.Link>
 
-                <Nav.Link>
+                {/* <Nav.Link>
                   <h3>
                     <Link
                       className="text-decoration-none text-white "
@@ -62,7 +62,7 @@ const navbar = (props) => {
                       Login
                     </Link>
                   </h3>
-                </Nav.Link>
+                </Nav.Link> */}
                 <Nav.Link>
                   <h3 style={{zIndex:1}}>
                     <Link
