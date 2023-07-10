@@ -36,6 +36,7 @@ const navbar = (props) => {
                       Home
                     </Link>
                   </h3> */}
+                  
                 </Nav.Link>
                 <Nav.Link></Nav.Link>
               </Nav>

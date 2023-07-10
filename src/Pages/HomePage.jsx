@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import ProductCard from "../components/Products";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
@@ -44,7 +45,7 @@ function HomePage() {
 
   useEffect(() => {
     getProducts();
-  }, []);
+  },[] );
 
   const getProducts = async () => {
     try {

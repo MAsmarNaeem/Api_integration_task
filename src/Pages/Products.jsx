@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../components/Products";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import Carousel from "react-bootstrap/Carousel";
+
 import { useDispatch } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
 import { addToCart } from "../Store/AddCartSlice";
 import { Audio } from "react-loader-spinner";
-import pic4 from "../../src/Pages/images/image111.jpg";
-import pic5 from "../../src/Pages/images/image112.jpg";
-import pic6 from "../../src/Pages/images/image113.jpg";
+
 import PaginationComponent from "../components/pagination";
 
 function ProductPage() {

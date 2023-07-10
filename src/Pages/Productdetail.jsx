@@ -10,7 +10,7 @@ import { Audio } from "react-loader-spinner";
 
 const Productdetail = () => {
   const { paramid } = useParams();
-  const [addcart, setaddcart] = useState([]);
+  // const [addcart, setaddcart] = useState([]);
   const [productData, setProductsData] = useState([]);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const Productdetail = () => {
 
   return (
     <div>
-      <Navbar ids={addcart} />
+      <Navbar />
       <div className="row justify-content-evenly mt-4 mt-5 mb-5">
         <div className="col-md-5">
           <div className="card">
