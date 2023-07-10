@@ -12,12 +12,12 @@ import pic5 from "../../src/Pages/images/image112.jpg";
 import pic6 from "../../src/Pages/images/image113.jpg";
 import PaginationComponent from "../components/pagination";
 
-
 function HomePage() {
   const [productData, setProductsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
+  const [loader, setLoader] = useState(false); 
 
   const dispatch = useDispatch();
 
@@ -48,12 +48,14 @@ function HomePage() {
 
   const getProducts = async () => {
     try {
+      setLoader(true); 
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/products/?limit=10&skip=10&select=title,price,thumbnail`
       );
       const data = await response.json();
       setPageCount(Math.ceil(data.total / itemsPerPage));
       setProductsData(data.products);
+      setLoader(false); 
     } catch (error) {
       console.log("Error:", error);
     }
@@ -138,19 +140,20 @@ function HomePage() {
         </div>
       </div>
 
-      {/* {loader && <div className="col-12 d-flex justify-content-center mt-5">
-            <Audio type="Oval" color="#00BFFF" height={100} width={100} />
-          </div>} */}
+      {loader && (
+        <div className="col-12 d-flex justify-content-center mt-5">
+          <Audio type="Oval" color="#00BFFF" height={100} width={100} />
+        </div>
+      )}
 
       <div className="row mt-3">
-        {productData.length === 0 ? (
-          <div className="col-12 d-flex justify-content-center mt-5">
-           
-            <Audio type="Oval" color="#00BFFF" height={100} width={100} />
-            Please Wait
-      
-          </div>
-        ) : (
+        {
+        // productData.length === 0 ? (
+        //   <div className="col-12 d-flex justify-content-center mt-5">
+        //     <Audio type="Oval" color="#00BFFF" height={100} width={100} />
+        //     Please Wait
+        //   </div>
+        // ) : (
           productData.map((myproducts) => (
             <ProductCard
               key={myproducts.id}
@@ -159,7 +162,8 @@ function HomePage() {
               opencart={opencart}
             />
           ))
-        )}
+       // )
+        }
       </div>
 
       <PaginationComponent

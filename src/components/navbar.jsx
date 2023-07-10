@@ -81,7 +81,7 @@ const navbar = (props) => {
         </Navbar>
       </div>
 
-      <div className="col-md-4 text-end px-5 pt-2 name" style={{ marginTop: "2px",zIndex:1 }}>
+      <div className="col-md-4 text-end px-5 pt-2" style={{ marginTop: "2px",zIndex:1 }}>
         <Sidebar myids={props.ids} />
       </div>
     </div>

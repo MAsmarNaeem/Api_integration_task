@@ -1,3 +1,6 @@
+
+
+
 .product-list {
   display: flex;
   flex-wrap: wrap;
@@ -27,9 +30,9 @@
 .sidebar-title {
   cursor: pointer;
   font-size: 30px !important; 
-  /* font-weight: bold; */
+ 
   color: #333;
-  /* margin-bottom: 20px !important; */
+ 
 }
 
 .checkout-button {
@@ -119,4 +122,5 @@
   width: 100%;
   margin-top: 10px;
 }
+
 

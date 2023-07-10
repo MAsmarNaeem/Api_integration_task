@@ -8,17 +8,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
 import { addToCart } from "../Store/AddCartSlice";
 import { removeFromCart } from "../Store/AddCartSlice";
-import style from '../components/navbar.css'
+//import style from "../components/navbar.css";
 
 function Sidebar(props) {
   const store = useSelector((store) => store);
   const getStore = useSelector((store) => store);
   //console.log("get store :", getStore.myTodo.Todo.data);
   const [show, setShow] = useState(store.addvalue.Todo.todos);
-  
+
   const [cartItems, setCartItems] = useState([]);
   const [itemCounts, setItemCounts] = useState({});
-  const[productData,setProductData]=useState([])
+  const [productData, setProductData] = useState([]);
   const dispatch = useDispatch();
   const demo = () => {};
 
@@ -36,17 +36,9 @@ function Sidebar(props) {
     }
   };
 
-
-
-
-
-
-
-
-
   useEffect(() => {
     const storedCart = getStore.myTodo.Todo.data;
-    
+
     if (storedCart) {
       setCartItems(storedCart);
     }
@@ -56,12 +48,9 @@ function Sidebar(props) {
     const countItems = () => {
       const counts = {};
       for (let i = 0; i < cartItems.length; i++) {
-      
-
         const itemId = cartItems[i];
-       
+
         counts[itemId] = counts[itemId] ? counts[itemId] + 1 : 1;
-      
       }
       setItemCounts(counts);
     };
@@ -110,13 +99,13 @@ function Sidebar(props) {
   return (
     <>
       <>
-        <span
-          className="ms-5 sidebar-title text-white name"
-         
-          onClick={handleShow}
-        >
-          Cart
-        </span>
+      <span
+  className="ms-5 sidebar-title text-white name"
+  style={{ fontFamily: 'Merriweather', fontSize: '16px' }}
+  onClick={handleShow}
+>
+  Cart
+</span>
 
         <Offcanvas
           placement="end"
