@@ -12,6 +12,7 @@ import pic5 from "../../src/Pages/images/image112.jpg";
 import pic6 from "../../src/Pages/images/image113.jpg";
 import PaginationComponent from "../components/pagination";
 
+
 function HomePage() {
   const [productData, setProductsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -48,7 +49,7 @@ function HomePage() {
   const getProducts = async () => {
     try {
       const response = await fetch(
-        "https://dummyjson.com/products/?limit=10&skip=10&select=title,price,thumbnail"
+        `${process.env.REACT_APP_API_URL}/products/?limit=10&skip=10&select=title,price,thumbnail`
       );
       const data = await response.json();
       setPageCount(Math.ceil(data.total / itemsPerPage));
@@ -70,7 +71,7 @@ function HomePage() {
     try {
       const skip = (currentPage - 1) * itemsPerPage;
       const response = await fetch(
-        `https://dummyjson.com/products/?limit=10&skip=${skip}&select=title,price,thumbnail`
+        `${process.env.REACT_APP_API_URL}/products/?limit=10&skip=${skip}&select=title,price,thumbnail`
       );
       const data = await response.json();
       return data.products;
@@ -137,10 +138,17 @@ function HomePage() {
         </div>
       </div>
 
+      {/* {loader && <div className="col-12 d-flex justify-content-center mt-5">
+            <Audio type="Oval" color="#00BFFF" height={100} width={100} />
+          </div>} */}
+
       <div className="row mt-3">
         {productData.length === 0 ? (
           <div className="col-12 d-flex justify-content-center mt-5">
+           
             <Audio type="Oval" color="#00BFFF" height={100} width={100} />
+            Please Wait
+      
           </div>
         ) : (
           productData.map((myproducts) => (

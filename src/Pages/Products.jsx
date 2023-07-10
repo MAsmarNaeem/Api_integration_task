@@ -45,7 +45,7 @@ function ProdctsPage() {
   const getProducts = async () => {
     try {
       const response = await fetch(
-        "https://dummyjson.com/products/?limit=10&skip=10&select=title,price,thumbnail"
+        `${process.env.REACT_APP_API_URL}/products/?limit=10&skip=10&select=title,price,thumbnail`
       );
       const data = await response.json();
       setPageCount(Math.ceil(data.total / itemsPerPage));
@@ -67,7 +67,7 @@ function ProdctsPage() {
     try {
       const skip = (currentPage - 1) * itemsPerPage;
       const response = await fetch(
-        `https://dummyjson.com/products/?_page=${currentPage}&limit=10&skip=${skip}&select=title,price,thumbnail`
+        `${process.env.REACT_APP_API_URL}/products/?_page=${currentPage}&limit=10&skip=${skip}&select=title,price,thumbnail`
       );
       const data = await response.json();
       return data.products;

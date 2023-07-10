@@ -11,6 +11,7 @@ const CheckoutPage = () => {
   const getMyUser = useSelector((store) => store.myTodo.Todo.data);
   const [itemCounts, setItemCounts] = useState({});
   const [showData, setShowData] = useState([]);
+  const [productData, setProductsData] = useState([]);
   const navigate = useNavigate();
   const userdata = getMyUser;
   const filteredItems = [...new Set(Array.from(userdata))];
@@ -29,7 +30,23 @@ const CheckoutPage = () => {
 
     countItems();
   }, [userdata]);
+  
+  useEffect(() => {
+    getProducts();
+  }, []);
 
+  const getProducts = async () => {
+    try {
+      const response = await fetch(
+        "https://dummyjson.com/products"
+      );
+      const data = await response.json();
+    
+      setProductsData(data.products);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
   const getTotalPrice = () => {
     let totalPrice = 0;
     for (const itemId in itemCounts) {
@@ -169,10 +186,12 @@ const CheckoutPage = () => {
           <div className="card " style={{border:"none"}}>
             {console.log("hlo",filteredItems)}
           {filteredItems.map((itemId) => {
-                  const product = products.find(
+          
+          
+                  const product = productData.find(
                     (product) => product.id == itemId
                   );
-                             console.log("products :",product);
+                 
                   if (product) {
                     return (
                       <div className="row ps-3 pt-2 text-center ps-4 ">
