@@ -10,7 +10,7 @@ import Footer from "../components/footer";
 const CheckoutPage = () => {
   const getMyUser = useSelector((store) => store.myTodo.Todo.data);
   const [itemCounts, setItemCounts] = useState({});
- 
+
   const [productData, setProductsData] = useState([]);
   const navigate = useNavigate();
   const userdata = getMyUser;
@@ -50,7 +50,7 @@ const CheckoutPage = () => {
   const getTotalPrice = () => {
     let totalPrice = 0;
     for (const itemId in itemCounts) {
-      const item = products.find((product) => product.id === itemId);
+      const item = products.find((product) => product.id == itemId);
       if (item) {
         const itemPrice = item.price * itemCounts[itemId];
         totalPrice += itemPrice;
@@ -189,7 +189,7 @@ const CheckoutPage = () => {
           
           
                   const product = productData.find(
-                    (product) => product.id === itemId
+                    (product) => product.id == itemId
                   );
                  
                   if (product) {

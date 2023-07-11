@@ -14,7 +14,7 @@ function ProductPage() {
   const [productData, setProductsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   //const [itemsPerPage, setItemsPerPage] = useState(10);
-  const itemsPerPage=10;
+  const itemsPerPage=8;
   const [pageCount, setPageCount] = useState(0);
   const [loader, setLoader] = useState(false); 
 
@@ -71,8 +71,9 @@ function ProductPage() {
   const dataLimit = async (currentPage) => {
     try {
       const skip = (currentPage - 1) * itemsPerPage;
+      const limit=8
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/products/?limit=10&skip=${skip}&select=title,price,thumbnail`
+        `${process.env.REACT_APP_API_URL}/products/?limit=${limit}&skip=${skip}&select=title,price,thumbnail`
       );
       const data = await response.json();
       return data.products;

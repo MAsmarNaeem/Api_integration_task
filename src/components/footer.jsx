@@ -36,12 +36,12 @@ const footer = () => {
           <h5>Follow Us</h5>
           <ul className="list-unstyled text-white">
             <li>
-              <a  className='text-white' target="_blank" href="https://www.facebook.com">
+              <a  className='text-white' target="_blank"  rel="noopener"  href="https://www.facebook.com">
                 <FaFacebook /> Facebook
               </a>
             </li>
             <li>
-              <a  className='text-white'  target="_blank" href="https://www.twitter.com">
+              <a  className='text-white'  target="_blank" rel="noopener"  href="https://www.twitter.com">
                 <FaTwitter /> Twitter
               </a>
             </li>
