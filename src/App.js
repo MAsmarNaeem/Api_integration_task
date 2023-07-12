@@ -10,6 +10,7 @@ import ProdctsPage from "./Pages/Products";
 import Productdetail from "./Pages/Productdetail";
 import CheckoutPage from "./Pages/CheckoutPage";
 import "./App.css"
+
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
       <Routes>
        
         <Route path="/" element={<HomePage />} />
+      
        <Route path="/ProdctsPage" element={<ProdctsPage />} /> 
        
         <Route path="/Productdetail/:paramid" element={<Productdetail />} />
