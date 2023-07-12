@@ -1,7 +1,7 @@
 
 import React from "react";
 import { NavLink } from "react-router-dom";
-import  "./Product"
+import  "./Product.css"
 
 const Product = ({ product, addCartItem, opencart }) => {
   const handleAddToCart = () => {
@@ -41,13 +41,9 @@ const Product = ({ product, addCartItem, opencart }) => {
           <button
             className="buttoncss  btn btn-info text-white pb-2 px-4 py-2"
             style={{
-              marginLeft: "30%",
-              marginRight: "5%",
-              marginBottom: "30px",
-              width: "40%",
-              maxWidth: "300px",
+             
             }}
-            type="button"
+            // type="button"
             onClick={handleAddToCart}
           >
             Add to Cart

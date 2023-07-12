@@ -1,7 +1,5 @@
-
-
 import React, { useEffect, useState } from "react";
-import Product from "../components/Product/Product";
+// import Product from "../components/Product";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import Carousel from "react-bootstrap/Carousel";
@@ -13,6 +11,7 @@ import { useDispatch } from "react-redux";
 import PaginationComponent from "../components/pagination";
 import { addvalue } from "../Store/CartSlice";
 import { addToCart } from "../Store/AddCartSlice";
+import Product from "../components/Product";
 
 function HomePage() {
   const [productData, setProductsData] = useState([]);
@@ -20,12 +19,11 @@ function HomePage() {
   const itemsPerPage = 8;
   const [pageCount, setPageCount] = useState(0);
   const [loader, setLoader] = useState(false);
-  const[skip,setskip]=useState(0)
-  
+  const [skip, setskip] = useState(0);
+
   const dispatch = useDispatch();
 
   const addCartItem = (id) => {
-   
     dispatch(addToCart(id));
   };
 
@@ -39,36 +37,29 @@ function HomePage() {
   const GetProducts = async (page) => {
     try {
       setLoader(true);
-    
-     
+
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/products/?limit=${itemsPerPage}&skip=${skip}&select=title,price,thumbnail`
       );
       const data = await response.json();
       setPageCount(Math.ceil(data.total / itemsPerPage));
       setProductsData(data.products);
-     // setLoader(false);
-      if(data.products.length==0)
-      {
-        alert("Error")
+      // setLoader(false);
+      if (data.products.length == 0) {
+        alert("Error");
       }
-    
     } catch (error) {
-    // setLoader(false)
+      // setLoader(false)
       console.log("Error fetching data:", error);
-      
-    //  alert("Kindly visit the website later");
+
+      //  alert("Kindly visit the website later");
+    } finally {
+      setLoader(false);
     }
-    finally
-    {
-      setLoader(false)
-    }
-  }
-  
+  };
 
   const handlePageChange = (selectedPage) => {
- 
-    setskip((selectedPage-1)*itemsPerPage)
+    setskip((selectedPage - 1) * itemsPerPage);
     setCurrentPage(selectedPage);
   };
 
@@ -88,7 +79,9 @@ function HomePage() {
               />
               <Carousel.Caption>
                 <h3>Welcome to our Store</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <p>
+                  Nulla vitae elit libero, a pharetra augue mollis interdum.
+                </p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -100,7 +93,9 @@ function HomePage() {
               />
               <Carousel.Caption>
                 <h3 className="text-info">Best Services Available</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <p>
+                  Nulla vitae elit libero, a pharetra augue mollis interdum.
+                </p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -112,7 +107,9 @@ function HomePage() {
               />
               <Carousel.Caption>
                 <h3 className="text-info">Quality Products</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <p>
+                  Nulla vitae elit libero, a pharetra augue mollis interdum.
+                </p>
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
@@ -148,5 +145,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
-
