@@ -17,6 +17,7 @@ function ProductPage() {
   const itemsPerPage = 8;
   const [pageCount, setPageCount] = useState(0);
   const [loader, setLoader] = useState(false);
+  const[skip,setskip]=useState(0)
   
   const dispatch = useDispatch();
 
@@ -29,35 +30,44 @@ function ProductPage() {
     dispatch(addvalue(true));
   };
   useEffect(() => {
-    fetchData(currentPage);
-  }, [currentPage]);
+    GetProducts(currentPage);
+  }, [skip]);
 
-  const fetchData = async (page) => {
+  const GetProducts = async (page) => {
     try {
       setLoader(true);
-      const skip = (page - 1) * itemsPerPage;
-      const limit = itemsPerPage;
+    
+     
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/products/?limit=${limit}&skip=${skip}&select=title,price,thumbnail`
+        `${process.env.REACT_APP_API_URL}/products/?limit=${itemsPerPage}&skip=${skip}&select=title,price,thumbnail`
       );
       const data = await response.json();
       setPageCount(Math.ceil(data.total / itemsPerPage));
       setProductsData(data.products);
-      setLoader(false);
+      //setLoader(false);
       if(data.products.length==0)
       {
         alert("Error")
       }
+    
     } catch (error) {
+     //setLoader(false)
       console.log("Error fetching data:", error);
-      alert("Kindly visit the website later");
+    // setLoader(false)
+     // alert("Kindly visit the website later");
+    }
+    finally
+    {
+      setLoader(false)
     }
   };
+  
 
   const handlePageChange = (selectedPage) => {
+ 
+    setskip((selectedPage-1)*itemsPerPage)
     setCurrentPage(selectedPage);
   };
-
   return (
     <div className="container-fluid">
       <Navbar color="bg-info" />
