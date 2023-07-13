@@ -1,13 +1,10 @@
 
 
-import React, { useEffect, useState } from "react";
-import Product from "../components/Product/Product";
+import React  from "react";
+
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import { Audio } from "react-loader-spinner";
 
-import { useDispatch } from "react-redux";
-import PaginationComponent from "../components/pagination";
 
 import AllProducts from "../components/Products/AllProducts";
 
