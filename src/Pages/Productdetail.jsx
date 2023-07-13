@@ -10,16 +10,16 @@ import { Audio } from "react-loader-spinner";
 
 const Productdetail = () => {
   const { paramid } = useParams();
-  // const [addcart, setaddcart] = useState([]);
   const [productData, setProductsData] = useState([]);
 
   useEffect(() => {
     getProducts();
   }, []);
+  console.log("products Data is :",productData);
 
   const getProducts = async () => {
     try {
-      const response = await fetch("//dummyjson.com/products");
+      const response = await fetch("//dummyjson.com/products?limit=100");
       const data = await response.json();
       setProductsData(data.products);
     } catch (error) {
@@ -27,21 +27,10 @@ const Productdetail = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const storedCart = localStorage.getItem("idkey");
-  //   if (storedCart) {
-  //     setaddcart(JSON.parse(storedCart));
-  //   }
-  // }, []);
+ 
 
   const dispatch = useDispatch();
   const addCartItem = (id) => {
-    // alert("Item Added Successfully");
-    // setaddcart((prevCart) => {
-    //   const updatedCart = [...prevCart, id];
-    //   localStorage.setItem("idkey", JSON.stringify(updatedCart));
-    //   return updatedCart;
-    // });
 
     dispatch(addToCart(id));
     dispatch(addvalue(true));
@@ -50,6 +39,7 @@ const Productdetail = () => {
   return (
     <div>
       <Navbar />
+      
       <div className="row justify-content-evenly mt-4 mt-5 mb-5">
         <div className="col-md-5">
           <div className="card">
@@ -59,8 +49,8 @@ const Productdetail = () => {
               </div>
             ) : (
               productData.map((product) => {
-                if (product.id === parseInt(paramid)) {
-                  console.log("test", product.id === paramid);
+                if (product.id == parseInt(paramid)) {
+                  console.log("test", product.id == paramid);
                   return (
                     <div key={product.id}>
                       <img
@@ -84,7 +74,7 @@ const Productdetail = () => {
               </div>
             ) : (
               productData.map((product) => {
-                if (product.id === parseInt(paramid)) { 
+                if (product.id == parseInt(paramid)) { 
                   return (
                     <div key={product.id}>
                       <div className="card-body">

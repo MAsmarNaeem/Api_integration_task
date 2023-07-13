@@ -27,7 +27,7 @@ function Sidebar(props) {
 
   const getProducts = async () => {
     try {
-      const response = await fetch("//dummyjson.com/products");
+      const response = await fetch("//dummyjson.com/products?limit=100");
       const data = await response.json();
       setProductData(data.products);
     } catch (error) {

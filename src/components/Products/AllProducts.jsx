@@ -11,7 +11,7 @@ import { addToCart } from "../../Store/AddCartSlice";
 const AllProducts = () => {
   const [productData, setProductsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+  const itemsPerPage = 16;
   const [pageCount, setPageCount] = useState(0);
   const [loader, setLoader] = useState(false);
   const [skip, setskip] = useState(0);
