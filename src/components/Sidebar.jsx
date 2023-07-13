@@ -13,7 +13,6 @@ import { removeFromCart } from "../Store/AddCartSlice";
 function Sidebar(props) {
   const store = useSelector((store) => store);
   const getStore = useSelector((store) => store);
-  //console.log("get store :", getStore.myTodo.Todo.data);
   const [show, setShow] = useState(store.addvalue.Todo.todos);
 
   const [cartItems, setCartItems] = useState([]);
