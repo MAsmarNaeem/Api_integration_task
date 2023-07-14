@@ -121,7 +121,10 @@ const Productdetail = () => {
           <div className="card">{renderProductDetails()}</div>
         </div>
       </div>
+      <div style={{marginTop:"500px"}}>
       <Footer />
+      </div>
+     
     </div>
   );
 };
