@@ -65,7 +65,7 @@ function HomePage() {
           </Carousel>
         </div>
       </div>
-
+ 
           <AllProducts/>
       <Footer />
     </div>

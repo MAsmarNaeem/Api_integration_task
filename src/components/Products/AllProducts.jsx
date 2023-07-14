@@ -15,10 +15,9 @@ const AllProducts = () => {
   const [pageCount, setPageCount] = useState(0);
   const [loader, setLoader] = useState(false);
   const [skip, setskip] = useState(0);
+ const[text,setText]=useState("")
+const[textSubmit,setTextSubmit]=useState("")
 
-  useEffect(() => {
-    GetProducts(currentPage);
-  }, [skip]);
 
   const dispatch = useDispatch();
 
@@ -55,15 +54,48 @@ const AllProducts = () => {
     setskip((selectedPage - 1) * itemsPerPage);
     setCurrentPage(selectedPage);
   };
+
+  const getValue=(e)=>
+  {
+   setText(e.target.value)
+  }
+  const sumitButtonSearch=()=>
+  {
+    setTextSubmit(text)
+    getSearchApi()
+  }
+  const getSearchApi= async()=>
+  {
+   
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/products/search?q=${textSubmit}`
+    );
+
+    const dataSearch = await response.json();
+   
+    setProductsData(dataSearch.products);
+   
+
+  }
+  useEffect(() => {
+    GetProducts(currentPage);
+    sumitButtonSearch()
+  }, [skip]);
+
   return (
-    <div>
+    <div className="mt-5">
+      <input type="text"  placeholder="Search"  onChange={getValue}/><button onClick={sumitButtonSearch}>Search</button>
+   
       {loader && (
-        <div className="col-12 d-flex justify-content-center mt-5">
+        <div className="col-12 d-flex justify-content-center ">
+         
+          
           <Audio type="Oval" color="#00BFFF" height={100} width={100} />
         </div>
       )}
 
       <div className="row mt-3">
+     
         {productData.map((myproducts) => (
           <Product
             key={myproducts.id}

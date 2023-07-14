@@ -9,7 +9,9 @@ const Product = ({ product, addCartItem, opencart }) => {
   };
 
   return (
-    <div className="col-md-3">
+   
+    <div className="col-md-3 ">
+     
       <div className="card mt-4 shadow cardcss">
         <img
           src={product.thumbnail}
