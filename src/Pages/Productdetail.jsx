@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useParams, usenavigate, useNavigate } from "react-router-dom";
+import {
+  useParams,
+  usenavigate,
+  useNavigate,
+  Router,
+  Navigate,
+} from "react-router-dom";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { addToCart } from "../Store/AddCartSlice";
@@ -10,7 +16,7 @@ import { Audio } from "react-loader-spinner";
 const Productdetail = () => {
   const { paramid } = useParams();
   const [productData, setProductsData] = useState([]);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getProducts();
@@ -46,7 +52,8 @@ const Productdetail = () => {
     );
 
     if (!selectedProduct) {
-      return <h3>Page Not Found</h3>;
+      navigate("/404");
+      return null;
     }
 
     return (
@@ -74,7 +81,8 @@ const Productdetail = () => {
     );
 
     if (!selectedProduct) {
-      return <h3>Page Not Found</h3>;
+      navigate("/404");
+      return null
     }
 
     return (
@@ -82,9 +90,7 @@ const Productdetail = () => {
         <h2 className="card-title">{selectedProduct.title}</h2>
         <p className="card-text">{selectedProduct.description}</p>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            Price: ${selectedProduct.price}
-          </li>
+          <li className="list-group-item">Price: ${selectedProduct.price}</li>
           <li className="list-group-item">
             Discount: {selectedProduct.discountPercentage}%
           </li>
@@ -121,10 +127,9 @@ const Productdetail = () => {
           <div className="card">{renderProductDetails()}</div>
         </div>
       </div>
-      <div style={{marginTop:"500px"}}>
-      <Footer />
+      <div style={{ marginTop: "500px" }}>
+        <Footer />
       </div>
-     
     </div>
   );
 };

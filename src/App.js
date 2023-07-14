@@ -10,6 +10,7 @@ import ProdctsPage from "./Pages/Products";
 import Productdetail from "./Pages/Productdetail";
 import CheckoutPage from "./Pages/CheckoutPage";
 import "./App.css"
+import ErrorPage from "./Pages/ErrorPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
        
         <Route path="/Productdetail/:paramid" element={<Productdetail />} />
         <Route path="/CheckoutPage" element={<CheckoutPage />} />
+        <Route path="/404" element={<ErrorPage/>} />
 
 
         <Route path="/signup" element={<Signup />} />
