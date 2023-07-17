@@ -83,9 +83,11 @@ const AllProducts = () => {
     setText(e.target.value);
   };
   const sumitButtonSearch = () => {
+    
     setTextSubmit(text);
     getSearchApi();
   };
+  console.log("text is :",textSubmit);
   const getSearchApi = async () => {
     try {
       const response = await fetch(
@@ -105,11 +107,13 @@ const AllProducts = () => {
     } finally {
     }
   };
-  useEffect(() => {});
+
   useEffect(() => {
     GetProducts(currentPage);
+    
     sumitButtonSearch();
-  }, [skip]);
+  }, [skip,text]);
+
 
   
   return (
@@ -120,7 +124,7 @@ const AllProducts = () => {
             position: "fixed",
             top: 30,
             zIndex: 10,
-            background: "blue",
+            background: "lightgrey",
             opacity: "0.8",
           }}
           className="d-inline p-4"
@@ -139,7 +143,7 @@ const AllProducts = () => {
           <br />
           <ul style={{ listStyle: "none" }}>
             {categories.map((category) => (
-              <li key={category} style={{ color: "white" }}>
+              <li key={category} style={{ color: "black" }}>
                 <label>
                   <input
                     type="radio"

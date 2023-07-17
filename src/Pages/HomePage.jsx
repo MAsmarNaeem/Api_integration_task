@@ -53,7 +53,7 @@ function HomePage() {
                 className="d-block w-100"
                 src={pic6}
                 alt="Third slide"
-                height={700}
+                height={500}
               />
               <Carousel.Caption>
                 <h3 className="text-info">Quality Products</h3>
