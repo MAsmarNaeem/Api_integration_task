@@ -25,7 +25,7 @@ function HomePage() {
                 className="d-block w-100"
                 src={pic4}
                 alt="First slide"
-                height={700}
+                height={500}
               />
               <Carousel.Caption>
                 <h3>Welcome to our Store</h3>
