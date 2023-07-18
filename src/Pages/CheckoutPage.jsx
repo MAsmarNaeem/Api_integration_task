@@ -92,7 +92,7 @@ const CheckoutPage = () => {
   return (
     <div>
       <Navbar />
-      <div className="mt-4  row mx-3 justify-content-evenly">
+      <div className="mt-5 pt-3  row mx-3 justify-content-evenly">
         <div className="col-md-5">
         <p className="text-white">Contact information</p>
           <p className="mt-4">

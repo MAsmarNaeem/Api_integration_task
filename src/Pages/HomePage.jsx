@@ -17,7 +17,7 @@ function HomePage() {
     <div className="container-fluid">
       <Navbar color="bg-info" />
 
-      <div className="row mt-5" style={{paddingTop:"50px"}}>
+      <div className="row mt-5" style={{paddingTop:"30px"}}>
         <div className="col">
           <Carousel>
             <Carousel.Item>
