@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import style from '../components/navbar.css';
 
+
 const NavbarCom = (props) => {
   const isLoggedIn = localStorage.getItem("key"); 
   
@@ -12,7 +13,7 @@ const NavbarCom = (props) => {
   };
 
   return (
-    <div className="bg-info row justify-content-center">
+    <div className="bg-info row justify-content-center" style={{ position: "fixed", width: "100%", top: 0, left: 0,zIndex:10 }}>
       <div className="col-md-3"></div>
       <div className="col-md-5">
         <Navbar expand="lg" className="">
@@ -21,10 +22,11 @@ const NavbarCom = (props) => {
               <h3 className={style.name}>
                 <Link to="/" className="text-decoration-none text-white ms-3">
                   My Shopping App
+                 
                 </Link>
                 <Link
                   to="/ProdctsPage"
-                  className="text-decoration-none text-white ms-4"
+                  className="text-decoration-none text-white ms-5"
                 >
                   Products
                 </Link>
@@ -55,7 +57,7 @@ const NavbarCom = (props) => {
                     <Nav.Link>
                       <h3>
                         <Link
-                          className="text-decoration-none text-white"
+                          className="text-decoration-none text-white "
                           to="/login"
                         >
                           Login
@@ -65,12 +67,13 @@ const NavbarCom = (props) => {
                     <Nav.Link>
                       <h3 style={{ zIndex: 1 }}>
                         <Link
-                          className="text-decoration-none text-white"
+                          className="text-decoration-none text-white ms-4"
                           to="/signup"
-                          style={{ marginRight: "490px" }}
+                          style={{ marginRight: "460px" }}
                         >
                           Signup
                         </Link>
+                        
                       </h3>
                     </Nav.Link>
                   </>

@@ -5,11 +5,13 @@ import { useDispatch } from "react-redux";
 import PaginationComponent from "../pagination";
 import { addvalue } from "../../Store/CartSlice";
 import { addToCart } from "../../Store/AddCartSlice";
+import { BsSearch } from "react-icons/bs";
+import "./AllProducts.css"
 
 const AllProducts = () => {
   const [productData, setProductsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 16;
+  const itemsPerPage = 10;
   const [pageCount, setPageCount] = useState(0);
   const [loader, setLoader] = useState(false);
   const [skip, setSkip] = useState(0);
@@ -119,6 +121,7 @@ const AllProducts = () => {
       );
 
       const dataSearch = await response.json();
+      setPageCount(Math.ceil(dataSearch.total / itemsPerPage));
 
       if (dataSearch.products.length === 0) {
         setProductsData(["Not Item Found"]);
@@ -145,6 +148,7 @@ const AllProducts = () => {
       );
 
       const dataSearch = await response.json();
+      setPageCount(Math.ceil(dataSearch.total / itemsPerPage));
       console.log("data search is :", dataSearch);
       console.log("selected option:", selectedOption);
 
@@ -173,22 +177,21 @@ const AllProducts = () => {
             position: "fixed",
             top: 30,
             zIndex: 10,
-            background: "lightgrey",
-            opacity: "0.8",
+          
+           // opacity: "0.8",
           }}
-          className="d-inline p-4"
+          className="d-inline p-2 CssSearch"
         >
           <input
             type="text"
             placeholder="Search"
-            className="form-control d-inline"
-            style={{ width: "350px" }}
+            className="form-control d-inline inputfield"
+            style={{ width: "300px" }}
             onChange={getValue}
             value={text}
           />
-          <button onClick={submitButtonSearch} className="btn btn-primary ms-2">
-            Search
-          </button>
+          
+          <BsSearch onClick={submitButtonSearch} style={{height:"50px",width:"30px"}}/>
           <br />
           <ul style={{ listStyle: "none" }}>
             {categories.map((category) => (
@@ -210,6 +213,7 @@ const AllProducts = () => {
       <div className="text-center">
         <button
           className="btn btn-primary ms-5"
+          style={{position:"fixed",zIndex:10}}
           onClick={() => setSearchButton(!searchButton)}
         >
           {searchButton ? "Hide" : "Search"}
