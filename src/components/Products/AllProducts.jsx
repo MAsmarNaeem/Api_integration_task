@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Product from "../Product/Product";
-import { Audio } from "react-loader-spinner";
+import { Bars } from "react-loader-spinner";
 import { useDispatch } from "react-redux";
 import PaginationComponent from "../pagination";
 import { addvalue } from "../../Store/CartSlice";
@@ -84,6 +84,7 @@ const AllProducts = () => {
   };
 
   const submitButtonSearch = () => {
+   
     setTextSubmit(text);
     getSearchApi();
   };
@@ -101,17 +102,18 @@ const AllProducts = () => {
       console.log(error);
     }
   };
-  console.log("Selected Option are :",selectedOption);
+  console.log("Selected Option are :", selectedOption);
 
   const handleOptionChange = (e) => {
     setSelectedOption(e.target.value);
     getCategory();
-   // getCategorytype()
+    // getCategorytype()
     // setText(e.target.value)
   };
 
   const getSearchApi = async () => {
     try {
+      setLoader(true)
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/products/search?q=${textSubmit}`
       );
@@ -124,13 +126,17 @@ const AllProducts = () => {
         setProductsData(dataSearch.products);
       }
     } catch (error) {
+    
       console.log(error);
+      
+    }finally{
+      setLoader(false)
     }
+
   };
-  useEffect(()=>
-  {
-    getCategorytype()
-  },[selectedOption])
+  useEffect(() => {
+    getCategorytype();
+  }, [selectedOption]);
 
   const getCategorytype = async () => {
     try {
@@ -139,8 +145,8 @@ const AllProducts = () => {
       );
 
       const dataSearch = await response.json();
-      console.log("data search is :",dataSearch);
-      console.log("selected option:",selectedOption);
+      console.log("data search is :", dataSearch);
+      console.log("selected option:", selectedOption);
 
       if (dataSearch.products.length === 0) {
         setProductsData(["Not Item Found"]);
@@ -155,7 +161,7 @@ const AllProducts = () => {
   useEffect(() => {
     GetProducts(currentPage);
     getCategory();
-  
+
     submitButtonSearch();
   }, [skip, text]);
 
@@ -211,7 +217,16 @@ const AllProducts = () => {
       </div>
       {loader && (
         <div className="col-12 d-flex justify-content-center ">
-          <Audio type="Oval" color="#00BFFF" height={100} width={100} />
+          {/* <Audio type="Oval" color="#00BFFF" height={400} width={400} /> */}
+          <Bars
+  height="400"
+  width="400"
+  color="lightgrey"
+  ariaLabel="bars-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+/>
         </div>
       )}
 
