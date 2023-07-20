@@ -1,7 +1,6 @@
-import logo from "./logo.svg";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import ProdctsPage from "./Pages/Products";
 import Productdetail from "./Pages/Productdetail";
@@ -10,8 +9,6 @@ import ErrorPage from "./Pages/ErrorPage";
 import SearchItems from "../src/Pages/SearchItems";
 
 function App() {
-  const navigate = useNavigate();
-
   return (
     <>
       <Routes>
@@ -23,11 +20,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
 
-      
-        <Route
-          path="*"
-          element={<ErrorPage  />}
-        />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
   );

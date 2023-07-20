@@ -25,7 +25,7 @@ const NavbarCom = (props) => {
             <Navbar.Brand href="/">
               <h3 className={style.name}>
                 <Link to="/" className="text-decoration-none text-white ms-3">
-                  My Shopping App
+                  Shopping App
                 </Link>
                 <Link
                   to="/ProdctsPage"
