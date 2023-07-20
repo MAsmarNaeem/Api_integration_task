@@ -13,7 +13,7 @@ function ErrorPage() {
   }, [navigate]);
 
   return (
-    <div className="text-center">
+    <div className="text-center pt-5">
         <div>
         <Navbar/>
       <h1 className="mt-5">

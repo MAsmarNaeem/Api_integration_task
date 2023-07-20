@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Product.css";
 
-const Product = ({ product, addCartItem, opencart }) => {
+const Product = ({ product, addCartItem, opencart,height }) => {
   const handleAddToCart = () => {
     addCartItem(product.id);
     opencart();

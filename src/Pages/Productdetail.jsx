@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  useParams,
-  
-  useNavigate,
-
-  
-} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { addToCart } from "../Store/AddCartSlice";
@@ -59,7 +53,7 @@ const Productdetail = () => {
     return (
       <div key={selectedProduct.id}>
         <img
-          className="card-img-top"
+          className="card-img-top mt-5"
           src={selectedProduct.images[0]}
           alt={selectedProduct.title}
         />
@@ -82,12 +76,12 @@ const Productdetail = () => {
 
     if (!selectedProduct) {
       navigate("/404");
-      return null
+      return null;
     }
 
     return (
-      <div className="card-body">
-        <h2 className="card-title">{selectedProduct.title}</h2>
+      <div className="card-body " style={{paddingTop:"90px"}}>
+        <h2 className="card-title ">{selectedProduct.title}</h2>
         <p className="card-text">{selectedProduct.description}</p>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">Price: ${selectedProduct.price}</li>
@@ -119,7 +113,7 @@ const Productdetail = () => {
   return (
     <div>
       <Navbar />
-      <div className="row justify-content-evenly mt-4 mt-5 mb-5">
+      <div className="row justify-content-evenly mt-4 mt-5 mb-5" style={{paddingTop:"100px"}}>
         <div className="col-md-5">
           <div className="card">{renderProductImage()}</div>
         </div>
