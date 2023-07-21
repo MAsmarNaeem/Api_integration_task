@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; 
+
 function UseLogin() {
   const [logindata, setlogindata] = useState({
     email: "",
@@ -29,8 +30,7 @@ function UseLogin() {
       seterror({ password: "Password Field is required" });
     } else {
     
-      axios
-        .post("https://dummyjson.com/auth/login", {
+      axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, {
           username: email,
           password: password,
         })
