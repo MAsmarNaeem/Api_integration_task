@@ -14,9 +14,9 @@ function HomePage() {
 
 
   return (
-    <div className="container-fluid">
+    <>
       <Navbar color="bg-info" />
-
+      <div className="container-fluid">
       <div className="row mt-5" style={{paddingTop:"50px"}}>
         <div className="col">
           <Carousel>
@@ -68,7 +68,8 @@ function HomePage() {
  
           <AllProducts/>
       <Footer />
-    </div>
+      </div>
+      </>
   );
 }
 

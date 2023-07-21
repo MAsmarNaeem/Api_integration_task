@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import "../components/Products/SearchIcon.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 
@@ -115,12 +115,19 @@ const SearchItems = () => {
   }, [selectedOption]); // Disable ESLint warning for this line
 
   return (
+    <>
+      {<span onClick={showInputField} className="nav-link">
+      
+        <BsSearch />
+       
+      </span>}
     <div style={{ position: "relative" }}>
-      <span onClick={showInputField}>
+
+      {/* <span onClick={showInputField}>
       
         <BsSearch style={{ width: "30px", height: "60px", color: "white" }} />
        
-      </span>
+      </span> */}
 
       {toggle && (
         <div>
@@ -205,7 +212,8 @@ const SearchItems = () => {
           </div>
         </div>
       )}
-    </div>
+      </div>
+      </>
   );
 };
 

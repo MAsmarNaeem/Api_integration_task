@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
@@ -100,13 +100,19 @@ function Sidebar(props) {
   return (
     <>
       <>
-      <span
+        <Link to="#"
+  className="nav-link"
+  onClick={handleShow}
+>
+  Cart
+</Link>
+      {/* <span
   className="ms-5 sidebar-title text-white name"
   style={{ fontFamily: 'Merriweather', fontSize: '16px' }}
   onClick={handleShow}
 >
   Cart
-</span>
+</span> */}
 
         <Offcanvas
           placement="end"
