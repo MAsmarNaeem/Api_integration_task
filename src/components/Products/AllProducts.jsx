@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Product from "../Product/Product";
 import { Bars } from "react-loader-spinner";
 import { useDispatch } from "react-redux";
-import PaginationComponent from "../pagination";
+import PaginationComponent from "../Pagination/pagination";
 import { addvalue } from "../../Store/CartSlice";
 import { addToCart } from "../../Store/AddCartSlice";
 import "./AllProducts.css";

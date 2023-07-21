@@ -1,7 +1,7 @@
 import React from "react";
 
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
+import Navbar from "../components/Layout/navbar";
+import Footer from "../components/Layout/footer";
 import Carousel from "react-bootstrap/Carousel";
 
 import pic4 from "../../src/Pages/images/image111.jpg";
@@ -17,7 +17,7 @@ function HomePage() {
     <>
       <Navbar color="bg-info" />
       <div className="container-fluid">
-      <div className="row mt-5" style={{paddingTop:"50px"}}>
+      <div className="row mt-2">
         <div className="col">
           <Carousel>
             <Carousel.Item>

@@ -1,12 +1,10 @@
-// Import necessary modules and dependencies
 
 import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import UseLogin from "../customHooks/UseLogin";
-import "../App.css";
+import UseLogin from "../../customHooks/UseLogin";
 import { NavLink } from "react-router-dom";
-import Navbar from "../components/navbar";
-import "../App.css";
+import Navbar from "../../components/Layout/navbar";
+import  "./Login.css"
 
 function Login() {
   const { getdata, submitbutton, error, logindata } = UseLogin();

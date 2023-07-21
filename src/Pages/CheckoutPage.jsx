@@ -1,11 +1,11 @@
 import React from "react";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Layout/navbar";
 import { useNavigate } from "react-router-dom";
 import products from "../Products/Products.json";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import Footer from "../components/footer";
+import Footer from "../components/Layout/footer";
 const CheckoutPage = () => {
   const getMyUser = useSelector((store) => store.myTodo.Todo.data);
   const [itemCounts, setItemCounts] = useState({});

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
-import "../components/Products/SearchIcon.css";
+import "./SearchIcon.css";
 import { Link, NavLink } from "react-router-dom";
 
 
@@ -116,7 +116,7 @@ const SearchItems = () => {
 
   return (
     <>
-      {<span onClick={showInputField} className="nav-link">
+      {<span onClick={showInputField} style={{fontSize:"30px"}} className="nav-link">
       
         <BsSearch />
        
@@ -149,7 +149,7 @@ const SearchItems = () => {
             <div className="row">
             
               <div className="col-md-3 d-flex">
-                <ul style={{ listStyle: "none", marginLeft: "-30px" }}>
+                <ul style={{ listStyle: "none", marginLeft: "-30px",marginTop:"44px" }}>
                   {categories.map((category) => (
                     <li key={category} style={{ color: "black" }}>
                       <label>
@@ -173,18 +173,18 @@ const SearchItems = () => {
               right: 700,
               zIndex: 10,
             }}
-            className="d-inline p-2 CssSearch "
+            className="d-inline p-2 "
           >
             <input
               type="text"
               placeholder="Search"
-              className="form-control d-inline inputfield"
+              className="form-control d-inline "
               style={{ width: "240px" }}
               onChange={getValue}
               value={text}
             />
 
-            <BsSearch onClick={submitButtonSearch} style={{ height: "50px", width: "30px" }} />
+            <BsSearch onClick={submitButtonSearch} style={{ height: "50px", width: "40px" }}className="ps-2" />
 
             <br />
           </div>

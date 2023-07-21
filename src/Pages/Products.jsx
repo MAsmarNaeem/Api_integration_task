@@ -2,8 +2,8 @@
 
 import React  from "react";
 
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
+import Navbar from "../components/Layout/navbar";
+import Footer from "../components/Layout/footer";
 
 
 import AllProducts from "../components/Products/AllProducts";
@@ -14,10 +14,12 @@ function ProductPage() {
 
   
   return (
-    <div className="container-fluid">
+    <>
       <Navbar color="bg-info" />
 
-      <div className="row mt-5">
+    <div className="container-fluid">
+    
+      <div className="row ">
         <div className="col">
           
         </div>
@@ -27,6 +29,7 @@ function ProductPage() {
  <AllProducts/>
       <Footer />
     </div>
+    </>
   );
 }
 

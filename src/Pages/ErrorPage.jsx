@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import  Navbar  from "../components/navbar";
+import Navbar from "../components/Layout/navbar";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/footer";
+import Footer from "../components/Layout/footer";
 import {  Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 

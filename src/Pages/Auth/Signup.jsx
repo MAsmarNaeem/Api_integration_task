@@ -1,11 +1,11 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import UseSignup from "../customHooks/UseSignup";
+import UseSignup from "../../customHooks/UseSignup";
 import { NavLink } from "react-router-dom";
 
-import Navbar from "../components/navbar";
+import Navbar from "../../components/Layout/navbar";
 
-import "../App.css"
+import "./Login.css"
 
 function Signup() {
   const { getUserData, addDataButton,error } = UseSignup();

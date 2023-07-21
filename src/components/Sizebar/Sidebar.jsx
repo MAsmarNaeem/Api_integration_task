@@ -5,9 +5,9 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link, NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addvalue } from "../Store/CartSlice";
-import { addToCart } from "../Store/AddCartSlice";
-import { removeFromCart } from "../Store/AddCartSlice";
+import { addvalue } from "../../Store/CartSlice";
+import { addToCart } from "../../Store/AddCartSlice";
+import { removeFromCart } from "../../Store/AddCartSlice";
 //import style from "../components/navbar.css";
 
 function Sidebar(props) {
@@ -102,6 +102,7 @@ function Sidebar(props) {
       <>
         <Link to="#"
   className="nav-link"
+  style={{fontSize:"30px"}}
   onClick={handleShow}
 >
   Cart
