@@ -13,6 +13,7 @@ const SearchItems = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [productData, setProductsData] = useState([]);
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line 
   const[error,seterror]=useState("")
 
 
@@ -123,44 +124,24 @@ const SearchItems = () => {
 
       {toggle && (
         <div>
-           <p>{error}</p>
-          <div
-            style={{
-              position: "fixed",
-              top: 60,
-              right: 650,
-              zIndex: 10,
-            }}
-            className="d-inline p-2 CssSearch"
-          >
-            <input
-              type="text"
-              placeholder="Search"
-              className="form-control d-inline inputfield"
-              style={{ width: "240px" }}
-              onChange={getValue}
-              value={text}
-            />
-
-            <BsSearch onClick={submitButtonSearch} style={{ height: "50px", width: "30px" }} />
-
-            <br />
-          </div>
+         
+        
           <div></div>
           <div
             style={{
               position: "fixed",
-              top: 125,
-              right: 650,
+              top: 105,
+              right: 250,
               zIndex: 10,
               width: "1100px",
-              height: "500px",
+              height: "auto",
             }}
             className="d-inline p-2 CssSearch"
           >
             <div></div>
             <div className="row">
-              <div className="col-md-4">
+            
+              <div className="col-md-3 d-flex">
                 <ul style={{ listStyle: "none", marginLeft: "-30px" }}>
                   {categories.map((category) => (
                     <li key={category} style={{ color: "black" }}>
@@ -177,8 +158,30 @@ const SearchItems = () => {
                   ))}
                 </ul>
               </div>
-              <div className="col-md-8">
-                <div className="products-container">
+              <div className="col-md-8 d-inline">
+              <div
+            style={{
+              position: "fixed",
+              
+              right: 700,
+              zIndex: 10,
+            }}
+            className="d-inline p-2 CssSearch "
+          >
+            <input
+              type="text"
+              placeholder="Search"
+              className="form-control d-inline inputfield"
+              style={{ width: "240px" }}
+              onChange={getValue}
+              value={text}
+            />
+
+            <BsSearch onClick={submitButtonSearch} style={{ height: "50px", width: "30px" }} />
+
+            <br />
+          </div>
+                <div className="products-container pt-3">
                   {loading ? (
                     <p>Loading...</p>
                   ) : (
