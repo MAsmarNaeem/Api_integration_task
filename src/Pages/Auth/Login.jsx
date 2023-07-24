@@ -27,7 +27,7 @@ function Login() {
                   onChange={getdata}
                   value={logindata.email}
                   name="email"
-                  style={{borderBottom:"red",}}
+                
                 />
               </Form.Group>
               <Form.Text className="error-text">

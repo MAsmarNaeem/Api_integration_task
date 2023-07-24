@@ -14,8 +14,8 @@ function Signup() {
    <div >
     <Navbar/>
      <Container>
-      <Row className="justify-content-center pt-4" >
-        <Col md={6} className="mt-4">
+      <Row className="justify-content-center " >
+        <Col md={6} >
           <h2 className="text-center mb-4 mt-5">Create an Account</h2>
           <Form method="post" onSubmit={addDataButton}>
             <Form.Group controlId="formBasicName">

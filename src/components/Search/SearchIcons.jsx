@@ -121,13 +121,9 @@ const SearchItems = () => {
         <BsSearch />
        
       </span>}
-    <div style={{ position: "relative" }}>
+    <div className="custom-pos">
 
-      {/* <span onClick={showInputField}>
-      
-        <BsSearch style={{ width: "30px", height: "60px", color: "white" }} />
-       
-      </span> */}
+    
 
       {toggle && (
         <div>
@@ -149,7 +145,7 @@ const SearchItems = () => {
             <div className="row">
             
               <div className="col-md-3 d-flex">
-                <ul style={{ listStyle: "none", marginLeft: "-30px",marginTop:"44px" }}>
+                <ul  className="list-styling">
                   {categories.map((category) => (
                     <li key={category} style={{ color: "black" }}>
                       <label>

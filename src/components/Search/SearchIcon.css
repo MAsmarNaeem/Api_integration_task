@@ -1,4 +1,4 @@
-/* Add this CSS to your existing CSS file or styles section */
+
 
 .products-container {
     display: flex;
@@ -14,4 +14,23 @@
     border: 1px solid #ccc;
     text-align: center;
   }
-  
+  .custom-font{
+    font-size: 30px !important;
+  }
+  .custom-pos{
+    position: relative;
+  }
+  .Css-Search{
+    position: "fixed";
+    top: 105;
+    right: 250;
+   
+    z-index: 10;
+    width: 1100px;
+    height: auto;
+  }
+  .list-styling{
+    list-style: none;
+    margin-left: -30px;
+    margin-top: 40px;
+  }

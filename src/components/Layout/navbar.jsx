@@ -14,9 +14,9 @@ const NavbarCom = (props) => {
 
   return (
     <>
-      <Navbar expand="lg" className="bg-info" sticky="top" variant="light">
+      <Navbar expand="lg" className="bg-info" sticky="top" variant="light" >
         <Container fluid>
-          <Link className="nav-link " to="/" class="font">
+          <Link className="nav-link custom-font" to="/" >
             My Shopping App
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -24,8 +24,7 @@ const NavbarCom = (props) => {
             <Nav className="me-auto">
               <Link
                 to="/ProdctsPage"
-                className="nav-link"
-                
+                className="nav-link"               
                 style={{ fontSize: "30px" }}
               >
                 Products

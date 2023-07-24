@@ -107,13 +107,7 @@ function Sidebar(props) {
 >
   Cart
 </Link>
-      {/* <span
-  className="ms-5 sidebar-title text-white name"
-  style={{ fontFamily: 'Merriweather', fontSize: '16px' }}
-  onClick={handleShow}
->
-  Cart
-</span> */}
+  
 
         <Offcanvas
           placement="end"
@@ -141,7 +135,8 @@ function Sidebar(props) {
                             <div className="  product-image">
                               <img
                                 src={product.thumbnail}
-                                style={{ height: "110px" }}
+                                // style={{ height: "110px" }}
+                                height="110px"
                                 alt=""
                               />
                             </div>
@@ -197,8 +192,8 @@ function Sidebar(props) {
                   }
                 })}
                 <div
-                  className="pt-4 ps-2 px-5 py-2"
-                  style={{ width: "450px", borderRadius: "4px" }}
+                  className="pt-4 ps-2 px-5 py-2 checkout-css"
+                  // style={{ width: "450px", borderRadius: "4px" }}
                 >
                   <h3 className="bg-info">Total :${getTotalPrice()}</h3>
                   <NavLink

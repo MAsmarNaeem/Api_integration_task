@@ -7,9 +7,11 @@ import { useDispatch } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
 import { Audio } from "react-loader-spinner";
 
+
 const Productdetail = () => {
   const { paramid } = useParams();
   const [productData, setProductsData] = useState([]);
+  const [loading, setLoading] = useState(true); // Add a loading state
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,8 +23,10 @@ const Productdetail = () => {
       const response = await fetch("//dummyjson.com/products?limit=100");
       const data = await response.json();
       setProductsData(data.products);
+      setLoading(false); 
     } catch (error) {
       console.log("Error:", error);
+      setLoading(false); 
     }
   };
 
@@ -33,7 +37,7 @@ const Productdetail = () => {
   };
 
   const renderProductImage = () => {
-    if (productData.length === 0) {
+    if (loading) {
       return (
         <div className="col-12 d-flex justify-content-center mt-5">
           <Audio type="Oval" color="#00BFFF" height={100} width={100} />
@@ -62,7 +66,7 @@ const Productdetail = () => {
   };
 
   const renderProductDetails = () => {
-    if (productData.length === 0) {
+    if (loading) {
       return (
         <div className="col-12 d-flex justify-content-center mt-5">
           <Audio type="Oval" color="#00BFFF" height={100} width={100} />
@@ -80,7 +84,7 @@ const Productdetail = () => {
     }
 
     return (
-      <div className="card-body " style={{paddingTop:"90px"}}>
+      <div className="card-body " >
         <h2 className="card-title ">{selectedProduct.title}</h2>
         <p className="card-text">{selectedProduct.description}</p>
         <ul className="list-group list-group-flush">
@@ -113,13 +117,24 @@ const Productdetail = () => {
   return (
     <div>
       <Navbar />
-      <div className="row justify-content-evenly mt-4 mt-5 mb-5" style={{paddingTop:"100px"}}>
-        <div className="col-md-5">
-          <div className="card">{renderProductImage()}</div>
-        </div>
-        <div className="col-md-5">
-          <div className="card">{renderProductDetails()}</div>
-        </div>
+      <div
+        className="row justify-content-evenly mt-4 mt-5 mb-5"
+   
+      >
+        {loading ? (
+          <div className="col-12 d-flex justify-content-center mt-5">
+            <Audio type="Oval" color="#00BFFF" height={100} width={100} />
+          </div>
+        ) : (
+          <>
+            <div className="col-md-5">
+              <div className="card">{renderProductImage()}</div>
+            </div>
+            <div className="col-md-5">
+              <div className="card">{renderProductDetails()}</div>
+            </div>
+          </>
+        )}
       </div>
       <div>
         <Footer />

@@ -63,7 +63,7 @@ const AllProducts = () => {
     <div className="mt-5">
       {loader && (
         <div className="col-12 d-flex justify-content-center ">
-          <p>{error}</p>
+       
           <Bars
             height="400"
             width="400"

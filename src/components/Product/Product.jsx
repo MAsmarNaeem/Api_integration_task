@@ -41,7 +41,7 @@ const Product = ({ product, addCartItem, opencart,height }) => {
           </div>
           <button
             className="buttoncss  btn btn-info text-white pb-2 px-4 py-2"
-            style={{}}
+          
          
             onClick={handleAddToCart}
           >
