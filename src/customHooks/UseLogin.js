@@ -42,7 +42,7 @@ function UseLogin() {
           if(data.id===15)
           {
             localStorage.setItem("token",JSON.stringify(response.data.token))
-            navigate("/");
+            navigate("/dashboard");
           }
           else{
             alert("incorrect details")

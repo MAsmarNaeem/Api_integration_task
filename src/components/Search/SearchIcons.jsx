@@ -7,8 +7,8 @@ import { NavLink } from "react-router-dom";
 
 const SearchItems = () => {
   const [toggle, setToggle] = useState(false);
-  const [text, setText] = useState("");
-  const [textSubmit, setTextSubmit] = useState("");
+  const [text, setText] = useState("laptop");
+ // const [textSubmit, setTextSubmit] = useState("");
   const [categories, setCategories] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
   const [productData, setProductsData] = useState([]);
@@ -29,9 +29,9 @@ const SearchItems = () => {
     setText(e.target.value);
   };
 
-  const submitButtonSearch = () => {
-    setTextSubmit(text);
-  };
+  // const submitButtonSearch = () => {
+  //   setTextSubmit(text);
+  // };
 
   const getCategory = async () => {
     try {
@@ -72,33 +72,39 @@ const SearchItems = () => {
 
  
 
+// ... (previous code remains unchanged)
 
-  const getSearchApi = async () => {
-    try {
-      if (!textSubmit) {
-        setProductsData([]);
-        return;
-      }
-
+const getSearchApi = async () => {
+  try {
+    if (text.length >= 3) {
       setLoading(true);
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/products/search?q=${textSubmit}`
+        `${process.env.REACT_APP_API_URL}/products/search?q=${text}`
       );
 
       const dataSearch = await response.json();
+      console.log("data search",dataSearch.products.length===null);
 
-      if (dataSearch.products.length === 0) {
+      if (dataSearch.products.length === null) {
+      //  console.log("data search:",dataSearch.products);
+      
         setProductsData(["Not Item Found"]);
       } else {
         setProductsData(dataSearch.products);
       }
-    } catch (error) {
-     
-      seterror(error)
-    } finally {
-      setLoading(false);
+    } else {
+      setProductsData([]);
     }
-  };
+  } catch (error) {
+    seterror(error);
+  } finally {
+    setLoading(false);
+  }
+};
+
+// ... (rest of the code remains unchanged)
+
+
 
   useEffect(() => {
     getCategory();
@@ -106,8 +112,8 @@ const SearchItems = () => {
 
   useEffect(() => {
     getSearchApi();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [textSubmit]);
+   
+  }, [text]);
 
   useEffect(() => {
     getCategorytype();
@@ -180,7 +186,7 @@ const SearchItems = () => {
               value={text}
             />
 
-            <BsSearch onClick={submitButtonSearch} style={{ height: "50px", width: "40px" }}className="ps-2 iconcursor" />
+            {/* <BsSearch onClick={submitButtonSearch} style={{ height: "50px", width: "40px" }}className="ps-2 icon-cursor" /> */}
 
             <br />
           </div>

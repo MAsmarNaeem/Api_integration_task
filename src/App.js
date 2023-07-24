@@ -7,6 +7,8 @@ import ProdctsPage from "./Pages/Products";
 import Productdetail from "./Pages/Productdetail";
 import CheckoutPage from "./Pages/CheckoutPage";
 import ErrorPage from "./Pages/ErrorPage";
+import Dashboard from "./Pages/dashboard";
+import User from "./Pages/User";
 
 
 function App() {
@@ -16,8 +18,9 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
-      
-        <Route path="/products" element={<ProdctsPage />} />
+       <Route path="/products" element={<ProdctsPage />} />
+       <Route path="/dashboard" element={<Dashboard/>} />
+       <Route path="/user" element={<User/>} />
         <Route path="/product/:paramid" element={<Productdetail />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/signup" element={<Signup />} />

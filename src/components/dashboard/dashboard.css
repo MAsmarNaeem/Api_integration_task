@@ -1,0 +1,19 @@
+
+footer{
+    position: fixed;
+    margin-top: 500px !important;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+.customcss{
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 4rem;
+   
+}
