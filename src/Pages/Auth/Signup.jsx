@@ -85,7 +85,7 @@ function Signup() {
               Sign Up
             </Button>
              </Form>
-          <p className="mt-4">Already have a account  <span><NavLink to="/Login">Login</NavLink></span></p>
+          <p className="mt-4">Already have a account  <span><NavLink to="/login">Login</NavLink></span></p>
          
         </Col>
       </Row>

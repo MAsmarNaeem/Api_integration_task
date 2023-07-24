@@ -6,7 +6,7 @@ import SearchItems from "../Search/SearchIcons";
 import "./navbar.css";
 
 const NavbarCom = (props) => {
-  const isLoggedIn = localStorage.getItem("key");
+  const isLoggedIn = localStorage.getItem("token");
 
   const logoutFun = () => {
     localStorage.clear();

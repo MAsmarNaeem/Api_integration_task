@@ -1,15 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; 
 
 function UseLogin() {
   const [logindata, setlogindata] = useState({
-    username: "",
-    firstName: "",
+    email: "",
+    password: "",
   });
-  const[authData,setAuthData]=useState("")
 
-      // eslint-disable-next-line
   const [error, seterror] = useState({});
   const navigate = useNavigate();
 
@@ -21,45 +19,44 @@ function UseLogin() {
       [name]: value,
     }));
   };
-    useEffect(()=>
-    {
-     //submitbutton()
-     
-
-    },[logindata])
-    console.log("authdata",authData);
-  
+//console.log("login data :",logindata);
 
   const submitbutton = (e) => {
     e.preventDefault();
-    const { username, firstName } = logindata;
-    console.log("username is :",username);
-    console.log("username is :",firstName);
-    if (username === "") {
-      seterror({ username: "username Field is required" });
-    }  else if (firstName === "") {
-      seterror({ firstName: "firstName Field is required" });
+    const { email, password } = logindata;
+    if (email === "") {
+      seterror({ email: "Email Field is required" });
+    }  else if (password === "") {
+      seterror({ password: "Password Field is required" });
     } else {
     
-      axios.post(`https://dummyjson.com/auth/login`, {
-          username: username,
-          firstName: firstName,
+      axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, {
+          username: email,
+          password: password,
         })
         .then((response) => {
-     
-            setAuthData(response.data)
-        //  const data = response.data;
-    //    console.log("autj",authData.username,"log",logindata.username,"authpass",authData.firstName,"authuser",authData.firstName);
-          
+          console.log("resposse is :",response);
+         // console.log("API Response:", response.data);
         
-          if (authData.username === logindata.username && authData.firstName === logindata.firstName) {
+          const data = response.data;
+          if(data.id===15)
+          {
+            localStorage.setItem("token",JSON.stringify(response.data.token))
             navigate("/");
           }
-         
           else{
             alert("incorrect details")
           }
-
+        
+          // if (data.success) {
+          //   console.log("data.success:",data.success);
+           
+          //   alert("User logged in successfully");
+          //   navigate("/");
+          // } else {
+           
+          //   alert("Incorrect details");
+          // }
         })
         .catch((error) => {
           console.log("Error:", error);
