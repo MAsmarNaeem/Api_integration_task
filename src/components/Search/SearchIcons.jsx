@@ -116,7 +116,7 @@ const SearchItems = () => {
 
   return (
     <>
-      {<span onClick={showInputField} style={{fontSize:"30px"}} className="nav-link">
+      {<span onClick={showInputField}  className="nav-link">
       
         <BsSearch />
        

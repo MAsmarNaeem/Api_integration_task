@@ -11,7 +11,7 @@ import { Audio } from "react-loader-spinner";
 const Productdetail = () => {
   const { paramid } = useParams();
   const [productData, setProductsData] = useState([]);
-  const [loading, setLoading] = useState(true); // Add a loading state
+  const [loading, setLoading] = useState(true); 
   const navigate = useNavigate();
 
   useEffect(() => {

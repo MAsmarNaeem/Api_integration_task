@@ -1,9 +1,13 @@
 
-.name{
+/* .name{
     font-family: 'Poppins', sans-serif;
-}
-.custom-font{
+} */
+/* .custom-font{
     font-size: 25px !important;
     text-decoration: none !important;
     color: black;
+} */
+
+.nav-link{
+    font-size: 1.5rem !important;
 }
