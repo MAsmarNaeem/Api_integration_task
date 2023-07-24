@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Sidebar from "../Sizebar/Sidebar";
+import Sidebar from "../Sidebar/Sidebar";
 import SearchItems from "../Search/SearchIcons";
 import "./navbar.css";
 

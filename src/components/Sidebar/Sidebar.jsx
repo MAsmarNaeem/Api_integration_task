@@ -136,7 +136,8 @@ function Sidebar(props) {
                               <img
                                 src={product.thumbnail}
                                 // style={{ height: "110px" }}
-                                height="110px"
+
+                                height="150px"
                                 alt=""
                               />
                             </div>

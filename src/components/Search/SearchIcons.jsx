@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import "./SearchIcon.css";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 

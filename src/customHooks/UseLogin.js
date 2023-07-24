@@ -35,8 +35,7 @@ function UseLogin() {
           password: password,
         })
         .then((response) => {
-         // console.log("API Response:", response.data);
-        
+      
           const data = response.data;
           if(data.id===15)
           {
@@ -45,16 +44,7 @@ function UseLogin() {
           else{
             alert("incorrect details")
           }
-        
-          // if (data.success) {
-          //   console.log("data.success:",data.success);
-           
-          //   alert("User logged in successfully");
-          //   navigate("/");
-          // } else {
-           
-          //   alert("Incorrect details");
-          // }
+
         })
         .catch((error) => {
           console.log("Error:", error);
