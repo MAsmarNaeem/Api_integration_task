@@ -49,7 +49,7 @@ const CheckoutPage = () => {
     let totalPrice = 0;
     for (const itemId in itemCounts) {
        // eslint-disable-next-line
-      const item = products.find((product) => product.id == itemId);
+      const item = productData.find((product) => product.id == itemId);
       if (item) {
         const itemPrice = item.price * itemCounts[itemId];
         totalPrice += itemPrice;
@@ -231,14 +231,7 @@ const CheckoutPage = () => {
                           <li className="list-group-item">
                             Brand: {product.brand}
                           </li>
-                          {/* <Button variant="info" className="checkout-button"> */}
-                          {/* <NavLink
-                                to={`/CheckoutPage/${product.id}`}
-                                className="text-decoration-none text-white px-3 text-center py-1 btn btn-info"
-                              >
-                                Go to Checkout
-                              </NavLink> */}
-                          {/* </Button> */}
+                       
                         </ul>
                       </div>
                     </div>

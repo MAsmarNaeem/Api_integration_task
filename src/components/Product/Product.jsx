@@ -31,7 +31,7 @@ const Product = ({ product, addCartItem, opencart,height }) => {
         >
           <div className="card-body text-center mt-3">
             <NavLink
-              to={`/Productdetail/${product.id}`}
+              to={`/product/${product.id}`}
               className="text-decoration-none text-danger"
             >
               <h5 className="card-title text-info">{product.title}</h5>

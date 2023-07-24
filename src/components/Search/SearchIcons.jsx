@@ -116,7 +116,7 @@ const SearchItems = () => {
 
   return (
     <>
-      {<span onClick={showInputField}  className="nav-link">
+      {<span onClick={showInputField}  className="nav-link iconcursor" >
       
         <BsSearch />
        
@@ -180,7 +180,7 @@ const SearchItems = () => {
               value={text}
             />
 
-            <BsSearch onClick={submitButtonSearch} style={{ height: "50px", width: "40px" }}className="ps-2" />
+            <BsSearch onClick={submitButtonSearch} style={{ height: "50px", width: "40px" }}className="ps-2 iconcursor" />
 
             <br />
           </div>

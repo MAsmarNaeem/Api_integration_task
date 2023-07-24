@@ -17,11 +17,11 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
       
-        <Route path="/ProdctsPage" element={<ProdctsPage />} />
-        <Route path="/Productdetail/:paramid" element={<Productdetail />} />
-        <Route path="/CheckoutPage" element={<CheckoutPage />} />
+        <Route path="/products" element={<ProdctsPage />} />
+        <Route path="/product/:paramid" element={<Productdetail />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/Login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
 
       
         <Route

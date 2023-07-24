@@ -16,8 +16,8 @@ function Login() {
         <Row className="justify-content-center d-flex">
           <Col md={7} className="mt-4 login-container">
             <h1 className="login-heading" style={{fontSize:"60px"}}>   Log In</h1>
-            <Form method="post" onSubmit={submitbutton} className="login-form">
-              <Form.Group controlId="formBasicEmail"  className="textcss">
+            <Form method="post" className="login-form">
+              <Form.Group   className="textcss">
                 {/* <Form.Label>Username</Form.Label> */}
                 <Form.Control
                   type="text "
@@ -25,13 +25,13 @@ function Login() {
                   placeholder="Enter username"
                   required
                   onChange={getdata}
-                  value={logindata.email}
-                  name="email"
+                  value={logindata.username}
+                  name="username"
                 
                 />
               </Form.Group>
               <Form.Text className="error-text">
-                {error.email !== undefined && error.email && error.email}
+                {/* {error.email !== undefined && error.email && error.email} */}
               </Form.Text>
 
               <Form.Group controlId="formBasicPassword"  className="textcss">
@@ -46,12 +46,12 @@ function Login() {
                 />
               </Form.Group>
               <Form.Text className="error-text">
-                {error.password !== undefined &&
+                {/* {error.password !== undefined &&
                   error.password &&
-                  error.password}
+                  error.password} */}
               </Form.Text>
 
-              <Button variant="info" type="submit" className="mt-3">
+              <Button variant="info" type="submit" className="mt-3" onClick={submitbutton}>
                 Log In
               </Button>
               <p className="mt-4 login-footer" style={{fontSize:"20px"}}>

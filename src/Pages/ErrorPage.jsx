@@ -13,7 +13,7 @@ function ErrorPage() {
   }, [navigate]);
 
   return (
-    <div className="text-center pt-5">
+    <div className="text-center ">
         <div>
         <Navbar/>
       <h1 className="mt-5">
@@ -22,7 +22,7 @@ function ErrorPage() {
       <h6>SORRY! PAGE YOU ARE LOOKING CAN’T BE FOUND.</h6>
       <Nav.Link>
       Go back to the 
-                        <Link
+                   &nbsp; <Link
                           className=""
                           to="/"
                         >

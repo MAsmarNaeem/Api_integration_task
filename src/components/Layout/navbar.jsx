@@ -23,10 +23,10 @@ const NavbarCom = (props) => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Link
-                to="/ProdctsPage"
-              //  className="nav-link "  
+                to="/products"
+             
                 className="nav-link "               
-             //    style={{ fontSize: "30px" }}
+             
               >
                 Products
               </Link>
@@ -35,7 +35,7 @@ const NavbarCom = (props) => {
                   to="/login"
                   className="nav-link"
                   onClick={logoutFun}
-                //  style={{ fontSize: "30px" }}
+               
                 >
                   Logout
                 </Link>
@@ -44,14 +44,14 @@ const NavbarCom = (props) => {
                   <Link
                     to="/login"
                     className="nav-link"
-                    // style={{ fontSize: "30px" }}
+                   
                   >
                     Login
                   </Link>
                   <Link
                     to="/signup"
                     className="nav-link"
-                    // style={{ fontSize: "30px" }}
+                  
                   >
                     signup
                   </Link>

@@ -198,7 +198,7 @@ function Sidebar(props) {
                 >
                   <h3 className="bg-info">Total :${getTotalPrice()}</h3>
                   <NavLink
-                    to={`/CheckoutPage`}
+                    to={`/checkout`}
                     className="text-decoration-none text-white px-3 text-center py-1 btn btn-info"
                   >
                     Go to Checkout
@@ -211,7 +211,7 @@ function Sidebar(props) {
                 <div className="pt-4 ps-2 px-2 py-2">
                   {/* <h3 className="bg-info">Total :${getTotalPrice()}</h3> */}
                   <NavLink
-                    to={`/ProdctsPage`}
+                    to={`/products`}
                     className="text-decoration-none text-white px-3 text-center py-1 btn btn-info"
                   >
                     Go to Collections

@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; 
 
 function UseLogin() {
   const [logindata, setlogindata] = useState({
-    email: "",
-    password: "",
+    username: "",
+    firstName: "",
   });
+  const[authData,setAuthData]=useState("")
 
+      // eslint-disable-next-line
   const [error, seterror] = useState({});
   const navigate = useNavigate();
 
@@ -19,28 +21,41 @@ function UseLogin() {
       [name]: value,
     }));
   };
-//console.log("login data :",logindata);
+    useEffect(()=>
+    {
+     //submitbutton()
+     
+
+    },[logindata])
+    console.log("authdata",authData);
+  
 
   const submitbutton = (e) => {
     e.preventDefault();
-    const { email, password } = logindata;
-    if (email === "") {
-      seterror({ email: "Email Field is required" });
-    }  else if (password === "") {
-      seterror({ password: "Password Field is required" });
+    const { username, firstName } = logindata;
+    console.log("username is :",username);
+    console.log("username is :",firstName);
+    if (username === "") {
+      seterror({ username: "username Field is required" });
+    }  else if (firstName === "") {
+      seterror({ firstName: "firstName Field is required" });
     } else {
     
-      axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, {
-          username: email,
-          password: password,
+      axios.post(`https://dummyjson.com/auth/login`, {
+          username: username,
+          firstName: firstName,
         })
         .then((response) => {
-      
-          const data = response.data;
-          if(data.id===15)
-          {
+     
+            setAuthData(response.data)
+        //  const data = response.data;
+    //    console.log("autj",authData.username,"log",logindata.username,"authpass",authData.firstName,"authuser",authData.firstName);
+          
+        
+          if (authData.username === logindata.username && authData.firstName === logindata.firstName) {
             navigate("/");
           }
+         
           else{
             alert("incorrect details")
           }
