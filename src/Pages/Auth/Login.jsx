@@ -13,7 +13,7 @@ function Login() {
     <div>
       <Navbar />
       <Container>
-        <Row className="justify-content-center d-flex pt-5 mt-5">
+        <Row className="justify-content-center d-flex">
           <Col md={7} className="mt-4 login-container">
             <h1 className="login-heading" style={{fontSize:"60px"}}>   Log In</h1>
             <Form method="post" onSubmit={submitbutton} className="login-form">
