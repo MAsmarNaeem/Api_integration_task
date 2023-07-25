@@ -5,7 +5,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link} from "react-router-dom";
 import { FiAlignCenter } from 'react-icons/fi';
 
-//FiAlignCenter
+
 
 function Sidebar(props) {
   const [Sidebar, setSidebar] = useState(false);
@@ -17,7 +17,7 @@ function Sidebar(props) {
 
   return (
     <>
-      <div >
+      <div>
         <Link
           to="#"
           className="nav-link ms-2"
@@ -34,10 +34,10 @@ function Sidebar(props) {
           backdrop={false}
         >
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Cart</Offcanvas.Title>
+         
           </Offcanvas.Header>
           <Offcanvas.Body>
-          <div className="text-center "> 
+          <div className="text-center mt-5"> 
           <li>
                   <Link
                     to="/dashboard"

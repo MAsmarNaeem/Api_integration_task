@@ -15,7 +15,7 @@ const NavbarCom = (props) => {
 
   return (
     <>
-      <Navbar expand="lg" className="bg-info" sticky="top" variant="light" >
+      <Navbar expand="lg" className="bg-info" sticky="top" variant="light" style={{zIndex:1090}}>
         <Container fluid>
           <Sidbar/>
           <Link className="nav-link ms-2" to="/" >
@@ -60,9 +60,10 @@ const NavbarCom = (props) => {
                 </>
               )}
 
-              <SearchItems />
+             
             </Nav>
             <Nav>
+            <SearchItems />
               <Sidebar myids={props.ids} className="d-inline" />
             </Nav>
           </Navbar.Collapse>

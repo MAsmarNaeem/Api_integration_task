@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { BsSearch } from "react-icons/bs";
+//import { AiFillCaretUp } from "react-icons/ai";
 import "./SearchIcon.css";
 import { NavLink } from "react-router-dom";
-
-
+import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
 
 const SearchItems = () => {
   const [toggle, setToggle] = useState(false);
-  const [text, setText] = useState("laptop");
- // const [textSubmit, setTextSubmit] = useState("");
+  const [text, setText] = useState("");
+  // const [textSubmit, setTextSubmit] = useState("");
   const [categories, setCategories] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
   const [productData, setProductsData] = useState([]);
   const [loading, setLoading] = useState(false);
-  // eslint-disable-next-line 
-  const[error,seterror]=useState("")
-
+  // eslint-disable-next-line
+  const [error, seterror] = useState("");
 
   const handleOptionChange = (e) => {
     setSelectedOption(e.target.value);
   };
 
   const showInputField = () => {
-    setToggle(!toggle);
+    setToggle(true);
   };
 
   const getValue = (e) => {
@@ -35,12 +34,13 @@ const SearchItems = () => {
 
   const getCategory = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/products/categories`);
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/products/categories`
+      );
       const dataSearch = await response.json();
       setCategories(dataSearch);
     } catch (error) {
-    
-      seterror(error)
+      seterror(error);
     }
   };
 
@@ -64,47 +64,43 @@ const SearchItems = () => {
         setProductsData(dataSearch.products);
       }
     } catch (error) {
-    seterror(error)
+      seterror(error);
     } finally {
       setLoading(false);
     }
   };
 
- 
+  // ... (previous code remains unchanged)
 
-// ... (previous code remains unchanged)
+  const getSearchApi = async () => {
+    try {
+      if (text.length >= 3) {
+        setLoading(true);
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/products/search?q=${text}`
+        );
 
-const getSearchApi = async () => {
-  try {
-    if (text.length >= 3) {
-      setLoading(true);
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/products/search?q=${text}`
-      );
+        const dataSearch = await response.json();
+        console.log("data search", dataSearch.products.length === null);
 
-      const dataSearch = await response.json();
-      console.log("data search",dataSearch.products.length===null);
+        if (dataSearch.products.length === null) {
+          //  console.log("data search:",dataSearch.products);
 
-      if (dataSearch.products.length === null) {
-      //  console.log("data search:",dataSearch.products);
-      
-        setProductsData(["Not Item Found"]);
+          setProductsData(["Not Item Found"]);
+        } else {
+          setProductsData(dataSearch.products);
+        }
       } else {
-        setProductsData(dataSearch.products);
+        setProductsData([]);
       }
-    } else {
-      setProductsData([]);
+    } catch (error) {
+      seterror(error);
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    seterror(error);
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
-// ... (rest of the code remains unchanged)
-
-
+  // ... (rest of the code remains unchanged)
 
   useEffect(() => {
     getCategory();
@@ -112,7 +108,7 @@ const getSearchApi = async () => {
 
   useEffect(() => {
     getSearchApi();
-   
+    // eslint-disable-next-line
   }, [text]);
 
   useEffect(() => {
@@ -122,100 +118,108 @@ const getSearchApi = async () => {
 
   return (
     <>
-      {<span onClick={showInputField}  className="nav-link iconcursor" >
-      
-        <BsSearch />
-       
-      </span>}
-    <div className="custom-pos">
-
-    
-
-      {toggle && (
-        <div>
-         
-        
-          <div></div>
+      {
+        <span onClick={showInputField} className="nav-link iconcursor">
+          <Form.Control
+            type="text"
+            placeholder="Search"
+            className=" mr-sm-2"
+            onChange={getValue}
+            value={text}
+          />
+        </span>
+      }
+      <div className="custom-pos">
+        {toggle && (
           <div
-            style={{
-              position: "fixed",
-              top: 105,
-              right: 250,
-              zIndex: 10,
-              width: "1100px",
-              height: "auto",
-            }}
-            className="d-inline p-2 CssSearch"
-          >
-            <div></div>
-            <div className="row">
-            
-              <div className="col-md-3 d-flex">
-                <ul  className="list-styling">
-                  {categories.map((category) => (
-                    <li key={category} style={{ color: "black" }}>
-                      <label>
-                        <input
-                          type="radio"
-                          value={category}
-                          checked={selectedOption === category}
-                          onChange={handleOptionChange}
-                        />
-                        <p className="d-inline ms-2">{category}</p>
-                      </label>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="col-md-8 d-inline">
-              <div
-            style={{
-              position: "fixed",
-              
-              right: 700,
-              zIndex: 10,
-            }}
-            className="d-inline p-2 "
-          >
-            <input
-              type="text"
-              placeholder="Search"
-              className="form-control d-inline "
-              style={{ width: "240px" }}
-              onChange={getValue}
-              value={text}
-            />
+          
+           >
+            {/* <br/><br/> 
+         <div>
+         <AiFillCaretUp style={{width:"20px"}} width="200px"/>
+         </div> */}
 
-            {/* <BsSearch onClick={submitButtonSearch} style={{ height: "50px", width: "40px" }}className="ps-2 icon-cursor" /> */}
+            <div
+              style={{
+                position: "fixed",
+                top: 60,
+                right: 80,
+                zIndex: 10,
+                width: "1020px",
+                height: "500px",
+                overflow: "auto",
+              }}
+              className="d-inline p-2 CssSearch"
+            >
+              <div className="row">
+                <div className="col-md-3 d-flex">
+                  <ul className="list-styling">
+                    <h3>Categories</h3>
+                    {categories.map((category) => (
+                      <li key={category} style={{ color: "black" }}>
+                        <label>
+                          <input
+                            type="radio"
+                            value={category}
+                            checked={selectedOption === category}
+                            onChange={handleOptionChange}
+                          />
+                          <p className="d-inline ms-2">{category}</p>
+                        </label>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="col-md-9 d-inline">
+                  <p className="text-end text-danger iconcursor" onClick={()=>setToggle(false)}>X</p>
+                  <div>
+                    <Link to="/products" className="ex1 bordered">
+                      show All Products
+                    </Link>
+                  </div>
+                  
+                  
+                  <div
+                    style={{
+                      position: "fixed",
 
-            <br />
-          </div>
-                <div className="products-container pt-3">
-                  {loading ? (
-                    <p>Loading...</p>
-                  ) : (
-                    productData.map((product) => (
-                      <NavLink
-                        to={`/Productdetail/${product.id}`}
-                        className="text-decoration-none text-danger"
-                        key={product.id}
-                      >
-                        <div className="product">
-                          <img src={product.images[0]} alt={product.title} height="70px" />
-                          <h5>{product.title}</h5>
-                          <p>Price: {product.price}</p>
-                        </div>
-                      </NavLink>
-                    ))
-                  )}
+                      right: 700,
+                      zIndex: 10,
+                    }}
+                    className="d-inline p-2 "
+                  ></div>
+                  <div className="products-container ">
+                    {loading ? (
+                      <p>Loading...</p>
+                    ) : productData.length === 0 ? (
+                      <p>No item found</p>
+                    ) : (
+                      productData.map((product) => (
+                        <NavLink
+                          to={`/Productdetail/${product.id}`}
+                          className="text-decoration-none text-danger"
+                          key={product.id}
+                        >
+                          <div className="product">
+                            <img
+                              src={product.images[0]}
+                              alt={product.title}
+                              height="70px"
+                            />
+                            <h5>{product.title}</h5>
+                            <p>Price: {product.price}</p>
+                          </div>
+                        </NavLink>
+                      ))
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
       </div>
-      </>
+    </>
   );
 };
 

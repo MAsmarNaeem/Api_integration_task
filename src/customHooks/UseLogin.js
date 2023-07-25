@@ -1,7 +1,7 @@
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; 
-import Alert from 'react-bootstrap/Alert';
+
 
 function UseLogin() {
   const [logindata, setlogindata] = useState({
@@ -47,8 +47,8 @@ function UseLogin() {
           console.log("resposse is :",response);
          // console.log("API Response:", response.data);
         
-          const data = response.data;
-          if(data.id===15)
+        //  const data = response.data;
+          if(response.status===200)
           {
             localStorage.setItem("token",JSON.stringify(response.data.token))
             navigate("/dashboard");
@@ -58,7 +58,7 @@ function UseLogin() {
         })
         .catch((error) => {
           console.log("Error:", error);
-          seterror({ Error: "An error occurred during login" });
+          seterror({ Error: error.message });
       
           
         });
