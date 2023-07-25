@@ -15,7 +15,7 @@ const NavbarCom = (props) => {
 
   return (
     <>
-      <Navbar expand="lg" className="bg-info" sticky="top" variant="light" style={{zIndex:1090}}>
+      <Navbar expand="lg" className="bg-info" sticky="top" variant="light" style={{zIndex:1090,height:55}}>
         <Container fluid>
           <Sidbar/>
           <Link className="nav-link ms-2" to="/" >

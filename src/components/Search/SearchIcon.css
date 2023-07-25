@@ -22,7 +22,7 @@
   position: relative;
 }
 .Css-Search {
-  position: "fixed";
+  position: fixed;
   top: 105;
   right: 250;
 
@@ -60,5 +60,7 @@
   height:500px !important;
   overflow: auto !important
 }
-
+.styling-border{
+  border-radius: inherit;
+}
 

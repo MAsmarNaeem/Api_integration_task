@@ -113,25 +113,27 @@ const SearchItems = () => {
 
   return (
     <>
-      <div onClick={showInputField} className="nav-link ">
+      <div onClick={showInputField} className="nav-link  ">
+        <div className="styling-border">
         <Form.Control
           type="text"
           placeholder="Search"
-          className="mr-sm-2"
+          className="mr-sm-2 rounded-5"
           onChange={getValue}
           value={text}
         />
       </div>
+      </div>
       <div className="custom-position">
         {text.length >= 3 && toggle && (
-          <div className="responsive-searchdiv">
+          <div className="responsive-searchdiv rounded-5">
             <div
              
               className="d-inline p-2 CssSearch"
             >
               <Row>
               <div className="row">
-                <div className="col-md-3 d-flex">
+                <div className="col-md-3 d-flex ">
                   <ul className="list-styling">
                     <h3>Categories</h3>
                     {categories.map((category) => (
@@ -151,7 +153,7 @@ const SearchItems = () => {
                 </div>
                 <div className="col-md-9 d-inline">
                   <p
-                    className="text-end text-danger iconcursor"
+                    className="text-end text-danger iconcursor "
                     onClick={hideInputField}
                     style={{paddingRight:"40px"}}
                   >
