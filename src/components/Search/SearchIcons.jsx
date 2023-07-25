@@ -3,6 +3,8 @@ import "./SearchIcon.css";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import { Row } from "react-bootstrap";
+
 
 const SearchItems = () => {
   const [toggle, setToggle] = useState(false);
@@ -24,6 +26,7 @@ const SearchItems = () => {
 
   const hideInputField = () => {
     setToggle(false);
+    setText("");
   };
 
   const getValue = (e) => {
@@ -110,7 +113,7 @@ const SearchItems = () => {
 
   return (
     <>
-      <span onClick={showInputField} className="nav-link iconcursor">
+      <div onClick={showInputField} className="nav-link ">
         <Form.Control
           type="text"
           placeholder="Search"
@@ -118,29 +121,21 @@ const SearchItems = () => {
           onChange={getValue}
           value={text}
         />
-      </span>
-      <div className="custom-pos">
+      </div>
+      <div className="custom-position">
         {text.length >= 3 && toggle && (
-          <div className="responsive">
+          <div className="responsive-searchdiv">
             <div
-              style={{
-                position: "fixed",
-                top: 60,
-                right: 10,
-                zIndex: 10,
-                width: "100%",
-                maxWidth: "1020px",
-                height: "500px",
-                overflow: "auto",
-              }}
+             
               className="d-inline p-2 CssSearch"
             >
+              <Row>
               <div className="row">
                 <div className="col-md-3 d-flex">
                   <ul className="list-styling">
                     <h3>Categories</h3>
                     {categories.map((category) => (
-                      <li key={category} style={{ color: "black" }}>
+                      <li key={category}>
                         <label>
                           <input
                             type="radio"
@@ -158,6 +153,7 @@ const SearchItems = () => {
                   <p
                     className="text-end text-danger iconcursor"
                     onClick={hideInputField}
+                    style={{paddingRight:"40px"}}
                   >
                     X
                   </p>
@@ -166,14 +162,7 @@ const SearchItems = () => {
                       show All Products
                     </Link>
                   </div>
-                  <div
-                    style={{
-                      position: "fixed",
-                      right: 700,
-                      zIndex: 10,
-                    }}
-                    className="d-inline p-2 "
-                  ></div>
+                
                   <div className="products-container ">
                     {loading ? (
                       <p>Loading...</p>
@@ -201,6 +190,7 @@ const SearchItems = () => {
                   </div>
                 </div>
               </div>
+              </Row>
             </div>
           </div>
         )}

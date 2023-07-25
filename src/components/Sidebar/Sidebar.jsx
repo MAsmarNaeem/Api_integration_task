@@ -114,6 +114,8 @@ function Sidebar(props) {
           show={store.addvalue.Todo.todos}
           onHide={handleClose}
           backdrop={false}
+          className="mt-5 pt-4"
+          
         >
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>Cart</Offcanvas.Title>

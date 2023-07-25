@@ -18,7 +18,7 @@
 .custom-font {
   font-size: 30px !important;
 }
-.custom-pos {
+.custom-position {
   position: relative;
 }
 .Css-Search {
@@ -47,4 +47,18 @@
  
   background-color: aliceblue;
 }
+
+
+.responsive-searchdiv{
+  background-color:rgba(224, 224, 224);
+  position: fixed !important;
+  top: 60px !important;
+  right: 10px !important;
+  z-index: 10 !important;
+  width: 100% !important;
+  max-width:1020px !important;
+  height:500px !important;
+  overflow: auto !important
+}
+
 
