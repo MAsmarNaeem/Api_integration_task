@@ -16,8 +16,8 @@ function HomePage() {
   return (
     <>
       <Navbar color="bg-info" />
-      <div className="container-fluid">
-      <div className="row mt-2">
+      <div className="">
+      <div className="mt-2">
         <div className="col">
           <Carousel>
             <Carousel.Item>
@@ -65,7 +65,7 @@ function HomePage() {
           </Carousel>
         </div>
       </div>
- 
+  
           <AllProducts/>
       <Footer />
       </div>

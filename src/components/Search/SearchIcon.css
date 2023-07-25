@@ -1,3 +1,6 @@
+
+
+
 .products-container {
   display: flex;
   flex-wrap: wrap;
@@ -6,7 +9,7 @@
 }
 
 .product {
-  width: 200px;
+  width: 220px;
   margin: 10px;
   padding: 10px;
   border: 1px solid #ccc;

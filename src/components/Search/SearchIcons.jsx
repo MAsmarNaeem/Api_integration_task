@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-//import { AiFillCaretUp } from "react-icons/ai";
 import "./SearchIcon.css";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -8,7 +7,6 @@ import Form from "react-bootstrap/Form";
 const SearchItems = () => {
   const [toggle, setToggle] = useState(false);
   const [text, setText] = useState("");
-  // const [textSubmit, setTextSubmit] = useState("");
   const [categories, setCategories] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
   const [productData, setProductsData] = useState([]);
@@ -24,16 +22,42 @@ const SearchItems = () => {
     setToggle(true);
   };
 
+  const hideInputField = () => {
+    setToggle(false);
+  };
+
   const getValue = (e) => {
     setText(e.target.value);
   };
 
-  // const submitButtonSearch = () => {
-  //   setTextSubmit(text);
-  // };
+  const getSearchApi = async () => {
+    try {
+      if (text.length >= 3) {
+        setLoading(true);
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/products/search?q=${text}`
+        );
+
+        const dataSearch = await response.json();
+
+        if (dataSearch.products.length === null) {
+          setProductsData(["Not Item Found"]);
+        } else {
+          setProductsData(dataSearch.products);
+        }
+      } else {
+        setProductsData([]);
+      }
+    } catch (error) {
+      seterror(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const getCategory = async () => {
     try {
+      // Fetch categories from the API and set them to the state
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/products/categories`
       );
@@ -70,38 +94,6 @@ const SearchItems = () => {
     }
   };
 
-  // ... (previous code remains unchanged)
-
-  const getSearchApi = async () => {
-    try {
-      if (text.length >= 3) {
-        setLoading(true);
-        const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/products/search?q=${text}`
-        );
-
-        const dataSearch = await response.json();
-        console.log("data search", dataSearch.products.length === null);
-
-        if (dataSearch.products.length === null) {
-          //  console.log("data search:",dataSearch.products);
-
-          setProductsData(["Not Item Found"]);
-        } else {
-          setProductsData(dataSearch.products);
-        }
-      } else {
-        setProductsData([]);
-      }
-    } catch (error) {
-      seterror(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // ... (rest of the code remains unchanged)
-
   useEffect(() => {
     getCategory();
   }, []);
@@ -113,39 +105,31 @@ const SearchItems = () => {
 
   useEffect(() => {
     getCategorytype();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedOption]); // Disable ESLint warning for this line
+    // eslint-disable-next-line
+  }, [selectedOption]);
 
   return (
     <>
-      {
-        <span onClick={showInputField} className="nav-link iconcursor">
-          <Form.Control
-            type="text"
-            placeholder="Search"
-            className=" mr-sm-2"
-            onChange={getValue}
-            value={text}
-          />
-        </span>
-      }
+      <span onClick={showInputField} className="nav-link iconcursor">
+        <Form.Control
+          type="text"
+          placeholder="Search"
+          className="mr-sm-2"
+          onChange={getValue}
+          value={text}
+        />
+      </span>
       <div className="custom-pos">
-        {toggle && (
-          <div
-          
-           >
-            {/* <br/><br/> 
-         <div>
-         <AiFillCaretUp style={{width:"20px"}} width="200px"/>
-         </div> */}
-
+        {text.length >= 3 && toggle && (
+          <div className="responsive">
             <div
               style={{
                 position: "fixed",
                 top: 60,
-                right: 80,
+                right: 10,
                 zIndex: 10,
-                width: "1020px",
+                width: "100%",
+                maxWidth: "1020px",
                 height: "500px",
                 overflow: "auto",
               }}
@@ -171,18 +155,20 @@ const SearchItems = () => {
                   </ul>
                 </div>
                 <div className="col-md-9 d-inline">
-                  <p className="text-end text-danger iconcursor" onClick={()=>setToggle(false)}>X</p>
+                  <p
+                    className="text-end text-danger iconcursor"
+                    onClick={hideInputField}
+                  >
+                    X
+                  </p>
                   <div>
                     <Link to="/products" className="ex1 bordered">
                       show All Products
                     </Link>
                   </div>
-                  
-                  
                   <div
                     style={{
                       position: "fixed",
-
                       right: 700,
                       zIndex: 10,
                     }}
@@ -196,7 +182,7 @@ const SearchItems = () => {
                     ) : (
                       productData.map((product) => (
                         <NavLink
-                          to={`/Productdetail/${product.id}`}
+                          to={`/Product/${product.id}`}
                           className="text-decoration-none text-danger"
                           key={product.id}
                         >
@@ -204,7 +190,7 @@ const SearchItems = () => {
                             <img
                               src={product.images[0]}
                               alt={product.title}
-                              height="70px"
+                              height="80px"
                             />
                             <h5>{product.title}</h5>
                             <p>Price: {product.price}</p>
