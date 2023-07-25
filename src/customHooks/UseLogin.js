@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; 
+import Alert from 'react-bootstrap/Alert';
 
 function UseLogin() {
   const [logindata, setlogindata] = useState({
     email: "",
     password: "",
   });
+
 
   const [error, seterror] = useState({});
   const navigate = useNavigate();
@@ -19,7 +21,14 @@ function UseLogin() {
       [name]: value,
     }));
   };
+  console.log("eroror is ",error.Error);
 //console.log("login data :",logindata);
+   
+     
+    //  useEffect(()=>
+    //  {
+
+    //  },[error.Error])
 
   const submitbutton = (e) => {
     e.preventDefault();
@@ -44,24 +53,14 @@ function UseLogin() {
             localStorage.setItem("token",JSON.stringify(response.data.token))
             navigate("/dashboard");
           }
-          else{
-            alert("incorrect details")
-          }
+         
         
-          // if (data.success) {
-          //   console.log("data.success:",data.success);
-           
-          //   alert("User logged in successfully");
-          //   navigate("/");
-          // } else {
-           
-          //   alert("Incorrect details");
-          // }
         })
         .catch((error) => {
           console.log("Error:", error);
+          seterror({ Error: "An error occurred during login" });
       
-          alert("An error occurred during login");
+          
         });
     }
   };

@@ -5,6 +5,7 @@ import UseLogin from "../../customHooks/UseLogin";
 import { NavLink } from "react-router-dom";
 import Navbar from "../../components/Layout/navbar";
 import  "./Login.css"
+import Alert from 'react-bootstrap/Alert';
 
 function Login() {
   const { getdata, submitbutton, error, logindata } = UseLogin();
@@ -13,9 +14,11 @@ function Login() {
     <div>
       <Navbar />
       <Container>
-        <Row className="justify-content-center d-flex pt-5 mt-5">
+        <Row className="justify-content-center d-flex ">
           <Col md={7} className="mt-4 login-container">
+      
             <h1 className="login-heading" style={{fontSize:"60px"}}>   Log In</h1>
+            { error.Error && <Alert variant="danger" >{error.Error}</Alert>}
             <Form method="post" onSubmit={submitbutton} className="login-form">
               <Form.Group controlId="formBasicEmail"  className="textcss">
                 {/* <Form.Label>Username</Form.Label> */}

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import SearchItems from "../Search/SearchIcons";
 import "./navbar.css";
+import Sidbar from "../sidbar/sidbar";
 
 const NavbarCom = (props) => {
   const isLoggedIn = localStorage.getItem("token");
@@ -16,7 +17,8 @@ const NavbarCom = (props) => {
     <>
       <Navbar expand="lg" className="bg-info" sticky="top" variant="light" >
         <Container fluid>
-          <Link className="nav-link " to="/" >
+          <Sidbar/>
+          <Link className="nav-link ms-2" to="/" >
             My Shopping App
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
