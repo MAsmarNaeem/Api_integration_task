@@ -5,23 +5,20 @@ import Sidebar from "./Cart/Cart";
 import SearchItems from "../Search/SearchIcons";
 import "./navbar.css";
 import Sidbar from "../sidbar/sidbar";
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
+import Dropdown from "react-bootstrap/Dropdown";
 
 const NavbarCom = (props) => {
   const isLoggedIn = localStorage.getItem("token");
 
   const image = localStorage.getItem("image");
-  const[dropdownVal,setDropdownVal]=useState(false)
+  const [dropdownVal, setDropdownVal] = useState(false);
 
-  const dropdownValFun=()=>
-  {
-    setDropdownVal(!dropdownVal)
-  }
-  console.log("dropdown :",dropdownVal);
-  
+  const dropdownValFun = () => {
+    setDropdownVal(!dropdownVal);
+  };
+  console.log("dropdown :", dropdownVal);
 
- // console.log("image is :", image);
+  // console.log("image is :", image);
   const logoutFun = () => {
     localStorage.clear();
   };
@@ -30,9 +27,8 @@ const NavbarCom = (props) => {
     <>
       <Navbar expand="lg" className="bg-info" sticky="top" variant="light">
         <Container fluid>
-          {isLoggedIn &&<Sidbar />
-          }
-         
+          {isLoggedIn && <Sidbar />}
+
           <Link className="nav-link  navbar-brand ms-2" to="/">
             My Shopping App
           </Link>
@@ -42,9 +38,7 @@ const NavbarCom = (props) => {
               <Link to="/products" className="nav-link ">
                 Products
               </Link>
-              {isLoggedIn ? (
-                null
-              ) : (
+              {isLoggedIn ? null : (
                 <>
                   <Link to="/login" className="nav-link">
                     Login
@@ -58,29 +52,30 @@ const NavbarCom = (props) => {
             <Nav>
               <SearchItems />
               <Sidebar myids={props.ids} className="d-inline pt-1" />
-                        { image ? <img
-                width={64}
-                height={54}
-                className=""
-                src={image}
-                alt="Generic placeholder"
-                onClick={dropdownValFun}
-                className="cursor"
-              /> :null
-            }
-            
+              {image ? (
+                <img
+                  width={64}
+                  height={54}
+                  src={image}
+                  alt="Generic placeholder"
+                  onClick={dropdownValFun}
+                  className="cursor"
+                />
+              ) : null}
             </Nav>
           </Navbar.Collapse>
-        
         </Container>
-      
       </Navbar>
-     
-     { 
-        dropdownVal && <Dropdown.Item href="login" className="text-end px-4 cursor" onClick={logoutFun}>Logout</Dropdown.Item>
-     }
-   
 
+      {dropdownVal && (
+        <Dropdown.Item
+          href="login"
+          className="text-end px-4 cursor"
+          onClick={logoutFun}
+        >
+          Logout
+        </Dropdown.Item>
+      )}
     </>
   );
 };

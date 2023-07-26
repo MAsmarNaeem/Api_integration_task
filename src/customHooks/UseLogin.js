@@ -42,7 +42,7 @@ function UseLogin() {
 
         //  const data = response.data;
         if (response.status === 200) {
-          const d = response.data.token;
+       //   const d = response.data.token;
           localStorage.setItem("token", JSON.stringify(response.data.token));
           localStorage.setItem("image", response.data.image);
 
