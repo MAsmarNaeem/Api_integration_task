@@ -19,13 +19,8 @@ function UseLogin() {
       [name]: value,
     }));
   };
-  console.log("eroror is ", error.Error);
-  //console.log("login data :",logindata);
-
-  //  useEffect(()=>
-  //  {
-
-  //  },[error.Error])
+  //console.log("eroror is ", error.Error);
+ 
 
   const submitbutton = (e) => {
     e.preventDefault();
@@ -37,7 +32,7 @@ function UseLogin() {
         password: password,
       })
       .then((response) => {
-        console.log("resposse is :", response);
+       // console.log("resposse is :", response);
         // console.log("API Response:", response.data);
 
         //  const data = response.data;
@@ -51,8 +46,9 @@ function UseLogin() {
         }
       })
       .catch((error) => {
-        console.log("Error:", error);
-        seterror({ Error: error.message });
+
+      //  console.log("Error:", error.response.data.message);
+        seterror({ Error: error.response.data.message });
       });
   };
 

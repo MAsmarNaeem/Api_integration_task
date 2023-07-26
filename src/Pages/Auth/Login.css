@@ -49,7 +49,7 @@
     margin-bottom: 1px solid #fff;
     color: #fff;
     margin-bottom: 5px;
-    padding: 10px 0;
+    /* padding:10px 0; */
     background-color: transparent;
     }
     
@@ -86,7 +86,16 @@
     font-family: 'Merriweather', serif;
   
   }
-    
+  .alertCss {
+    margin-left: 160px;
+  }
+  
+  /* Media query for screens with a maximum width of 768px */
+  @media screen and (max-width: 768px) {
+    .alertCss {
+      margin-left: 80px; 
+    }
+  }
   /* body{
   background-color: red !important;
   } */

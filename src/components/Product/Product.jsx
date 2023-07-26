@@ -12,7 +12,7 @@ const Product = ({ product, addCartItem, opencart,height }) => {
    
     <div className="col-md-3 ">
      
-      <div className="card mt-4 shadow cardcss">
+      <div className="card  shadow cardcss">
         <img
           src={product.thumbnail}
           alt={product.title}

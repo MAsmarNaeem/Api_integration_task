@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Navbar from "../components/Layout/navbar";
-import Footer from "../components/Layout/Footer";
+
 import { addToCart } from "../Store/AddCartSlice";
 import { useDispatch } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
@@ -116,7 +115,7 @@ const Productdetail = () => {
 
   return (
     <div>
-      <Navbar />
+     
       <div
         className="row justify-content-evenly mt-4 mt-5 mb-5"
    
@@ -137,7 +136,7 @@ const Productdetail = () => {
         )}
       </div>
       <div>
-        <Footer />
+       
       </div>
     </div>
   );

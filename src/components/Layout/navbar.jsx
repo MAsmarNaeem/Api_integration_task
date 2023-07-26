@@ -16,7 +16,7 @@ const NavbarCom = (props) => {
   const dropdownValFun = () => {
     setDropdownVal(!dropdownVal);
   };
-  console.log("dropdown :", dropdownVal);
+ // console.log("dropdown :", dropdownVal);
 
   // console.log("image is :", image);
   const logoutFun = () => {
@@ -66,11 +66,11 @@ const NavbarCom = (props) => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
+  
       {dropdownVal && (
         <Dropdown.Item
           href="login"
-          className="text-end px-4 cursor"
+          className="text-end px-4 cursor "
           onClick={logoutFun}
         >
           Logout

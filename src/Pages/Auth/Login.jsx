@@ -3,7 +3,7 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import UseLogin from "../../customHooks/UseLogin";
 import { NavLink } from "react-router-dom";
-import Navbar from "../../components/Layout/navbar";
+
 import  "./Login.css"
 import Alert from 'react-bootstrap/Alert';
 
@@ -12,13 +12,13 @@ function Login() {
 
   return (
     <div>
-      <Navbar />
+      
       <Container>
-        <Row className="justify-content-center d-flex ">
+        <Row className="justify-content-center d-flex text-center">
           <Col md={7} className="mt-4 login-container">
       
-            <h1 className="login-heading" style={{fontSize:"60px"}}>   Log In</h1>
-            { error.Error && <Alert variant="danger" >{error.Error}</Alert>}
+            <h1 className="login-heading " style={{fontSize:"60px"}}>   Log In</h1>
+            { error.Error && <Alert variant="danger" className="w-50 alertCss" >{error.Error}</Alert>}
             <Form method="post" onSubmit={submitbutton} className="login-form">
               <Form.Group controlId="formBasicEmail"  className="textcss">
                 {/* <Form.Label>Username</Form.Label> */}

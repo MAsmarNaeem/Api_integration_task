@@ -1,7 +1,5 @@
 import React from "react";
 
-import Navbar from "../components/Layout/navbar";
-import Footer from "../components/Layout/Footer/footer";
 import Carousel from "react-bootstrap/Carousel";
 
 import pic4 from "../../src/Pages/images/image111.jpg";
@@ -15,7 +13,7 @@ function HomePage() {
 
   return (
     <>
-      <Navbar color="bg-info" />
+    
       <div className="">
       <div >
         <div className="col">
@@ -67,7 +65,7 @@ function HomePage() {
       </div>
   
           <AllProducts/>
-      <Footer />
+     
       </div>
       </>
   );

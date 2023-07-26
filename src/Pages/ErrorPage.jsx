@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import Navbar from "../components/Layout/navbar";
+
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/Layout/Footer";
+
 import {  Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -15,7 +15,7 @@ function ErrorPage() {
   return (
     <div className="text-center ">
         <div>
-        <Navbar/>
+      
       <h1 className="mt-5">
         404  
       </h1>
@@ -32,7 +32,7 @@ function ErrorPage() {
                     </Nav.Link>
       </div>
       <div style={{marginTop:"400px"}}>
-        <Footer/>
+       
       </div>
   
      

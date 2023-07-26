@@ -75,7 +75,7 @@ const footer = () => {
         <div className="bg-dark text-center py-3 text-white">
           &copy; 2023 Your Company. All rights reserved.
         </div>
-      </footer>
+      </footer >
     </div>
   );
 };
