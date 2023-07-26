@@ -65,6 +65,7 @@ const NavbarCom = (props) => {
                 src={image}
                 alt="Generic placeholder"
                 onClick={dropdownValFun}
+                className="cursor"
               /> :null
             }
             
@@ -76,7 +77,7 @@ const NavbarCom = (props) => {
       </Navbar>
      
      { 
-        dropdownVal && <Dropdown.Item href="login" className="text-end px-4 " onClick={logoutFun}>Logout</Dropdown.Item>
+        dropdownVal && <Dropdown.Item href="login" className="text-end px-4 cursor" onClick={logoutFun}>Logout</Dropdown.Item>
      }
    
 
