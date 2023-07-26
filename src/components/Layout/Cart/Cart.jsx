@@ -102,7 +102,7 @@ function Sidebar(props) {
       <>
         <Link to="#"
   className="nav-link"
-  // style={{fontSize:"30px"}}
+   style={{marginTop:"3.5px"}}
   onClick={handleShow}
 >
   Cart

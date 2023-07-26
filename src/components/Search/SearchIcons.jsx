@@ -114,7 +114,7 @@ const SearchItems = () => {
   return (
     <>
       <div onClick={showInputField} className="nav-link  ">
-        <div className="styling-border pl-4 ">
+        <div className="styling-border  ">
         <Form.Control
           type="text"
           placeholder="Search"
