@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NavbarCom from "../Layout/navbar";
-import Footer from "../Layout/footer";
+import Footer from "../Layout/Footer/footer";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
 import PaginationComponent from "../Pagination/pagination";
@@ -38,7 +38,9 @@ const User = () => {
     // eslint-disable-next-line
  //  GetProducts(currentPage);
     // eslint-disable-next-line
+
     getapi()
+    // eslint-disable-next-line
  }, [skip]);
 
   return (

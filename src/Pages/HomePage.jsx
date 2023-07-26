@@ -1,7 +1,7 @@
 import React from "react";
 
 import Navbar from "../components/Layout/navbar";
-import Footer from "../components/Layout/footer";
+import Footer from "../components/Layout/Footer/footer";
 import Carousel from "react-bootstrap/Carousel";
 
 import pic4 from "../../src/Pages/images/image111.jpg";
@@ -17,7 +17,7 @@ function HomePage() {
     <>
       <Navbar color="bg-info" />
       <div className="">
-      <div className="mt-2">
+      <div >
         <div className="col">
           <Carousel>
             <Carousel.Item>

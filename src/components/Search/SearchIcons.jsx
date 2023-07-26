@@ -114,11 +114,11 @@ const SearchItems = () => {
   return (
     <>
       <div onClick={showInputField} className="nav-link  ">
-        <div className="styling-border">
+        <div className="styling-border pl-4 ">
         <Form.Control
           type="text"
           placeholder="Search"
-          className="mr-sm-2 rounded-5"
+          className="mr-sm-2 rounded-5 px-2.8 padd  "
           onChange={getValue}
           value={text}
         />

@@ -9,5 +9,10 @@
 } */
 
 .nav-link{
-    font-size: 1.5rem !important;
+    font-size: 1.2rem !important;
+}
+.navbar{
+   
+    padding-top: 0.2em !important;
+    padding-bottom: 0.2em !important;
 }

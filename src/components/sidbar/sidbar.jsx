@@ -32,6 +32,7 @@ function Sidebar(props) {
           show={Sidebar}
           onHide={handleShow}
           backdrop={false}
+          style={{top:"55px"}}
         >
           <Offcanvas.Header closeButton>
          

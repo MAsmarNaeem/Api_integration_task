@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Sidebar from "../Sidebar/Sidebar";
+import Sidebar from "./Cart/Cart";
 import SearchItems from "../Search/SearchIcons";
 import "./navbar.css";
 import Sidbar from "../sidbar/sidbar";
@@ -15,10 +15,10 @@ const NavbarCom = (props) => {
 
   return (
     <>
-      <Navbar expand="lg" className="bg-info" sticky="top" variant="light" style={{zIndex:1090,height:55}}>
+      <Navbar expand="lg" className="bg-info" sticky="top" variant="light" >
         <Container fluid>
           <Sidbar/>
-          <Link className="nav-link ms-2" to="/" >
+          <Link className="nav-link  navbar-brand ms-2" to="/" >
             My Shopping App
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

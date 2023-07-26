@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "../components/Layout/navbar";
-import Footer from "../components/Layout/footer";
+import Footer from "../components/Layout/Footer";
 import { addToCart } from "../Store/AddCartSlice";
 import { useDispatch } from "react-redux";
 import { addvalue } from "../Store/CartSlice";

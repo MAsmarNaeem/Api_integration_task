@@ -62,5 +62,14 @@
 }
 .styling-border{
   border-radius: inherit;
+
+  
+ 
+  width: auto;
+  max-width: 199px;
+}
+.padd{
+  padding-bottom: 0.7px !important;
+  padding-top: 0.7px !important;
 }
 

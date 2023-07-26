@@ -3,11 +3,11 @@ import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
 import { Link, NavLink } from "react-router-dom";
-import "./Sidebar.css";
+import "./Cart.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addvalue } from "../../Store/CartSlice";
-import { addToCart } from "../../Store/AddCartSlice";
-import { removeFromCart } from "../../Store/AddCartSlice";
+import { addvalue } from "../../../Store/CartSlice";
+import { addToCart } from "../../../Store/AddCartSlice";
+import { removeFromCart } from "../../../Store/AddCartSlice";
 //import style from "../components/navbar.css";
 
 function Sidebar(props) {
@@ -114,7 +114,8 @@ function Sidebar(props) {
           show={store.addvalue.Todo.todos}
           onHide={handleClose}
           backdrop={false}
-          className="mt-5 pt-4"
+          
+          style={{top:"53px"}}
           
         >
           <Offcanvas.Header closeButton>

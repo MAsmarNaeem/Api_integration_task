@@ -1,6 +1,6 @@
 import React from "react";
 import NavbarCom from "../Layout/navbar";
-import Footer from "../Layout/footer";
+import Footer from "../Layout/Footer/footer";
 import "./dashboard.css";
 
 const dashboard = () => {
