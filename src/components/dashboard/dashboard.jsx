@@ -1,11 +1,11 @@
 import React from "react";
-
+import  Navbar from '../Layout/navbar'
 import "./dashboard.css";
 
 const dashboard = () => {
   return (
     <div>
-     
+    
 
       <h2 className="customcss mb-5 pb-5">Welcome to Dashboard</h2>
       <div className="fixed-bottom">

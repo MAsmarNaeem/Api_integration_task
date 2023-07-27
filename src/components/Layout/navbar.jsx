@@ -6,19 +6,26 @@ import SearchItems from "../Search/SearchIcons";
 import "./navbar.css";
 import Sidbar from "../sidbar/sidbar";
 import Dropdown from "react-bootstrap/Dropdown";
+import { useEffect } from "react";
 
 const NavbarCom = (props) => {
   const isLoggedIn = localStorage.getItem("token");
-
+    
+const[isLoggedInState,setIsLoggedInState]=useState(isLoggedIn)
   const image = localStorage.getItem("image");
   const [dropdownVal, setDropdownVal] = useState(false);
 
+
+
+
+     useEffect(()=> {
+     //   setIsLoggedInState(isLoggedIn)
+     },[])
+     console.log("show is :",isLoggedInState);
   const dropdownValFun = () => {
     setDropdownVal(!dropdownVal);
   };
- // console.log("dropdown :", dropdownVal);
-
-  // console.log("image is :", image);
+ 
   const logoutFun = () => {
     localStorage.clear();
   };
