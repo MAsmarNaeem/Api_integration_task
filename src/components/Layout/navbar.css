@@ -20,3 +20,13 @@
     cursor: pointer;
   
 }
+.custom-dropdown-menu {
+    width: 4px !important; 
+  }
+  .dropdown-radius{
+    border-radius: "50px";
+    background-color:"white"
+  }
+  .icon-border{
+    border: "beige" !important;
+  }

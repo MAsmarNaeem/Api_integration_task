@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Navbar } from "react-bootstrap";
+import NavbarCom from "../components/Layout/navbar";
 
 const CheckoutPage = () => {
   const getMyUser = useSelector((store) => store.myTodo.Todo.data);
@@ -90,6 +92,7 @@ const CheckoutPage = () => {
 
   return (
     <div>
+      <NavbarCom/>
       
       <div className="mt-5 pt-3  row mx-3 justify-content-evenly">
         <div className="col-md-5">

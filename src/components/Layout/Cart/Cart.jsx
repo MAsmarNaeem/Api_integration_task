@@ -101,8 +101,8 @@ function Sidebar(props) {
     <>
       <>
         <Link to="#"
-  className="nav-link"
-   style={{marginTop:"3.5px"}}
+  className="nav-link mar-top"
+   
   onClick={handleShow}
 >
   Cart
@@ -115,7 +115,7 @@ function Sidebar(props) {
           onHide={handleClose}
           backdrop={false}
           
-          style={{top:"53px"}}
+          style={{top:"53px",width:"310px"}}
           
         >
           <Offcanvas.Header closeButton>

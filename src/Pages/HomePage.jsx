@@ -7,12 +7,14 @@ import pic5 from "../../src/Pages/images/image112.jpg";
 import pic6 from "../../src/Pages/images/image113.jpg";
 
 import AllProducts from "../components/Products/AllProducts";
+import NavbarCom from "../components/Layout/navbar";
 
 function HomePage() {
 
 
   return (
     <>
+        <NavbarCom/>
     
       <div className="">
       <div >

@@ -5,6 +5,7 @@ import { addToCart } from "../Store/AddCartSlice";
 import { useDispatch } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
 import { Audio } from "react-loader-spinner";
+import NavbarCom from "../components/Layout/navbar";
 
 
 const Productdetail = () => {
@@ -115,6 +116,7 @@ const Productdetail = () => {
 
   return (
     <div>
+        <NavbarCom/>
      
       <div
         className="row justify-content-evenly mt-4 mt-5 mb-5"

@@ -6,13 +6,14 @@ import { NavLink } from "react-router-dom";
 
 import  "./Login.css"
 import Alert from 'react-bootstrap/Alert';
+import NavbarCom from "../../components/Layout/navbar";
 
 function Login() {
   const { getdata, submitbutton, error, logindata } = UseLogin();
 
   return (
     <div>
-      
+      <NavbarCom/>
       <Container>
         <Row className="justify-content-center d-flex text-center">
           <Col md={7} className="mt-4 login-container">

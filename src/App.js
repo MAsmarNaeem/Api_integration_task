@@ -8,13 +8,13 @@ import CheckoutPage from "./Pages/CheckoutPage";
 import ErrorPage from "./Pages/ErrorPage";
 import Dashboard from "./Pages/dashboard";
 import User from "./Pages/User";
-import NavbarCom from "./components/Layout/navbar";
+
 import Footer from "./components/Layout/Footer";
 
 function App() {
   return (
     <>
-      <NavbarCom />
+      
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProdctsPage />} />

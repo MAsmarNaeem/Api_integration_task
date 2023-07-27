@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import {  Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import NavbarCom from "../components/Layout/navbar";
 
 function ErrorPage() {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ function ErrorPage() {
   return (
     <div className="text-center ">
         <div>
+          <NavbarCom/>
       
       <h1 className="mt-5">
         404  

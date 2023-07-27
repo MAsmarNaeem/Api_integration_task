@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Sidebar from "./Cart/Cart";
@@ -6,29 +6,26 @@ import SearchItems from "../Search/SearchIcons";
 import "./navbar.css";
 import Sidbar from "../sidbar/sidbar";
 import Dropdown from "react-bootstrap/Dropdown";
-import { useEffect } from "react";
 
 const NavbarCom = (props) => {
   const isLoggedIn = localStorage.getItem("token");
-    
-const[isLoggedInState,setIsLoggedInState]=useState(isLoggedIn)
+
   const image = localStorage.getItem("image");
   const [dropdownVal, setDropdownVal] = useState(false);
 
-
-
-
-     useEffect(()=> {
-     //   setIsLoggedInState(isLoggedIn)
-     },[])
-     console.log("show is :",isLoggedInState);
   const dropdownValFun = () => {
     setDropdownVal(!dropdownVal);
   };
- 
+  // console.log("dropdown :", dropdownVal);
+
+  // console.log("image is :", image);
   const logoutFun = () => {
     localStorage.clear();
   };
+  useEffect(()=>
+  {
+       
+  },[])
 
   return (
     <>
@@ -59,30 +56,40 @@ const[isLoggedInState,setIsLoggedInState]=useState(isLoggedIn)
             <Nav>
               <SearchItems />
               <Sidebar myids={props.ids} className="d-inline pt-1" />
-              {image ? (
-                <img
-                  width={64}
-                  height={54}
-                  src={image}
-                  alt="Generic placeholder"
-                  onClick={dropdownValFun}
-                  className="cursor"
-                />
-              ) : null}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-  
-      {dropdownVal && (
-        <Dropdown.Item
+              {
+            isLoggedIn ?  <Dropdown>
+                <Dropdown.Toggle variant="" id="dropdown-basic icon-border" style={{ border:"white"}}>
+                  <img
+                    width={30}
+                    height={31}
+                    src={image}
+                    alt="Wait"
+                  //  onClick={dropdownValFun}
+                    className="dropdown-radius mt-2"
+                    style={{    borderRadius: "50px",backgroundColor:"white"}}
+                  />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu className=" custom-dropdown-menu dropdown-menu-end">
+                  <Dropdown.Item
           href="login"
-          className="text-end px-4 cursor "
+          className="cursor "
+          style={{width:"20px"}}
+       
           onClick={logoutFun}
         >
           Logout
         </Dropdown.Item>
-      )}
+                  
+                </Dropdown.Menu>
+              </Dropdown> :null
+              }
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      
     </>
   );
 };

@@ -126,7 +126,7 @@ const SearchItems = () => {
       </div>
       <div className="custom-position">
         {text.length >= 3 && toggle && (
-          <div className="responsive-searchdiv rounded-5">
+          <div className="responsive-searchdiv ">
             <div
              
               className="d-inline p-2 CssSearch"
