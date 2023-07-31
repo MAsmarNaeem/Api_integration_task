@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NavbarCom from "../Layout/navbar";
-import Footer from "../Layout/Footer/footer";
+//import Footer from "../Layout/Footer/footer";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
 import PaginationComponent from "../Pagination/pagination";
