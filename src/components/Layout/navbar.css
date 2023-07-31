@@ -30,3 +30,14 @@
   .icon-border{
     border: "beige" !important;
   }
+  .dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0em !important;
+   
+   
+   border-top: 0px !important  ;
+    
+   
+    border-bottom: 0;
+    
+}

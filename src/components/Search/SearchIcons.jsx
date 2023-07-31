@@ -135,7 +135,7 @@ const SearchItems = () => {
               <div className="row">
                 <div className="col-md-3 d-flex ">
                   <ul className="list-styling">
-                    <h3>Categories</h3>
+                    <h3 className="pl-2">Categories</h3>
                     {categories.map((category) => (
                       <li key={category}>
                         <label>
@@ -159,8 +159,10 @@ const SearchItems = () => {
                   >
                     X
                   </p>
-                  <div>
-                    <Link to="/products" className="ex1 bordered">
+                  <div className="designing-custom text-end" >
+                    <Link to="/products" className="ex1 bordered p-2 " style={{ borderRadius: "410px" 
+ 
+}}>
                       show All Products
                     </Link>
                   </div>
@@ -177,13 +179,13 @@ const SearchItems = () => {
                           className="text-decoration-none text-danger"
                           key={product.id}
                         >
-                          <div className="product">
+                          <div className="product text-info">
                             <img
                               src={product.images[0]}
                               alt={product.title}
                               height="80px"
                             />
-                            <h5>{product.title}</h5>
+                            <h6>{product.title}</h6>
                             <p>Price: {product.price}</p>
                           </div>
                         </NavLink>

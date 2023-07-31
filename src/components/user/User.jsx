@@ -82,9 +82,9 @@ const User = () => {
         pageCount={pageCount}
         itemsPerPage={rowsPerPage}
       />
-      <div className="position-relative">
+      {/* <div className="position-relative">
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 };

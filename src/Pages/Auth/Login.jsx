@@ -18,7 +18,7 @@ function Login() {
         <Row className="justify-content-center d-flex text-center">
           <Col md={7} className="mt-4 login-container">
       
-            <h1 className="login-heading " style={{fontSize:"60px"}}>   Log In</h1>
+            <h1 className="login-heading " style={{fontSize:"60px"}}>  Log In</h1>
             { error.Error && <Alert variant="danger" className="w-50 alertCss" >{error.Error}</Alert>}
             <Form method="post" onSubmit={submitbutton} className="login-form">
               <Form.Group controlId="formBasicEmail"  className="textcss">

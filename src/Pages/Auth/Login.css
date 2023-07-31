@@ -87,13 +87,13 @@
   
   }
   .alertCss {
-    margin-left: 160px;
+    margin-left: 170px;
   }
   
   /* Media query for screens with a maximum width of 768px */
   @media screen and (max-width: 768px) {
     .alertCss {
-      margin-left: 80px; 
+      margin-left: 90px; 
     }
   }
   /* body{
