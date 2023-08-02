@@ -15,7 +15,7 @@ const NavbarCom = (props) => {
   const isLoggedIn = localStorage.getItem("token");
   const image = localStorage.getItem("image");
   const id = localStorage.getItem("id");
-  const [dropdownVal, setDropdownVal] = useState(false);
+  // const [dropdownVal, setDropdownVal] = useState(false);
   const [show, setShow] = useState(false);
   const [Alert, setShowAlert] = useState(false);
   const [logindata, setLoginData] = useState({
@@ -32,9 +32,9 @@ const NavbarCom = (props) => {
     setShow(true);
   };
 
-  const dropdownValFun = () => {
-    setDropdownVal(!dropdownVal);
-  };
+  // const dropdownValFun = () => {
+  //   setDropdownVal(!dropdownVal);
+  // };
 
   const getUserData = async () => {
     try {
@@ -228,14 +228,13 @@ const NavbarCom = (props) => {
                   onChange={handleInputChange}
                 />
               </Form.Group>
-              {/* Add other form fields here with similar onChange and value attributes */}
             </Form>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={updateUserProfile}>
+            <Button variant="primary" className="pointer_css"  onClick={updateUserProfile}> 
               Save Changes
             </Button>
           </Modal.Footer>
