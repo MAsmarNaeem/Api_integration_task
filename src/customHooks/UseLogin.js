@@ -7,6 +7,7 @@ function UseLogin() {
     email: "",
     password: "",
   });
+  const [showSpinner, setShowSpinner] = useState(false);
 
   const [error, seterror] = useState({});
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ function UseLogin() {
  
 
   const submitbutton = (e) => {
+    setShowSpinner(true)
     e.preventDefault();
     const { email, password } = logindata;
 
@@ -34,6 +36,10 @@ function UseLogin() {
       .then((response) => {
       
         if (response.status === 200) {
+          setTimeout(() => {
+            setShowSpinner(false); 
+          
+          }, 300);
        //   const d = response.data.token;
           localStorage.setItem("token", JSON.stringify(response.data.token));
           localStorage.setItem("image", response.data.image);
@@ -44,7 +50,7 @@ function UseLogin() {
         }
       })
       .catch((error) => {
-
+        setShowSpinner(false); 
       //  console.log("Error:", error.response.data.message);
         seterror({ Error: error.response.data.message });
       });
@@ -55,6 +61,7 @@ function UseLogin() {
     submitbutton,
     error,
     logindata,
+    showSpinner
   };
 }
 

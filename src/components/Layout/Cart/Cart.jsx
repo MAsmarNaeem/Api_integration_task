@@ -131,7 +131,7 @@ function Sidebar(props) {
 
                   if (product) {
                     return (
-                      <div   key={itemId} className="row ps-3 pt-2 text-center ps-4 ">
+                      <div   key={itemId} className="row ps-3  text-center ps-4 ">
                         <p>{error}</p>
                         <div className="col-md-4 pt-1">
                           <div key={product.id} className="product-item">

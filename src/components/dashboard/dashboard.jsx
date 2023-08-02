@@ -8,7 +8,7 @@ const dashboard = () => {
     <div>
        <NavbarCom/>
 
-      <h2 className="customcss mb-5 pb-5">Welcome to Dashboard</h2>
+      <h2 className="customcss mb-5 pb-5" >Welcome to Dashboard</h2>
       <div className="fixed-bottom">
        
       </div>

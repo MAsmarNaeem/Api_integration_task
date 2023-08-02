@@ -18,7 +18,7 @@ import FP from "./Pages/FP";
 
 function App() {
   return (
-    <>
+    <div>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProdctsPage />} >
@@ -44,7 +44,7 @@ function App() {
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 

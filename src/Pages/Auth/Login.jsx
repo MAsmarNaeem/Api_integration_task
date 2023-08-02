@@ -7,9 +7,10 @@ import { NavLink } from "react-router-dom";
 import  "./Login.css"
 import Alert from 'react-bootstrap/Alert';
 import NavbarCom from "../../components/Layout/navbar";
+import Spinner from "react-bootstrap/Spinner";
 
 function Login() {
-  const { getdata, submitbutton, error, logindata } = UseLogin();
+  const { getdata, submitbutton, error, logindata,showSpinner } = UseLogin();
 
   return (
     <div>
@@ -56,7 +57,18 @@ function Login() {
               </Form.Text>
 
               <Button variant="info" type="submit" className="mt-3">
+              
                 Log In
+                {showSpinner ? (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                  style={{ marginLeft: "5px" }}
+                />
+              ) : null}
               </Button>
               <p className="mt-4 login-footer" style={{fontSize:"20px"}}>
                 Do not have an account{" "}

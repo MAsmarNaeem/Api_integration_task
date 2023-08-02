@@ -4,7 +4,8 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 
 import { Link} from "react-router-dom";
 import { FiAlignCenter } from 'react-icons/fi';
-
+import { MdDashboardCustomize } from 'react-icons/md';
+import { FiUsers } from 'react-icons/fi'
 
 
 function Sidebar(props) {
@@ -12,8 +13,10 @@ function Sidebar(props) {
 
   const handleShow = () => 
   {
+    localStorage.setItem("cond",Sidebar)
     setSidebar(!Sidebar);
   }
+ 
 
   return (
     <>
@@ -21,6 +24,7 @@ function Sidebar(props) {
         <Link
           to="#"
           className="nav-link ms-2"
+          
           // style={{fontSize:"30px"}}
           onClick={handleShow}
         >
@@ -31,30 +35,31 @@ function Sidebar(props) {
           // placement="end"
           show={Sidebar}
           onHide={handleShow}
-        
+      
           backdrop={false}
-          style={{top:"55px",width:"190px"}}
+          style={{top:"52px",width:"220px"}}
         >
-          <Offcanvas.Header closeButton>
+          <Offcanvas.Header >
          
           </Offcanvas.Header>
           <Offcanvas.Body>
-          <div className="text-center mt-5"> 
-          <li>
+          <div> 
+        
                   <Link
                     to="/dashboard"
                     className="nav-link"
                    
                   >
-                Dashboard   
+                    <MdDashboardCustomize /> Dashboard   
                   </Link>
-                  </li>
+                  
                   <Link
                     to="/users"
                     className="nav-link"
                   
                   >
-                    Users
+
+                   <FiUsers/> Users
                   </Link>
                 </div>
           </Offcanvas.Body>
