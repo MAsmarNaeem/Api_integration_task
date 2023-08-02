@@ -36,7 +36,7 @@ function Sidebar(props) {
           show={Sidebar}
           onHide={handleShow}
       
-          backdrop={false}
+          backdrop={true}
           style={{top:"52px",width:"220px"}}
         >
           <Offcanvas.Header >

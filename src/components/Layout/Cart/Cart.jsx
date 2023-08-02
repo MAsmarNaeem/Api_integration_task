@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Link, NavLink } from "react-router-dom";
 import "./Cart.css";
@@ -58,6 +59,7 @@ function Sidebar(props) {
 
     countItems();
   }, [cartItems]);
+  
 
   const addItemCounter = (itemId) => {
     setItemCounts((prevCounts) => ({
@@ -113,7 +115,7 @@ function Sidebar(props) {
           placement="end"
           show={store.addvalue.Todo.todos}
           onHide={handleClose}
-          backdrop={false}
+          backdrop={true}
           
           style={{top:"53px",width:"310px"}}
           
