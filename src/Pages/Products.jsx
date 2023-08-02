@@ -7,11 +7,11 @@ function ProductPage() {
   return (
     <>
       <NavbarCom />
-      <nav className="ms-3 ">
+      {/* <nav className="ms-3 ">
        
        <Link to="NP">NP</Link>
        <Link to="FP" className="ms-2">FP</Link>
-     </nav>
+     </nav> */}
      <Outlet/>
       <div className="container-fluid">
         <div className="row ">

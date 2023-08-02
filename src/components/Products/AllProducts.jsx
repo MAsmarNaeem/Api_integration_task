@@ -29,7 +29,6 @@ const AllProducts = () => {
   const GetProducts = async (page) => {
     try {
       setLoader(true);
-console.log();
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/products/?limit=${itemsPerPage}&skip=${skip}&select=title,price,thumbnail`
       );

@@ -32,14 +32,12 @@ function UseLogin() {
         password: password,
       })
       .then((response) => {
-       // console.log("resposse is :", response);
-        // console.log("API Response:", response.data);
-
-        //  const data = response.data;
+      
         if (response.status === 200) {
        //   const d = response.data.token;
           localStorage.setItem("token", JSON.stringify(response.data.token));
           localStorage.setItem("image", response.data.image);
+          localStorage.setItem("id",response.data.id)
 
         //  console.log(localStorage.getItem("image"),"aaaa");
           navigate("/dashboard");
