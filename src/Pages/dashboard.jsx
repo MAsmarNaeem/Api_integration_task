@@ -1,8 +1,10 @@
 import React from 'react'
 import Dashboard from '../components/dashboard'
 const dashboard = () => {
+  var h = (window.innerHeight);
+  console.log(" h is :",h);
   return (
-    <div style={{height:"500px"}}>
+    <div style={{height:h}}>
          <Dashboard/>
     </div>
   )

@@ -4,44 +4,44 @@ import NavbarCom from "../Layout/navbar";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
 import PaginationComponent from "../Pagination/pagination";
-
+import Button from "react-bootstrap/Button";
+import UserProfileModal from "../userProfileModal/userProfileModel";
 
 const User = () => {
   const [usersData, setUsersData] = useState([]);
   const [skip, setSkip] = useState(0);
-  //const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
   const rowsPerPage = 15;
-  
-  console.log("skip :",skip);
 
- 
-  const getapi=()=>
-  {
-      axios
-      .get(
-        `https://dummyjson.com/users?limit=${rowsPerPage}&skip=${skip}`
-      )
+
+  const getapi = () => {
+    axios
+      .get(`https://dummyjson.com/users?limit=${rowsPerPage}&skip=${skip}`)
       .then((response) => {
-      
-        
         setPageCount(Math.ceil(response.data.total / rowsPerPage));
         setUsersData(response.data.users);
       });
-  }
+  };
   const handlePageChange = (selectedPage) => {
     setSkip((selectedPage - 1) * rowsPerPage);
-   
   };
- 
+
   useEffect(() => {
     // eslint-disable-next-line
- //  GetProducts(currentPage);
+    //  GetProducts(currentPage);
     // eslint-disable-next-line
 
-    getapi()
+    getapi();
     // eslint-disable-next-line
- }, [skip]);
+  }, [skip]);
+  const editUser = (id) => {
+    {console.log("myid:",id)}
+    return <UserProfileModal idd={id} name="edit" />;
+  };
+  const deleteUser = (id) => {
+   
+    setUsersData((prevUsersData) => prevUsersData.filter((user) => user.id !== id));
+  };
 
   return (
     <div>
@@ -59,6 +59,7 @@ const User = () => {
               <th>Password</th>
               <th>Gender</th>
               <th>Age</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -72,6 +73,19 @@ const User = () => {
                 <td>{user.password}</td>
                 <td>{user.gender}</td>
                 <td>{user.age}</td>
+
+                <td>
+                  {" "}
+                 
+                  <Button
+                    variant="info"
+                   
+                  >
+                    {editUser(user.id)}
+                  </Button>{" "}
+                  <Button variant="info" 
+                  onClick={()=>deleteUser(user.id)}>delete</Button>{" "}
+                </td>
               </tr>
             ))}
           </tbody>

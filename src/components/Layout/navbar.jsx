@@ -13,6 +13,7 @@ import UserProfileModal from "../userProfileModal/userProfileModel";
 const NavbarCom = (props) => {
   const isLoggedIn = localStorage.getItem("token");
   const image = localStorage.getItem("image");
+  const id = localStorage.getItem("id");
 
   const logoutFun = () => {
     localStorage.clear();
@@ -66,7 +67,7 @@ const NavbarCom = (props) => {
                     />
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="custom-dropdown-menu dropdown-menu-end">
-                    <UserProfileModal /> 
+                    <UserProfileModal idd={id} name="Profile"/> 
                     <Dropdown.Item
                       href="login"
                       className="cursor"

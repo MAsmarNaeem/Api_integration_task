@@ -3,8 +3,7 @@ import { Modal, Form, Button, Alert, Spinner } from "react-bootstrap";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 
-const UserProfileModal = () => {
-  const id = localStorage.getItem("id");
+const UserProfileModal = ({ idd,name }) => {
   const [show, setShow] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [logindata, setLoginData] = useState({
@@ -12,7 +11,9 @@ const UserProfileModal = () => {
     firstName: "",
     lastName: "",
     age: "",
+    gender: "", 
   });
+
   const [showSpinner, setShowSpinner] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -24,7 +25,7 @@ const UserProfileModal = () => {
 
   const getUserData = async () => {
     try {
-      const response = await axios.get(`https://dummyjson.com/users/${id}`);
+      const response = await axios.get(`https://dummyjson.com/users/${idd}`);
       const userData = response.data;
 
       setLoginData({
@@ -32,6 +33,7 @@ const UserProfileModal = () => {
         firstName: userData.firstName,
         lastName: userData.lastName,
         age: userData.age,
+        gender: userData.gender,
       });
     } catch (error) {
       console.error("Error fetching user data:", error);
@@ -50,19 +52,21 @@ const UserProfileModal = () => {
   const updateUserProfile = () => {
     setShowAlert(true);
     setShowSpinner(true);
-    const { email, firstName, lastName, age } = logindata;
+    const { email, firstName, lastName, age, gender } = logindata; 
     axios
-      .put(`https://dummyjson.com/users/${id}`, {
+      .put(`https://dummyjson.com/users/${idd}`, {
         email: email,
         firstName: firstName,
         lastName: lastName,
         age: age,
+        gender: gender,
       })
       .then((response) => {
         console.log("name is :", response.data.firstName);
         console.log("last is :", response.data.lastName);
         console.log("age is :", response.data.age);
         console.log("email is :", response.data.email);
+        console.log("user gender is :", response.data.gender);
 
         if (response.status === 200) {
           setTimeout(() => {
@@ -84,7 +88,7 @@ const UserProfileModal = () => {
     <div>
       <>
         <Dropdown.Item className="cursor" onClick={handleShow}>
-          Profile
+          {name}
         </Dropdown.Item>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -99,7 +103,10 @@ const UserProfileModal = () => {
           )}
           <Modal.Body>
             <Form>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
                 <Form.Label>First Name</Form.Label>
                 <Form.Control
                   type="text"
@@ -110,8 +117,10 @@ const UserProfileModal = () => {
                   onChange={handleInputChange}
                 />
               </Form.Group>
-
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control
                   type="text"
@@ -122,8 +131,10 @@ const UserProfileModal = () => {
                   onChange={handleInputChange}
                 />
               </Form.Group>
-
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput2"
+              >
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
                   type="email"
@@ -134,7 +145,10 @@ const UserProfileModal = () => {
                   onChange={handleInputChange}
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput2"
+              >
                 <Form.Label>Age</Form.Label>
                 <Form.Control
                   type="number"
@@ -145,6 +159,26 @@ const UserProfileModal = () => {
                   onChange={handleInputChange}
                 />
               </Form.Group>
+              <Form.Check
+                type="radio"
+                aria-label="radio 1"
+                name="gender"
+                value="male"
+                checked={logindata.gender === "male"}
+                onChange={handleInputChange}
+                className="d-inline"
+              />{" "}
+              Male
+              <Form.Check
+                type="radio"
+                aria-label="radio 1"
+                name="gender"
+                value="female"
+                checked={logindata.gender === "female"}
+                onChange={handleInputChange}
+                className="d-inline ms-3"
+              />{" "}
+              Female
             </Form>
           </Modal.Body>
           <Modal.Footer>
@@ -152,7 +186,6 @@ const UserProfileModal = () => {
               Close
             </Button>
             <Button variant="primary" onClick={updateUserProfile}>
-             
               Save Changes
               {showSpinner ? (
                 <Spinner
