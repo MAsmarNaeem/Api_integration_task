@@ -9,7 +9,7 @@ const footer = () => {
   return (
     <div>
       {" "}
-      <footer className="bg-info text-white  mt-3 footercss">
+      <footer className="bg-info text-white  mt-3 footercss" style={{height:"240px"}}>
         <Container>
           <Row>
             <Col md={4} className="mb-4 pt-3">
