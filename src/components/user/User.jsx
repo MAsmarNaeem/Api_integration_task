@@ -6,6 +6,8 @@ import axios from "axios";
 import PaginationComponent from "../Pagination/pagination";
 import Button from "react-bootstrap/Button";
 import UserProfileModal from "../userProfileModal/userProfileModel";
+import { AiFillDelete } from "react-icons/ai";
+import { AiOutlineEdit } from "react-icons/ai";
 
 const User = () => {
   const [usersData, setUsersData] = useState([]);
@@ -36,7 +38,8 @@ const User = () => {
   }, [skip]);
   const editUser = (id) => {
     {console.log("myid:",id)}
-    return <UserProfileModal idd={id} name="edit" />;
+   
+    return <UserProfileModal idd={id} name={<AiOutlineEdit  />} />;
   };
   const deleteUser = (id) => {
    
@@ -78,13 +81,13 @@ const User = () => {
                   {" "}
                  
                   <Button
-                    variant="info"
+                    variant="none"
                    
                   >
                     {editUser(user.id)}
                   </Button>{" "}
-                  <Button variant="info" 
-                  onClick={()=>deleteUser(user.id)}>delete</Button>{" "}
+                  <Button variant="none" 
+                  onClick={()=>deleteUser(user.id)}> <AiFillDelete className="text-danger"/>   </Button>{" "}
                 </td>
               </tr>
             ))}

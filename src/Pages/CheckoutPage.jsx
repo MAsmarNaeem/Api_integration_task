@@ -6,19 +6,21 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Navbar } from "react-bootstrap";
 import NavbarCom from "../components/Layout/navbar";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+  
 
 const CheckoutPage = () => {
   const getMyUser = useSelector((store) => store.myTodo.Todo.data);
   const [itemCounts, setItemCounts] = useState({});
+  const [formMessage, setFormMessage] = useState("");
 
   const [productData, setProductsData] = useState([]);
-  const [error,seterror]=useState("")
+  const [error, seterror] = useState("");
   const navigate = useNavigate();
   const userdata = getMyUser;
   const filteredItems = [...new Set(Array.from(userdata))];
-
-
-
+  const notify = () => toast("Order Placed Successfully!");
   useEffect(() => {
     const countItems = () => {
       const counts = {};
@@ -43,14 +45,13 @@ const CheckoutPage = () => {
 
       setProductsData(data.products);
     } catch (error) {
-     
-      seterror(error)
+      seterror(error);
     }
   };
   const getTotalPrice = () => {
     let totalPrice = 0;
     for (const itemId in itemCounts) {
-       // eslint-disable-next-line
+      // eslint-disable-next-line
       const item = productData.find((product) => product.id == itemId);
       if (item) {
         const itemPrice = item.price * itemCounts[itemId];
@@ -68,6 +69,7 @@ const CheckoutPage = () => {
 
   const setdatafields = (e) => {
     const { value, name } = e.target;
+    setFormMessage("");
     setdata(() => {
       return {
         ...data,
@@ -76,29 +78,41 @@ const CheckoutPage = () => {
     });
   };
 
-  const clickShippingButton = () => {
+  const clickShippingButton = (e) => {
+    e.preventDefault();
     if (!data.firstname || !data.address || !data.phone) {
-      alert("Fill in all fields");
-    } else {
-      const getUser = localStorage.getItem("key");
-      if (!getUser || getUser.length === 0) {
-        alert("Please Sign in first");
-        navigate("/Signup");
-      } else {
-        alert("Order placed successfully");
+      setFormMessage("Please fill in all fields.");
+    } 
+    // else
+    // {
+      // const getUser = localStorage.getItem("key");
+      // if (!data.firstname || data.firstname.length === 0) {
+      //   setFormMessage("Please Sign in first.");
+      //   navigate("/Signup");
+      // } 
+      else {
+     
+        toast("Order Placed Successfully!", {
+          autoClose: 3000,
+          style: {
+            background: "DodgerBlue", 
+            color: "#ffffff", 
+       } },)
+       
       }
-    }
+  //  }
   };
 
   return (
     <div>
-      <NavbarCom/>
-      
-      <div className="mt-5 pt-3  row mx-3 justify-content-evenly">
+      <NavbarCom />
+
+      <div className="  row mx-3 justify-content-evenly">
         <div className="col-md-5">
           <p>{error}</p>
+          
           <p className="text-white">Contact information</p>
-          <p className="mt-4">
+          <p className="">
             Already have a account{" "}
             <span>
               <NavLink className="" to="/Login">
@@ -110,7 +124,9 @@ const CheckoutPage = () => {
           <br />
           <br />
           <form>
+            
             <div className="form-row">
+            {formMessage && <p className="text-danger">{formMessage}</p>}
               <div className="form-group col-md-6">
                 <label htmlFor="inputEmail4">First Name</label>
                 <input
@@ -121,6 +137,7 @@ const CheckoutPage = () => {
                   name="firstname"
                   onChange={setdatafields}
                 />
+              
               </div>
               <div className="form-group col-md-6">
                 <label htmlFor="inputPassword4">LastName</label>
@@ -182,10 +199,15 @@ const CheckoutPage = () => {
             <button
               type="submit"
               className="btn btn-info text-white"
-              onClick={clickShippingButton}
+              onClick={(e) => {
+                clickShippingButton(e);
+              
+              }}
+              //disabled={!data.firstname || !data.address || !data.phone}
             >
               Continue to Shipping
             </button>
+
             <br />
             <br />
             <br />
@@ -194,17 +216,16 @@ const CheckoutPage = () => {
 
         <div className="col-md-5">
           <div className="card " style={{ border: "none" }}>
-         
-            {filteredItems.map((itemId,index) => {
+            {filteredItems.map((itemId, index) => {
               const product = productData.find(
-                 // eslint-disable-next-line
+                // eslint-disable-next-line
                 (product) => product.id == itemId
               );
 
               if (product) {
                 return (
-                  <div  key={index} className="row ps-3 pt-2 text-center ps-4 ">
-                    <div className="col-md-4 pt-1">
+                  <div key={index} className="row ps-3  text-center ps-4 ">
+                    <div className="col-md-4 pt-5">
                       <div key={product.id} className="product-item">
                         <div className="  product-image">
                           <img
@@ -215,10 +236,10 @@ const CheckoutPage = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-8 pt-1">
+                    <div className="col-md-8 pt-5">
                       <div className="card-body justify-content-center   mx-3">
                         <NavLink
-                          to={`/Productdetail/${product.id}`}
+                          to={`/product/${product.id}`}
                           className="text-decoration-none text-danger"
                         >
                           <h2 className="card-title text-center pt-2 text-info">
@@ -234,7 +255,6 @@ const CheckoutPage = () => {
                           <li className="list-group-item">
                             Brand: {product.brand}
                           </li>
-                       
                         </ul>
                       </div>
                     </div>
@@ -251,8 +271,10 @@ const CheckoutPage = () => {
             </div>
           </div>
         </div>
+      
       </div>
-     
+      <ToastContainer theme="light"
+/>
     </div>
   );
 };
