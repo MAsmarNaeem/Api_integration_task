@@ -25,9 +25,11 @@ const UserProfileModal = (props) => {
 
   const getUserData = async () => {
     try {
+      console.log("id is :",props.id);
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/users/${props.id}`);
       const userData = response.data;
-
+      console.log(userData,"the");
+        
       setLoginData({
         email: userData.email,
         firstName: userData.firstName,
@@ -80,9 +82,7 @@ const UserProfileModal = (props) => {
       });
   };
 
-  useEffect(() => {
-    getUserData();
-  }, []);
+
 
   return (
     <div>

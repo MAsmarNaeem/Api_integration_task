@@ -19,7 +19,7 @@ const User = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/users?limit=${rowsPerPage}&skip=${skip}`)
       .then((response) => {
-        console.log("response:", response.data.users);
+        //console.log("response:", response.data.users);
         setPageCount(Math.ceil(response.data.total / rowsPerPage));
         setUsersData(response.data.users);
       });
