@@ -15,11 +15,11 @@ const User = () => {
   const [pageCount, setPageCount] = useState(0);
   const rowsPerPage = 15;
 
-
-  const getapi = () => {
+  const get_users_list = () => {
     axios
       .get(`https://dummyjson.com/users?limit=${rowsPerPage}&skip=${skip}`)
       .then((response) => {
+        console.log("response:", response.data.users);
         setPageCount(Math.ceil(response.data.total / rowsPerPage));
         setUsersData(response.data.users);
       });
@@ -33,23 +33,20 @@ const User = () => {
     //  GetProducts(currentPage);
     // eslint-disable-next-line
 
-    getapi();
+    get_users_list();
     // eslint-disable-next-line
   }, [skip]);
-  const editUser = (id) => {
-    {console.log("myid:",id)}
-   
-    return <UserProfileModal idd={id} name={<AiOutlineEdit  />} />;
-  };
+
   const deleteUser = (id) => {
-   
-    setUsersData((prevUsersData) => prevUsersData.filter((user) => user.id !== id));
+    setUsersData((prevUsersData) =>
+      prevUsersData.filter((user) => user.id !== id)
+    );
   };
 
   return (
     <div>
       <NavbarCom />
-      <div className="text-center mt-4 w-55 container-fluid">
+      <div className=" mt-4 w-55 container-fluid">
         <h1>Users</h1>
         <Table responsive bordered hover>
           <thead>
@@ -77,17 +74,15 @@ const User = () => {
                 <td>{user.gender}</td>
                 <td>{user.age}</td>
 
-                <td>
-                  {" "}
+                <td className="d-flex">
+                
                  
-                  <Button
-                    variant="none"
-                   
-                  >
-                    {editUser(user.id)}
-                  </Button>{" "}
-                  <Button variant="none" 
-                  onClick={()=>deleteUser(user.id)}> <AiFillDelete className="text-danger"/>   </Button>{" "}
+                  <UserProfileModal id={user.id} name={<AiOutlineEdit />} className="ms-2" show={false}/>
+                  <div variant="none" onClick={() => deleteUser(user.id)}>
+                  
+                    <AiFillDelete className="text-danger ms-3"  show="false"/>
+                    
+                  </div>
                 </td>
               </tr>
             ))}

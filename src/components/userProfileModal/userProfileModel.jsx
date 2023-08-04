@@ -3,8 +3,8 @@ import { Modal, Form, Button, Alert, Spinner } from "react-bootstrap";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 
-const UserProfileModal = ({ idd,name }) => {
-  const [show, setShow] = useState(false);
+const UserProfileModal = (props) => {
+  const [show, setShow] = useState(props.show);
   const [showAlert, setShowAlert] = useState(false);
   const [logindata, setLoginData] = useState({
     email: "",
@@ -25,7 +25,7 @@ const UserProfileModal = ({ idd,name }) => {
 
   const getUserData = async () => {
     try {
-      const response = await axios.get(`https://dummyjson.com/users/${idd}`);
+      const response = await axios.get(`https://dummyjson.com/users/${props.id}`);
       const userData = response.data;
 
       setLoginData({
@@ -54,7 +54,7 @@ const UserProfileModal = ({ idd,name }) => {
     setShowSpinner(true);
     const { email, firstName, lastName, age, gender } = logindata; 
     axios
-      .put(`https://dummyjson.com/users/${idd}`, {
+      .put(`https://dummyjson.com/users/${props.id}`, {
         email: email,
         firstName: firstName,
         lastName: lastName,
@@ -88,7 +88,7 @@ const UserProfileModal = ({ idd,name }) => {
     <div>
       <>
         <Dropdown.Item className="cursor" onClick={handleShow}>
-          {name}
+          {props.name}
         </Dropdown.Item>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
