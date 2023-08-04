@@ -67,7 +67,7 @@ const NavbarCom = (props) => {
                     />
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="custom-dropdown-menu dropdown-menu-end">
-                    <UserProfileModal idd={id} name="Profile"/> 
+                    <UserProfileModal id={id} name="Profile"/> 
                     <Dropdown.Item
                       href="login"
                       className="cursor"

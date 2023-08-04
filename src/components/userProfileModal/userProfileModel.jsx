@@ -25,7 +25,7 @@ const UserProfileModal = (props) => {
 
   const getUserData = async () => {
     try {
-      const response = await axios.get(`https://dummyjson.com/users/${props.id}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/users/${props.id}`);
       const userData = response.data;
 
       setLoginData({
@@ -54,7 +54,7 @@ const UserProfileModal = (props) => {
     setShowSpinner(true);
     const { email, firstName, lastName, age, gender } = logindata; 
     axios
-      .put(`https://dummyjson.com/users/${props.id}`, {
+      .put(`${process.env.REACT_APP_API_URL}/users/${props.id}`, {
         email: email,
         firstName: firstName,
         lastName: lastName,
@@ -110,7 +110,7 @@ const UserProfileModal = (props) => {
                 <Form.Label>First Name</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Mian"
+                  placeholder="First Name"
                   autoFocus
                   name="firstName"
                   value={logindata.firstName}
@@ -124,7 +124,7 @@ const UserProfileModal = (props) => {
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Mian"
+                  placeholder="Last Name"
                   autoFocus
                   name="lastName"
                   value={logindata.lastName}
@@ -159,6 +159,8 @@ const UserProfileModal = (props) => {
                   onChange={handleInputChange}
                 />
               </Form.Group>
+              <Form.Label>Gender</Form.Label>
+              <br/>
               <Form.Check
                 type="radio"
                 aria-label="radio 1"

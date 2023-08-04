@@ -20,7 +20,7 @@ const Productdetail = () => {
 
   const getProducts = async () => {
     try {
-      const response = await fetch("//dummyjson.com/products?limit=100");
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/products?limit=100`);
       const data = await response.json();
       setProductsData(data.products);
       setLoading(false); 

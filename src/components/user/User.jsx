@@ -17,7 +17,7 @@ const User = () => {
 
   const get_users_list = () => {
     axios
-      .get(`https://dummyjson.com/users?limit=${rowsPerPage}&skip=${skip}`)
+      .get(`${process.env.REACT_APP_API_URL}/users?limit=${rowsPerPage}&skip=${skip}`)
       .then((response) => {
         console.log("response:", response.data.users);
         setPageCount(Math.ceil(response.data.total / rowsPerPage));
