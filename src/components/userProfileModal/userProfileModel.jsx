@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Modal, Form, Button, Alert, Spinner } from "react-bootstrap";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -6,7 +6,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 const UserProfileModal = (props) => {
   const [show, setShow] = useState(props.show);
   const [showAlert, setShowAlert] = useState(false);
-  const [logindata, setUserData] = useState({
+  const [userData, setUserData] = useState({
     email: "",
     firstName: "",
     lastName: "",
@@ -25,7 +25,7 @@ const UserProfileModal = (props) => {
 
   const getUserData = async () => {
     try {
-      console.log("id is :", props.id);
+     // console.log("id is :", props.id);
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/users/${props.id}`
       );
@@ -57,7 +57,7 @@ const UserProfileModal = (props) => {
   const updateUserProfile = () => {
     //setShowAlert(true);
     setShowSpinner(true);
-    const { email, firstName, lastName, age, gender } = logindata;
+    const { email, firstName, lastName, age, gender } = userData;
     axios
       .put(`${process.env.REACT_APP_API_URL}/users/${props.id}`, {
         email: email,
@@ -67,11 +67,11 @@ const UserProfileModal = (props) => {
         gender: gender,
       })
       .then((response) => {
-        console.log("name is :", response.data.firstName);
-        console.log("last is :", response.data.lastName);
-        console.log("age is :", response.data.age);
-        console.log("email is :", response.data.email);
-        console.log("user gender is :", response.data.gender);
+        // console.log("name is :", response.data.firstName);
+        // console.log("last is :", response.data.lastName);
+        // console.log("age is :", response.data.age);
+        // console.log("email is :", response.data.email);
+        // console.log("user gender is :", response.data.gender);
 
               
         if (response.status === 200) {
@@ -116,7 +116,7 @@ const UserProfileModal = (props) => {
                   placeholder="First Name"
                   autoFocus
                   name="firstName"
-                  value={logindata.firstName}
+                  value={userData.firstName}
                   onChange={handleInputChange}
                 />
               </Form.Group>
@@ -130,7 +130,7 @@ const UserProfileModal = (props) => {
                   placeholder="Last Name"
                   autoFocus
                   name="lastName"
-                  value={logindata.lastName}
+                  value={userData.lastName}
                   onChange={handleInputChange}
                 />
               </Form.Group>
@@ -144,7 +144,7 @@ const UserProfileModal = (props) => {
                   placeholder="name@example.com"
                   autoFocus
                   name="email"
-                  value={logindata.email}
+                  value={userData.email}
                   onChange={handleInputChange}
                 />
               </Form.Group>
@@ -158,7 +158,7 @@ const UserProfileModal = (props) => {
                   placeholder="20"
                   autoFocus
                   name="age"
-                  value={logindata.age}
+                  value={userData.age}
                   onChange={handleInputChange}
                 />
               </Form.Group>
@@ -169,7 +169,7 @@ const UserProfileModal = (props) => {
                 aria-label="radio 1"
                 name="gender"
                 value="male"
-                checked={logindata.gender === "male"}
+                checked={userData.gender === "male"}
                 onChange={handleInputChange}
                 className="d-inline"
               />{" "}
@@ -179,7 +179,7 @@ const UserProfileModal = (props) => {
                 aria-label="radio 1"
                 name="gender"
                 value="female"
-                checked={logindata.gender === "female"}
+                checked={userData.gender === "female"}
                 onChange={handleInputChange}
                 className="d-inline ms-3"
               />{" "}

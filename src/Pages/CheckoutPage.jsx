@@ -73,11 +73,11 @@ const CheckoutPage = () => {
     return totalPrice;
   };
 
-  const [data, setdata] = useState({
-    firstname: "",
-    address: "",
-    phone: "",
-  });
+  // const [data, setdata] = useState({
+  //   firstname: "",
+  //   address: "",
+  //   phone: "",
+  // });
 
   const setdatafields = (e) => {
     const { value, name } = e.target;
