@@ -11,7 +11,7 @@ const UserProfileModal = (props) => {
     firstName: "",
     lastName: "",
     age: "",
-    gender: "", 
+    gender: "",
   });
 
   const [showSpinner, setShowSpinner] = useState(false);
@@ -25,11 +25,13 @@ const UserProfileModal = (props) => {
 
   const getUserData = async () => {
     try {
-      console.log("id is :",props.id);
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/users/${props.id}`);
+      console.log("id is :", props.id);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/users/${props.id}`
+      );
       const userData = response.data;
-      console.log(userData,"the");
-        
+      console.log(userData, "the");
+
       setUserData({
         email: userData.email,
         firstName: userData.firstName,
@@ -38,6 +40,7 @@ const UserProfileModal = (props) => {
         gender: userData.gender,
       });
     } catch (error) {
+
       console.error("Error fetching user data:", error);
     }
   };
@@ -52,9 +55,9 @@ const UserProfileModal = (props) => {
   };
 
   const updateUserProfile = () => {
-    setShowAlert(true);
+    //setShowAlert(true);
     setShowSpinner(true);
-    const { email, firstName, lastName, age, gender } = logindata; 
+    const { email, firstName, lastName, age, gender } = logindata;
     axios
       .put(`${process.env.REACT_APP_API_URL}/users/${props.id}`, {
         email: email,
@@ -70,9 +73,11 @@ const UserProfileModal = (props) => {
         console.log("email is :", response.data.email);
         console.log("user gender is :", response.data.gender);
 
+              
         if (response.status === 200) {
           setTimeout(() => {
             setShowSpinner(false);
+            setShowAlert(true)
           }, 300);
         }
       })
@@ -81,8 +86,6 @@ const UserProfileModal = (props) => {
         setShowSpinner(false);
       });
   };
-
-
 
   return (
     <div>
@@ -160,7 +163,7 @@ const UserProfileModal = (props) => {
                 />
               </Form.Group>
               <Form.Label>Gender</Form.Label>
-              <br/>
+              <br />
               <Form.Check
                 type="radio"
                 aria-label="radio 1"
