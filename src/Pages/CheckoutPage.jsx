@@ -82,17 +82,16 @@ const CheckoutPage = () => {
   const setdatafields = (e) => {
     const { value, name } = e.target;
     setFormMessage("");
-    setdata(() => {
-      return {
-        ...data,
-        [name]: value,
-      };
-    });
+    setUserData((prevUserData) => ({
+      ...prevUserData,
+      [name]: value,
+    }));
   };
+  
 
   const clickShippingButton = (e) => {
     e.preventDefault();
-    if (!data.firstname || !data.address || !data.phone) {
+    if (!userData.firstName || !userData.address || !userData.phone) {
       setFormMessage("Please fill in all fields.");
     }
     // else
@@ -156,7 +155,7 @@ const CheckoutPage = () => {
                   className="form-control"
                   id="inputEmail4"
                   placeholder="First Name"
-                  name="firstname"
+                  name="firstName"
                   onChange={setdatafields}
                   value={userData.firstName}
                 />

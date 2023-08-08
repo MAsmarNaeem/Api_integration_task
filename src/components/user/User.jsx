@@ -80,7 +80,7 @@ const User = () => {
                   <UserProfileModal id={user.id} name={<AiOutlineEdit />} className="ms-2" show={false}/>
                   <div variant="none" onClick={() => deleteUser(user.id)}>
                   
-                    <AiFillDelete className="text-danger ms-3"  show="false"/>
+                    <AiFillDelete className="text-danger ms-3"  show="false" style={{cursor:"pointer"}}/>
                     
                   </div>
                 </td>
