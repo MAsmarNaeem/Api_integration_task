@@ -25,7 +25,7 @@ function Sidebar(props) {
   const demo = () => {};
 
   const id= localStorage.getItem('token')
-  console.log("idd",id);
+
 
   useEffect(() => {
     getProducts();

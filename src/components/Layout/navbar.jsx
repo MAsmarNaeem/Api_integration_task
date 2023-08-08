@@ -18,11 +18,13 @@ const NavbarCom = (props) => {
   const logoutFun = () => {
     localStorage.clear();
   };
+  
+  
 
   return (
     <>
-      <Navbar expand="lg" className="bg-info" sticky="top" variant="light">
-        <Container fluid>
+      <Navbar expand="lg" className="bg-info" id="header" sticky="top" variant="light">
+        <Container fluid >
           {isLoggedIn && <Sidbar />}
           <Link className="nav-link  navbar-brand ms-2" to="/">
             My Shopping App
