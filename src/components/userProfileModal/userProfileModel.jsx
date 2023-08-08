@@ -6,7 +6,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 const UserProfileModal = (props) => {
   const [show, setShow] = useState(props.show);
   const [showAlert, setShowAlert] = useState(false);
-  const [logindata, setLoginData] = useState({
+  const [logindata, setUserData] = useState({
     email: "",
     firstName: "",
     lastName: "",
@@ -30,7 +30,7 @@ const UserProfileModal = (props) => {
       const userData = response.data;
       console.log(userData,"the");
         
-      setLoginData({
+      setUserData({
         email: userData.email,
         firstName: userData.firstName,
         lastName: userData.lastName,
@@ -45,7 +45,7 @@ const UserProfileModal = (props) => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
-    setLoginData((prevData) => ({
+    setUserData((prevData) => ({
       ...prevData,
       [name]: value,
     }));

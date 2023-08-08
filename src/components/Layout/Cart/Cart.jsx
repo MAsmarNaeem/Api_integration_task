@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Link, NavLink } from "react-router-dom";
 import "./Cart.css";
@@ -14,15 +14,18 @@ import { removeFromCart } from "../../../Store/AddCartSlice";
 function Sidebar(props) {
   const store = useSelector((store) => store);
   const getStore = useSelector((store) => store);
-   // eslint-disable-next-line
+  // eslint-disable-next-line
   const [show, setShow] = useState(store.addvalue.Todo.todos);
-  const[error,seterror]=useState("")
+  const [error, seterror] = useState("");
 
   const [cartItems, setCartItems] = useState([]);
   const [itemCounts, setItemCounts] = useState({});
   const [productData, setProductData] = useState([]);
   const dispatch = useDispatch();
   const demo = () => {};
+
+  const id= localStorage.getItem('token')
+  console.log("idd",id);
 
   useEffect(() => {
     getProducts();
@@ -34,7 +37,7 @@ function Sidebar(props) {
       const data = await response.json();
       setProductData(data.products);
     } catch (error) {
-     seterror(error)
+      seterror(error);
     }
   };
 
@@ -59,7 +62,6 @@ function Sidebar(props) {
 
     countItems();
   }, [cartItems]);
-  
 
   const addItemCounter = (itemId) => {
     setItemCounts((prevCounts) => ({
@@ -102,23 +104,16 @@ function Sidebar(props) {
   return (
     <>
       <>
-        <Link to="#"
-  className="nav-link mar-top"
-   
-  onClick={handleShow}
->
-  Cart
-</Link>
-  
+        <Link to="#" className="nav-link mar-top" onClick={handleShow}>
+          Cart
+        </Link>
 
         <Offcanvas
           placement="end"
           show={store.addvalue.Todo.todos}
           onHide={handleClose}
           backdrop={true}
-          
-          style={{top:"53px",width:"310px"}}
-          
+          style={{ top: "53px", width: "310px" }}
         >
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>Cart</Offcanvas.Title>
@@ -133,7 +128,7 @@ function Sidebar(props) {
 
                   if (product) {
                     return (
-                      <div   key={itemId} className="row ps-3  text-center ps-4 ">
+                      <div key={itemId} className="row ps-3  text-center ps-4 ">
                         <p>{error}</p>
                         <div className="col-md-4 pt-1">
                           <div key={product.id} className="product-item">
@@ -203,7 +198,7 @@ function Sidebar(props) {
                 >
                   <h3 className="bg-info">Total :${getTotalPrice()}</h3>
                   <NavLink
-                    to={`/checkout`}
+                    to={id ? `/checkout` : `/login`}
                     className="text-decoration-none text-white px-3 text-center py-1 btn btn-info"
                   >
                     Go to Checkout

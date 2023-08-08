@@ -4,11 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Navbar } from "react-bootstrap";
 import NavbarCom from "../components/Layout/navbar";
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
-  
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const CheckoutPage = () => {
   const getMyUser = useSelector((store) => store.myTodo.Todo.data);
@@ -16,11 +15,24 @@ const CheckoutPage = () => {
   const [formMessage, setFormMessage] = useState("");
 
   const [productData, setProductsData] = useState([]);
+  // eslint-disable-next-line
   const [error, seterror] = useState("");
+  // eslint-disable-next-line
   const navigate = useNavigate();
   const userdata = getMyUser;
   const filteredItems = [...new Set(Array.from(userdata))];
+  // eslint-disable-next-line
   const notify = () => toast("Order Placed Successfully!");
+  const [userData, setUserData] = useState({
+    firstName: "",
+    lastName: "",
+    address: "",
+    phone: "",
+  });
+  useEffect(() => {
+    getUserData();
+    // eslint-disable-next-line
+  }, []);
   useEffect(() => {
     const countItems = () => {
       const counts = {};
@@ -82,25 +94,47 @@ const CheckoutPage = () => {
     e.preventDefault();
     if (!data.firstname || !data.address || !data.phone) {
       setFormMessage("Please fill in all fields.");
-    } 
+    }
     // else
     // {
-      // const getUser = localStorage.getItem("key");
-      // if (!data.firstname || data.firstname.length === 0) {
-      //   setFormMessage("Please Sign in first.");
-      //   navigate("/Signup");
-      // } 
-      else {
-     
-        toast("Order Placed Successfully!", {
-          autoClose: 3000,
-          style: {
-            background: "DodgerBlue", 
-            color: "#ffffff", 
-       } },)
-       
-      }
-  //  }
+    // const getUser = localStorage.getItem("key");
+    // if (!data.firstname || data.firstname.length === 0) {
+    //   setFormMessage("Please Sign in first.");
+    //   navigate("/Signup");
+    // }
+    else {
+      toast("Order Placed Successfully!", {
+        autoClose: 3000,
+        style: {
+          background: "DodgerBlue",
+          color: "#ffffff",
+        },
+      });
+    }
+    //  }
+  };
+  const id = localStorage.getItem("id");
+  const getUserData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/users/${id}`
+      );
+      const userData = response.data;
+
+      setUserData({
+        email: userData.email,
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        address: userData.address.address,
+        city: userData.address.city,
+        state: userData.address.state,
+        phone: userData.phone,
+        age: userData.age,
+        gender: userData.gender,
+      });
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
   };
 
   return (
@@ -109,24 +143,12 @@ const CheckoutPage = () => {
 
       <div className="  row mx-3 justify-content-evenly">
         <div className="col-md-5">
-          <p>{error}</p>
-          
           <p className="text-white">Contact information</p>
-          <p className="">
-            Already have a account{" "}
-            <span>
-              <NavLink className="" to="/Login">
-                Login
-              </NavLink>
-            </span>
-          </p>
-          Shipping Address
-          <br />
-          <br />
+          <h3 className="fw-bold"> Shipping Address</h3>
+
+          {formMessage && <p className="text-danger">{formMessage}</p>}
           <form>
-            
-            <div className="form-row">
-            {formMessage && <p className="text-danger">{formMessage}</p>}
+            <div className="form-row d-flex">
               <div className="form-group col-md-6">
                 <label htmlFor="inputEmail4">First Name</label>
                 <input
@@ -136,20 +158,22 @@ const CheckoutPage = () => {
                   placeholder="First Name"
                   name="firstname"
                   onChange={setdatafields}
+                  value={userData.firstName}
                 />
-              
               </div>
-              <div className="form-group col-md-6">
+              <div className="form-group col-md-5 ms-2">
                 <label htmlFor="inputPassword4">LastName</label>
                 <input
                   type="Text"
                   className="form-control"
                   id="inputPassword4"
                   placeholder="Last Name"
+                  value={userData.lastName}
+                  onChange={setdatafields}
                 />
               </div>
             </div>
-            <div className="form-group">
+            <div className="form-group col-md-11">
               <label htmlFor="inputAddress">Address</label>
               <input
                 type="text"
@@ -158,28 +182,40 @@ const CheckoutPage = () => {
                 placeholder="1234 Main St"
                 name="address"
                 onChange={setdatafields}
+                value={userData.address}
               />
             </div>
-            <div className="form-group">
+            <div className="form-group col-md-11">
               <label htmlFor="inputAddresss">Phone Number</label>
               <input
-                type="number"
                 className="form-control"
                 id="inputAddresss"
                 placeholder="1234 "
                 name="phone"
                 onChange={setdatafields}
+                value={userData.phone}
               />
             </div>
 
-            <div className="form-row">
+            <div className="form-row  d-flex">
               <div className="form-group col-md-6">
                 <label htmlFor="inputCity">City</label>
-                <input type="text" className="form-control" id="inputCity" />
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputCity"
+                  value={userData.city}
+                />
               </div>
-              <div className="form-group col-md-4">
+              <div className="form-group col-md-5 ms-2">
                 <label htmlFor="inputState">State</label>
-                <select
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputCity"
+                  value={userData.state}
+                />
+                {/* <select
                   id="inputState"
                   className="form-control"
                   defaultValue="Choose..."
@@ -190,7 +226,7 @@ const CheckoutPage = () => {
                   <option value="Pakistan">Pakistan</option>
                   <option value="Australia">Australia</option>
                   <option value="America">America</option>
-                </select>
+                </select> */}
               </div>
             </div>
             <div className="form-group">
@@ -201,7 +237,6 @@ const CheckoutPage = () => {
               className="btn btn-info text-white"
               onClick={(e) => {
                 clickShippingButton(e);
-              
               }}
               //disabled={!data.firstname || !data.address || !data.phone}
             >
@@ -271,10 +306,8 @@ const CheckoutPage = () => {
             </div>
           </div>
         </div>
-      
       </div>
-      <ToastContainer theme="light"
-/>
+      <ToastContainer theme="light" />
     </div>
   );
 };
