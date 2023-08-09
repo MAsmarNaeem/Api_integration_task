@@ -19,8 +19,28 @@ const NavbarCom = (props) => {
     localStorage.clear();
   };
   
-  
+  useEffect(() => {
+    const headerElement = document.getElementById('header');
+    const footerElement = document.getElementById('footer');
+   
+    if (!headerElement) {
+      console.error("Header element not found.")
+    }
 
+    if (!footerElement) {
+      console.error("Footer element not found.")
+    }
+
+    const headerHeight = headerElement?.clientHeight || 0;
+    console.log("header Height :",headerHeight);
+    const footerHeight = footerElement?.clientHeight || 0;
+    console.log("footer Height :",footerHeight);
+    const desiredHeight = window.innerHeight - (headerHeight + footerHeight);
+    console.log("inner Height:",window.innerHeight);
+    console.log("desired Height:",desiredHeight);
+
+   
+  }, []);
   return (
     <>
       <Navbar expand="lg" className="bg-info" id="header" sticky="top" variant="light">

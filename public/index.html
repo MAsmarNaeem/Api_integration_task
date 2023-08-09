@@ -58,37 +58,7 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <script>
-     
-      const headerElement = document.getElementById('header');
-      console.log("headre element:",headerElement);
-      const footerElement = document.getElementById('footer');
-    
-    
-      if (!headerElement) {
-        console.error("Header element not found.");
-      }
-    
-      if (!footerElement) {
-        console.error("Footer element not found.");
-      }
-    
-     
-      const headerHeight = headerElement?.clientHeight || 0;
-      const footerHeight = footerElement?.clientHeight || 0;
-    
-      console.log("Header Height:", headerHeight);
-      console.log("Footer Height:", footerHeight);
-    
-     
-      const desiredHeight = window.innerHeight - (headerHeight + footerHeight);
-    
-      
-      document.body.style.height = `${desiredHeight}px`;
-    
-      console.log("Desired Height:", desiredHeight);
-    </script>
-    
+   
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
