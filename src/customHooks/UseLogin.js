@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { UpdateNav } from "../Store/UpdateNavbar";
+import { useDispatch } from "react-redux";
 
 function UseLogin() {
   const [logindata, setlogindata] = useState({
@@ -21,7 +23,7 @@ function UseLogin() {
     }));
   };
   //console.log("eroror is ", error.Error);
- 
+ const dispatch=useDispatch()
 
   const submitbutton = (e) => {
     setShowSpinner(true)
@@ -40,13 +42,17 @@ function UseLogin() {
             setShowSpinner(false); 
           
           }, 300);
+          dispatch(UpdateNav(response.data.token))
        //   const d = response.data.token;
-          localStorage.setItem("token", JSON.stringify(response.data.token));
+        //  localStorage.setItem("token", JSON.stringify(response.data.token));
           localStorage.setItem("image", response.data.image);
           localStorage.setItem("id",response.data.id)
 
         //  console.log(localStorage.getItem("image"),"aaaa");
-          navigate("/dashboard");
+          // navigate("/dashboard");
+          // dispatch(UpdateNav(response.data.token))
+            //  dispatch(UpdateNav(response.data.token))
+            navigate("/dashboard")
         }
       })
       .catch((error) => {

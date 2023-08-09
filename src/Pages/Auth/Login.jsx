@@ -4,7 +4,6 @@ import UseLogin from "../../customHooks/UseLogin";
 import { NavLink } from "react-router-dom";
 import "./Login.css";
 import Alert from "react-bootstrap/Alert";
-import NavbarCom from "../../components/Layout/navbar";
 import Spinner from "react-bootstrap/Spinner";
 
 function Login() {
@@ -12,7 +11,7 @@ function Login() {
 
   return (
     <div>
-      <NavbarCom />
+     
       <Container>
         <Row className="justify-content-center d-flex text-center">
           <Col md={7} className="mt-4 login-container">

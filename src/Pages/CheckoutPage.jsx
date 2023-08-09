@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import NavbarCom from "../components/Layout/navbar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -138,7 +137,7 @@ const CheckoutPage = () => {
 
   return (
     <div>
-      <NavbarCom />
+    
 
       <div className="  row mx-3 justify-content-evenly">
         <div className="col-md-5">

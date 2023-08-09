@@ -1,12 +1,11 @@
 import React from "react";
 import AllProducts from "../components/Products/AllProducts";
-import NavbarCom from "../components/Layout/navbar";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 function ProductPage() {
   return (
     <>
-      <NavbarCom />
+      
       {/* <nav className="ms-3 ">
        
        <Link to="NP">NP</Link>

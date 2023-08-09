@@ -6,14 +6,13 @@ import { NavLink } from "react-router-dom";
 
 
 import "./Login.css"
-import NavbarCom from "../../components/Layout/navbar";
 
 function Signup() {
   const { getUserData, addDataButton,error } = UseSignup();
 
   return (
    <div > 
-    <NavbarCom/>
+   
    
      <Container>
       <Row className="justify-content-center " >

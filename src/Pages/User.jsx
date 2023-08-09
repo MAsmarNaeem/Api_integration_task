@@ -1,16 +1,14 @@
 
 
 import React from 'react'
-import UserCom from '../components/user'
-import NavbarCom from '../components/Layout/navbar'
-
-const User = () => {
+import User from '../components/user'
+const Userr = () => {
   return (
     <div>
      
-        <UserCom/>
+        <User/>
     </div>
   )
 }
 
-export default User
+export default Userr

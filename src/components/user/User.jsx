@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import NavbarCom from "../Layout/navbar";
 //import Footer from "../Layout/Footer/footer";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
@@ -45,7 +44,7 @@ const User = () => {
 
   return (
     <div>
-      <NavbarCom />
+     
       <div className=" mt-4 w-55 container-fluid">
         <h1>Users</h1>
         <Table responsive bordered hover>

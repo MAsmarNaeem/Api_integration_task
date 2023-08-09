@@ -7,44 +7,34 @@ import "./navbar.css";
 import Sidbar from "../sidbar/sidbar";
 import Dropdown from "react-bootstrap/Dropdown";
 
-
-import UserProfileModal from "../userProfileModal/userProfileModel"; 
+import UserProfileModal from "../userProfileModal/userProfileModel";
+import { useSelector } from "react-redux";
 
 const NavbarCom = (props) => {
   const isLoggedIn = localStorage.getItem("token");
   const image = localStorage.getItem("image");
   const id = localStorage.getItem("id");
+  const store = useSelector((store) => store);
 
+
+ 
   const logoutFun = () => {
     localStorage.clear();
   };
-  
-  useEffect(() => {
-    const headerElement = document.getElementById('header');
-    const footerElement = document.getElementById('footer');
-   
-    if (!headerElement) {
-      console.error("Header element not found.")
-    }
 
-    if (!footerElement) {
-      console.error("Footer element not found.")
-    }
+ 
 
-    const headerHeight = headerElement?.clientHeight || 0;
-    console.log("header Height :",headerHeight);
-    const footerHeight = footerElement?.clientHeight || 0;
-    console.log("footer Height :",footerHeight);
-    const desiredHeight = window.innerHeight - (headerHeight + footerHeight);
-    console.log("inner Height:",window.innerHeight);
-    console.log("desired Height:",desiredHeight);
 
-   
-  }, []);
   return (
     <>
-      <Navbar expand="lg" className="bg-info" id="header" sticky="top" variant="light">
-        <Container fluid >
+      <Navbar
+        expand="lg"
+        className="bg-info"
+        id="header"
+        sticky="top"
+        variant="light"
+      >
+        <Container fluid>
           {isLoggedIn && <Sidbar />}
           <Link className="nav-link  navbar-brand ms-2" to="/">
             My Shopping App
@@ -89,7 +79,7 @@ const NavbarCom = (props) => {
                     />
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="custom-dropdown-menu dropdown-menu-end">
-                    <UserProfileModal id={id} name="Profile"/> 
+                    <UserProfileModal id={id} name="Profile" />
                     <Dropdown.Item
                       href="login"
                       className="cursor"
