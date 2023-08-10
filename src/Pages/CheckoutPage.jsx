@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { logDOM } from "@testing-library/react";
 
 const CheckoutPage = () => {
   const getMyUser = useSelector((store) => store.myTodo.Todo.data);
@@ -86,20 +87,18 @@ const CheckoutPage = () => {
       [name]: value,
     }));
   };
-  
 
   const clickShippingButton = (e) => {
     e.preventDefault();
-    if (!userData.firstName || !userData.address || !userData.phone) {
+    if (
+      !userData.firstName ||
+      !userData.address ||
+      !userData.phone ||
+      !userData.lastName
+    ) {
       setFormMessage("Please fill in all fields.");
     }
-    // else
-    // {
-    // const getUser = localStorage.getItem("key");
-    // if (!data.firstname || data.firstname.length === 0) {
-    //   setFormMessage("Please Sign in first.");
-    //   navigate("/Signup");
-    // }
+    
     else {
       toast("Order Placed Successfully!", {
         autoClose: 3000,
@@ -111,6 +110,7 @@ const CheckoutPage = () => {
     }
     //  }
   };
+
   const id = localStorage.getItem("id");
   const getUserData = async () => {
     try {
@@ -137,8 +137,6 @@ const CheckoutPage = () => {
 
   return (
     <div>
-    
-
       <div className="  row mx-3 justify-content-evenly">
         <div className="col-md-5">
           <p className="text-white">Contact information</p>
@@ -165,6 +163,7 @@ const CheckoutPage = () => {
                   type="Text"
                   className="form-control"
                   id="inputPassword4"
+                  name="lastName"
                   placeholder="Last Name"
                   value={userData.lastName}
                   onChange={setdatafields}
@@ -203,6 +202,7 @@ const CheckoutPage = () => {
                   className="form-control"
                   id="inputCity"
                   value={userData.city}
+                  name="city"
                 />
               </div>
               <div className="form-group col-md-5 ms-2">
@@ -210,21 +210,10 @@ const CheckoutPage = () => {
                 <input
                   type="text"
                   className="form-control"
-                  id="inputCity"
+                  name="state"
+                  id="inputstate"
                   value={userData.state}
                 />
-                {/* <select
-                  id="inputState"
-                  className="form-control"
-                  defaultValue="Choose..."
-                >
-                  <option disabled hidden>
-                    Choose...
-                  </option>
-                  <option value="Pakistan">Pakistan</option>
-                  <option value="Australia">Australia</option>
-                  <option value="America">America</option>
-                </select> */}
               </div>
             </div>
             <div className="form-group">
@@ -236,7 +225,6 @@ const CheckoutPage = () => {
               onClick={(e) => {
                 clickShippingButton(e);
               }}
-              //disabled={!data.firstname || !data.address || !data.phone}
             >
               Continue to Shipping
             </button>

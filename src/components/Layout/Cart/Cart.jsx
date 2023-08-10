@@ -24,8 +24,7 @@ function Sidebar(props) {
   const dispatch = useDispatch();
   const demo = () => {};
 
-  const id= localStorage.getItem('token')
-
+  const id = localStorage.getItem("token");
 
   useEffect(() => {
     getProducts();
@@ -100,7 +99,11 @@ function Sidebar(props) {
 
     return totalPrice.toFixed(2);
   };
+  const pathnamefun = () => {
+      localStorage.setItem("pathname","/checkout")
+      dispatch(addvalue(false));
 
+  };
   return (
     <>
       <>
@@ -199,6 +202,7 @@ function Sidebar(props) {
                   <h3 className="bg-info">Total :${getTotalPrice()}</h3>
                   <NavLink
                     to={id ? `/checkout` : `/login`}
+                    onClick={pathnamefun}
                     className="text-decoration-none text-white px-3 text-center py-1 btn btn-info"
                   >
                     Go to Checkout

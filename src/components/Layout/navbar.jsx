@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Sidebar from "./Cart/Cart";
@@ -9,21 +9,23 @@ import Dropdown from "react-bootstrap/Dropdown";
 
 import UserProfileModal from "../userProfileModal/userProfileModel";
 import { useSelector } from "react-redux";
+import { removeval } from "../../Store/UpdateNavbar";
+import { useDispatch } from "react-redux";
 
 const NavbarCom = (props) => {
+  const store = useSelector((store) => store);
+  console.log("store is :",store.UpdateNavbar.Nav.data);
   const isLoggedIn = localStorage.getItem("token");
   const image = localStorage.getItem("image");
   const id = localStorage.getItem("id");
-  const store = useSelector((store) => store);
+  //const store = useSelector((store) => store);
+  const dispatch=useDispatch()
 
-
- 
   const logoutFun = () => {
-    localStorage.clear();
+    dispatch(removeval(""))
+   
+   // dispatch(UpdateNav(response.data.token))
   };
-
- 
-
 
   return (
     <>
@@ -80,12 +82,10 @@ const NavbarCom = (props) => {
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="custom-dropdown-menu dropdown-menu-end">
                     <UserProfileModal id={id} name="Profile" />
-                    <Dropdown.Item
-                      href="login"
-                      className="cursor"
-                      onClick={logoutFun}
-                    >
-                      Logout
+                    <Dropdown.Item>
+                      <Link to="login" className="cursor text-decoration-none text-black" onClick={logoutFun}>
+                        Logout
+                      </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
